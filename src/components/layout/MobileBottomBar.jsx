@@ -47,7 +47,7 @@ export default function MobileBottomBar() {
               setIsCreatePostOpen(true);
             }
           }}
-          className="w-10 h-10 rounded-xl bg-studio-btn-dark text-studio-btn-darkText border-2 border-black flex items-center justify-center active:scale-95 transition-transform shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+          className="w-10 h-10 rounded-xl bg-studio-btn-dark text-white dark:text-black border-2 border-black flex items-center justify-center active:scale-95 transition-transform shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
           aria-label="New Post"
         >
           <Plus className="w-5 h-5 stroke-[3]" />

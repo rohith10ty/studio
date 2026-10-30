@@ -75,7 +75,7 @@ export default function ProfileView() {
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setIsEditProfileOpen(true)}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-studio-btn-dark text-studio-btn-darkText border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] text-xs font-black hover:opacity-90 transition-opacity"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-studio-btn-dark text-white dark:text-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] text-xs font-black hover:opacity-90 transition-opacity"
               >
                 <Edit3 className="w-3.5 h-3.5 stroke-[2.5]" />
                 <span>Edit Profile</span>
@@ -83,7 +83,7 @@ export default function ProfileView() {
 
               <button
                 onClick={handleShareProfile}
-                className="p-2 rounded-xl border-2 border-black bg-studio-sidebar text-studio-text hover:bg-studio-chip transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                className="p-2 rounded-xl border-2 border-black bg-studio-sidebar text-studio-text hover:bg-studio-card transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
                 title="Share profile"
               >
                 <Share2 className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -149,7 +149,7 @@ export default function ProfileView() {
 
             <div
               onClick={() => setFollowersModal({ isOpen: true, title: 'Followers' })}
-              className="p-3 rounded-xl bg-studio-sidebar border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center justify-center cursor-pointer hover:bg-studio-chip transition-colors"
+              className="p-3 rounded-xl bg-studio-sidebar border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center justify-center cursor-pointer hover:bg-studio-card transition-colors"
             >
               <span className="text-base font-black text-studio-text font-outfit">
                 {currentUser.stats?.followersCount ? (currentUser.stats.followersCount / 1000).toFixed(1) + 'k' : '14.8k'}
@@ -161,7 +161,7 @@ export default function ProfileView() {
 
             <div
               onClick={() => setFollowersModal({ isOpen: true, title: 'Following' })}
-              className="p-3 rounded-xl bg-studio-sidebar border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center justify-center cursor-pointer hover:bg-studio-chip transition-colors"
+              className="p-3 rounded-xl bg-studio-sidebar border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center justify-center cursor-pointer hover:bg-studio-card transition-colors"
             >
               <span className="text-base font-black text-studio-text font-outfit">
                 {currentUser.stats?.followingCount || 420}
@@ -198,7 +198,7 @@ export default function ProfileView() {
               onClick={() => setActiveProfileTab(tab.id)}
               className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black border-2 border-black transition-all ${
                 isActive
-                  ? 'bg-studio-btn-dark text-studio-btn-darkText shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
+                  ? 'bg-studio-btn-dark text-white dark:text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
                   : 'bg-studio-card text-studio-text hover:bg-studio-sidebar shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
               }`}
             >
@@ -266,7 +266,7 @@ export default function ProfileView() {
           {activeProfileTab === 'posts' && (
             <button
               onClick={() => setIsCreatePostOpen(true)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-studio-btn-dark text-studio-btn-darkText border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] text-xs font-black"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-studio-btn-dark text-white dark:text-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] text-xs font-black"
             >
               <Plus className="w-3.5 h-3.5 stroke-[3]" />
               <span>Create Post</span>

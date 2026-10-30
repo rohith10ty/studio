@@ -51,17 +51,19 @@ export default function App() {
       {/* Mobile Top Navbar */}
       <MobileNavbar />
 
-      <div className="flex-1 w-full max-w-7xl mx-auto flex justify-center">
+      <div className="flex-1 w-full flex justify-between">
         {/* Left Sidebar */}
         <Sidebar />
 
         {/* Center Main Stage */}
-        <main className="flex-1 min-w-0 max-w-2xl px-4 sm:px-6 py-6 sm:py-7">
-          {activeTab === 'feed' && <FeedView />}
-          {activeTab === 'explore' && <ExploreView />}
-          {activeTab === 'notifications' && <NotificationsView />}
-          {activeTab === 'messages' && <MessagesView />}
-          {activeTab === 'profile' && <ProfileView />}
+        <main className="flex-1 min-w-0 flex justify-center px-4 sm:px-6 py-6 sm:py-7">
+          <div className={`w-full ${activeTab === 'messages' || activeTab === 'profile' ? 'max-w-3xl' : 'max-w-2xl'}`}>
+            {activeTab === 'feed' && <FeedView />}
+            {activeTab === 'explore' && <ExploreView />}
+            {activeTab === 'notifications' && <NotificationsView />}
+            {activeTab === 'messages' && <MessagesView />}
+            {activeTab === 'profile' && <ProfileView />}
+          </div>
         </main>
 
         {/* Right Sidebar */}

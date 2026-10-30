@@ -70,7 +70,7 @@ export default function NotificationsView() {
             onClick={() => setFilter(tab.id)}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-black border-2 border-black transition-colors ${
               filter === tab.id
-                ? 'bg-studio-btn-dark text-studio-btn-darkText shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
+                ? 'bg-studio-btn-dark text-white dark:text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
                 : 'bg-studio-card text-studio-text hover:bg-studio-sidebar shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
             }`}
           >
@@ -126,7 +126,7 @@ export default function NotificationsView() {
                       e.stopPropagation();
                       toggleFollowUser(item.user.handle, item.user.name);
                     }}
-                    className="px-3 py-1 rounded-xl bg-studio-btn-dark text-studio-btn-darkText text-xs font-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:opacity-90"
+                    className="px-3 py-1 rounded-xl bg-studio-btn-dark text-white dark:text-black text-xs font-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:opacity-90"
                   >
                     Follow
                   </button>

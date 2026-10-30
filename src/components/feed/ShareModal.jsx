@@ -61,7 +61,7 @@ export default function ShareModal() {
               <button
                 key={i}
                 onClick={opt.action}
-                className="flex flex-col items-center gap-1.5 p-2.5 rounded-xl bg-studio-sidebar hover:bg-studio-chip border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
+                className="flex flex-col items-center gap-1.5 p-2.5 rounded-xl bg-studio-sidebar hover:bg-studio-card border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
               >
                 <div className="p-1.5 rounded-lg text-studio-text">
                   <Icon className="w-4 h-4 stroke-[2.5]" />
@@ -83,7 +83,7 @@ export default function ShareModal() {
           />
           <button
             onClick={handleCopyLink}
-            className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-studio-btn-dark text-studio-btn-darkText text-xs font-bold transition-opacity hover:opacity-90 shadow-sm"
+            className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-studio-btn-dark text-white dark:text-black border-2 border-black text-xs font-black transition-opacity hover:opacity-90 shadow-sm"
           >
             {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
             <span>{copied ? 'Done' : 'Copy'}</span>

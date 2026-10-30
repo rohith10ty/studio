@@ -147,7 +147,7 @@ export default function PostCard({ post }) {
           {post.tags.map((tag, i) => (
             <span
               key={i}
-              className="text-xs font-black px-2.5 py-0.5 rounded-md bg-studio-sidebar border-2 border-black shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] text-studio-text hover:bg-studio-chip cursor-pointer transition-colors"
+              className="text-xs font-black px-2.5 py-0.5 rounded-md bg-studio-sidebar border-2 border-black shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] text-studio-text hover:opacity-80 cursor-pointer transition-opacity"
             >
               #{tag}
             </span>
@@ -188,7 +188,7 @@ export default function PostCard({ post }) {
             className={`flex items-center gap-1.5 px-3 py-1 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] text-xs font-black transition-all ${
               post.isLiked
                 ? 'bg-rose-500 text-white'
-                : 'bg-studio-sidebar text-studio-text hover:bg-studio-chip'
+                : 'bg-studio-sidebar text-studio-text hover:opacity-85'
             }`}
           >
             <Heart
@@ -201,7 +201,7 @@ export default function PostCard({ post }) {
 
           <button
             onClick={() => setShowComments(!showComments)}
-            className="flex items-center gap-1.5 px-3 py-1 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-studio-sidebar text-studio-text hover:bg-studio-chip text-xs font-black transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-studio-sidebar text-studio-text hover:opacity-85 text-xs font-black transition-opacity"
           >
             <MessageCircle className="w-4 h-4 stroke-[2.5]" />
             <span>{post.comments?.length || 0}</span>
@@ -209,7 +209,7 @@ export default function PostCard({ post }) {
 
           <button
             onClick={() => setShareModalData(post)}
-            className="flex items-center gap-1.5 px-3 py-1 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-studio-sidebar text-studio-text hover:bg-studio-chip text-xs font-black transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-studio-sidebar text-studio-text hover:opacity-85 text-xs font-black transition-opacity"
           >
             <Share2 className="w-4 h-4 stroke-[2.5]" />
             <span>{post.sharesCount}</span>
@@ -220,8 +220,8 @@ export default function PostCard({ post }) {
           onClick={() => toggleSavePost(post.id)}
           className={`p-1.5 px-2 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-colors ${
             post.isSaved
-              ? 'bg-studio-btn-dark text-studio-btn-darkText'
-              : 'bg-studio-sidebar text-studio-text hover:bg-studio-chip'
+              ? 'bg-studio-btn-dark text-white dark:text-black'
+              : 'bg-studio-sidebar text-studio-text hover:opacity-85'
           }`}
         >
           <Bookmark className={`w-4 h-4 stroke-[2.5] ${post.isSaved ? 'fill-current' : ''}`} />
@@ -272,7 +272,7 @@ export default function PostCard({ post }) {
             <button
               type="submit"
               disabled={!commentInput.trim()}
-              className="p-2 rounded-xl bg-studio-btn-dark text-studio-btn-darkText border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] disabled:opacity-40 transition-opacity"
+              className="p-2 rounded-xl bg-studio-btn-dark text-white dark:text-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] disabled:opacity-40 transition-opacity"
             >
               <Send className="w-3.5 h-3.5 stroke-[2.5]" />
             </button>

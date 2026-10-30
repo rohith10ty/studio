@@ -51,8 +51,8 @@ export default function FollowersModal() {
                   onClick={() => toggleFollowUser(u.id, u.name)}
                   className={`px-2.5 py-1 rounded-lg text-xs font-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-colors shrink-0 ${
                     isFollowing
-                      ? 'bg-studio-card text-studio-text'
-                      : 'bg-studio-btn-dark text-studio-btn-darkText'
+                      ? 'bg-studio-card text-studio-text hover:opacity-80'
+                      : 'bg-studio-btn-dark text-white dark:text-black'
                   }`}
                 >
                   {isFollowing ? 'Following' : 'Follow'}

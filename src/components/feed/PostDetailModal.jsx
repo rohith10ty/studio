@@ -91,8 +91,8 @@ export default function PostDetailModal() {
                   onClick={() => toggleFollowUser(postDetailModal.author.id, postDetailModal.author.name)}
                   className={`px-2.5 py-1 rounded-lg text-xs font-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-colors ${
                     isFollowing
-                      ? 'bg-studio-card text-studio-text'
-                      : 'bg-studio-btn-dark text-studio-btn-darkText'
+                      ? 'bg-studio-card text-studio-text hover:opacity-80'
+                      : 'bg-studio-btn-dark text-white dark:text-black'
                   }`}
                 >
                   {isFollowing ? 'Following' : 'Follow'}
@@ -180,7 +180,7 @@ export default function PostDetailModal() {
               <button
                 type="submit"
                 disabled={!commentText.trim()}
-                className="p-2 rounded-xl bg-studio-btn-dark text-studio-btn-darkText border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] disabled:opacity-50"
+                className="p-2 rounded-xl bg-studio-btn-dark text-white dark:text-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] disabled:opacity-50"
               >
                 <Send className="w-3.5 h-3.5 stroke-[2.5]" />
               </button>

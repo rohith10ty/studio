@@ -51,8 +51,8 @@ export default function ExploreView() {
               onClick={() => setExploreCategory(cat)}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-black border-2 border-black whitespace-nowrap transition-colors ${
                 exploreCategory === cat
-                  ? 'bg-studio-btn-dark text-studio-btn-darkText shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
-                  : 'bg-studio-card text-studio-text hover:bg-studio-chip shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                  ? 'bg-studio-btn-dark text-white dark:text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
+                  : 'bg-studio-card text-studio-text hover:bg-studio-sidebar shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
               }`}
             >
               {cat}

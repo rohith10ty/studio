@@ -177,7 +177,7 @@ export default function AuthModal() {
 
           <button
             type="submit"
-            className="w-full py-2.5 rounded-xl bg-studio-btn-dark text-studio-btn-darkText text-xs font-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all mt-1"
+            className="w-full py-2.5 rounded-xl bg-studio-btn-dark text-white dark:text-black text-xs font-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all mt-1"
           >
             {mode === 'login' ? 'Sign In' : 'Create Account'}
           </button>
@@ -187,7 +187,7 @@ export default function AuthModal() {
           <button
             type="button"
             onClick={handleDemoLogin}
-            className="w-full py-2 rounded-xl bg-studio-sidebar border-2 border-black text-xs font-black text-studio-text hover:bg-studio-chip transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+            className="w-full py-2 rounded-xl bg-studio-sidebar border-2 border-black text-xs font-black text-studio-text hover:bg-studio-card transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
           >
             1-Click Demo Login
           </button>

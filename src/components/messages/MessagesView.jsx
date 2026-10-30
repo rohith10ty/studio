@@ -89,7 +89,7 @@ export default function MessagesView() {
                 className={`p-2.5 rounded-xl flex items-center justify-between gap-2.5 cursor-pointer transition-all border-2 border-black ${
                   isSelected
                     ? 'bg-studio-card shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
-                    : 'bg-studio-sidebar hover:bg-studio-chip shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]'
+                    : 'bg-studio-sidebar hover:bg-studio-card/70 shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]'
                 }`}
               >
                 <div className="flex items-center gap-2.5 overflow-hidden">
@@ -187,7 +187,7 @@ export default function MessagesView() {
                     <div
                       className={`px-4 py-2 rounded-2xl text-xs font-bold leading-relaxed border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] ${
                         isMe
-                          ? 'bg-studio-btn-dark text-studio-btn-darkText rounded-br-none'
+                          ? 'bg-studio-btn-dark text-white dark:text-black rounded-br-none'
                           : 'bg-studio-card text-studio-text rounded-bl-none'
                       }`}
                     >
@@ -218,7 +218,7 @@ export default function MessagesView() {
               <button
                 type="submit"
                 disabled={!inputText.trim()}
-                className="p-2 px-3 rounded-xl bg-studio-btn-dark text-studio-btn-darkText border-2 border-black text-xs font-black disabled:opacity-40 transition-all flex items-center gap-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                className="p-2 px-3 rounded-xl bg-studio-btn-dark text-white dark:text-black border-2 border-black text-xs font-black disabled:opacity-40 transition-all flex items-center gap-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
               >
                 <span>Send</span>
                 <Send className="w-3.5 h-3.5 stroke-[2.5]" />

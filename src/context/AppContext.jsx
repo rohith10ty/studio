@@ -36,7 +36,7 @@ export const AppProvider = ({ children }) => {
   // Auth State
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [currentUser, setCurrentUser] = useState(() => {
-    const saved = localStorage.getItem('studio_user');
+    const saved = localStorage.getItem('studio_user_v2');
     return saved ? JSON.parse(saved) : initialCurrentUser;
   });
 
@@ -80,7 +80,7 @@ export const AppProvider = ({ children }) => {
   const updateProfile = (updatedFields) => {
     setCurrentUser(prev => {
       const updated = { ...prev, ...updatedFields };
-      localStorage.setItem('studio_user', JSON.stringify(updated));
+      localStorage.setItem('studio_user_v2', JSON.stringify(updated));
       return updated;
     });
     showToast('Profile updated successfully!', 'success');

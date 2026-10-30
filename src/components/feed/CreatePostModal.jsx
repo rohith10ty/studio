@@ -135,7 +135,7 @@ export default function CreatePostModal() {
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="p-2 px-3 rounded-xl bg-studio-sidebar border-2 border-black text-studio-text hover:bg-studio-chip transition-colors flex items-center gap-1.5 text-xs font-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+            className="p-2 px-3 rounded-xl bg-studio-sidebar border-2 border-black text-studio-text hover:bg-studio-card transition-colors flex items-center gap-1.5 text-xs font-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
           >
             <Image className="w-4 h-4 text-emerald-600 dark:text-emerald-300 stroke-[2.5]" />
             <span>Upload Image</span>
@@ -161,7 +161,7 @@ export default function CreatePostModal() {
               disabled={!content.trim() && !mediaPreview}
               className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-black border-2 border-black transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${
                 content.trim() || mediaPreview
-                  ? 'bg-studio-btn-dark text-studio-btn-darkText hover:translate-x-0.5 hover:translate-y-0.5'
+                  ? 'bg-studio-btn-dark text-white dark:text-black hover:translate-x-0.5 hover:translate-y-0.5'
                   : 'bg-studio-sidebar text-studio-text/40 cursor-not-allowed'
               }`}
             >

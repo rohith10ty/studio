@@ -1,14 +1,14 @@
 // Studio Mock Data
 export const initialCurrentUser = {
   id: 'user-0',
-  name: 'Aria Vance',
-  handle: 'ariavance',
-  role: 'Creative Director & Visual Architect',
-  avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80',
+  name: 'Rohith Naidu',
+  handle: 'rohithnaidu',
+  role: 'Frontend Architect & Visual Designer',
+  avatar: '/rohith-profile.png',
   coverImage: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1600&auto=format&fit=crop&q=80',
-  bio: 'Exploring spatial aesthetics, generative design & hyper-minimalist typography. Building the next wave of creative tools at Studio.',
-  location: 'Tokyo & San Francisco',
-  website: 'https://ariavance.studio',
+  bio: 'Exploring spatial aesthetics, neo-brutalist typography & smooth reactive interactions. Building modern web experiences at Studio.',
+  location: 'Hyderabad, India',
+  website: 'https://rohithnaidu.design',
   joinedDate: 'Joined March 2024',
   isVerified: true,
   stats: {
@@ -26,8 +26,8 @@ export const initialStories = [
     id: 'story-0',
     userId: 'user-0',
     userName: 'Your Story',
-    userHandle: 'ariavance',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80',
+    userHandle: 'rohithnaidu',
+    avatar: '/rohith-profile.png',
     isUser: true,
     hasUnseen: false,
     media: [
@@ -162,9 +162,9 @@ export const initialPosts = [
       {
         id: 'c-2',
         author: {
-          name: 'Aria Vance',
-          handle: 'ariavance',
-          avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80'
+          name: 'Rohith Naidu',
+          handle: 'rohithnaidu',
+          avatar: '/rohith-profile.png'
         },
         text: 'The textural contrast between the monolithic stone and warm timber is absolute perfection.',
         timestamp: '5m ago',
@@ -246,10 +246,10 @@ export const initialPosts = [
     id: 'post-4',
     author: {
       id: 'user-0',
-      name: 'Aria Vance',
-      handle: 'ariavance',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80',
-      badge: 'CREATIVE DIRECTOR',
+      name: 'Rohith Naidu',
+      handle: 'rohithnaidu',
+      avatar: '/rohith-profile.png',
+      badge: 'FRONTEND ARCHITECT',
       isVerified: true
     },
     timestamp: '1 day ago',
@@ -361,7 +361,7 @@ export const initialNotifications = [
       handle: 'sorawilliams',
       avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500&auto=format&fit=crop&q=80',
     },
-    actionText: 'mentioned you in a story: "Co-authoring the new shader pipeline with @ariavance"',
+    actionText: 'mentioned you in a story: "Co-authoring the new shader pipeline with @rohithnaidu"',
     target: null,
     time: '5h ago',
     isRead: true,
@@ -506,8 +506,8 @@ export const exploreItems = [
     category: '3D Art',
     likes: '9.4k',
     comments: '530',
-    author: 'Aria Vance',
-    authorAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80',
+    author: 'Rohith Naidu',
+    authorAvatar: '/rohith-profile.png',
     image: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=900&auto=format&fit=crop&q=80',
     aspect: 'wide',
   },

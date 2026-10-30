@@ -37,7 +37,7 @@ export default function StoriesBar() {
               alt={currentUser.name}
               className="w-full h-full rounded-full object-cover"
             />
-            <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-studio-btn-dark text-studio-btn-darkText border border-black flex items-center justify-center">
+            <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-studio-btn-dark text-white dark:text-black border border-black flex items-center justify-center">
               <Plus className="w-3 h-3 stroke-[3]" />
             </div>
             <input

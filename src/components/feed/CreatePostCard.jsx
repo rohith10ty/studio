@@ -95,8 +95,8 @@ export default function CreatePostCard() {
                   onClick={() => setSelectedTag(selectedTag === tag ? '' : tag)}
                   className={`text-xs px-2.5 py-0.5 rounded-md font-black border-2 border-black transition-colors ${
                     selectedTag === tag
-                      ? 'bg-studio-btn-dark text-studio-btn-darkText shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
-                      : 'bg-studio-chip text-studio-text hover:bg-studio-sidebar'
+                      ? 'bg-studio-btn-dark text-white dark:text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                      : 'bg-studio-card text-studio-text hover:bg-studio-sidebar'
                   }`}
                 >
                   #{tag}
@@ -110,7 +110,7 @@ export default function CreatePostCard() {
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="p-1.5 px-2.5 rounded-lg text-studio-text hover:bg-studio-chip border-2 border-black shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-colors flex items-center gap-1.5 text-xs font-black"
+                className="p-1.5 px-2.5 rounded-lg text-studio-text hover:bg-studio-sidebar border-2 border-black shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-colors flex items-center gap-1.5 text-xs font-black"
               >
                 <Image className="w-4 h-4 text-emerald-600 dark:text-emerald-300 stroke-[2.5]" />
                 <span className="hidden sm:inline">Photo</span>
@@ -129,7 +129,7 @@ export default function CreatePostCard() {
                   setMediaPreview('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80');
                   setIsExpanded(true);
                 }}
-                className="p-1.5 px-2.5 rounded-lg text-studio-text hover:bg-studio-chip border-2 border-black shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-colors flex items-center gap-1.5 text-xs font-black"
+                className="p-1.5 px-2.5 rounded-lg text-studio-text hover:bg-studio-sidebar border-2 border-black shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-colors flex items-center gap-1.5 text-xs font-black"
               >
                 <Sparkles className="w-4 h-4 text-amber-500 fill-amber-500 stroke-black stroke-[1.5]" />
                 <span className="hidden sm:inline">Artwork</span>
@@ -138,7 +138,7 @@ export default function CreatePostCard() {
               <button
                 type="button"
                 onClick={() => setPrivacy(privacy === 'Public' ? 'Private' : 'Public')}
-                className="p-1.5 px-2.5 rounded-lg text-studio-text hover:bg-studio-chip border-2 border-black shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-colors flex items-center gap-1 text-xs font-black"
+                className="p-1.5 px-2.5 rounded-lg text-studio-text hover:bg-studio-sidebar border-2 border-black shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-colors flex items-center gap-1 text-xs font-black"
               >
                 {privacy === 'Public' ? <Globe className="w-3.5 h-3.5 stroke-[2.5]" /> : <Lock className="w-3.5 h-3.5 stroke-[2.5]" />}
                 <span>{privacy}</span>
@@ -150,7 +150,7 @@ export default function CreatePostCard() {
               disabled={!content.trim() && !mediaPreview}
               className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-black tracking-wide border-2 border-black transition-all ${
                 content.trim() || mediaPreview
-                  ? 'bg-studio-btn-dark text-studio-btn-darkText shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 active:translate-x-1 active:translate-y-1'
+                  ? 'bg-studio-btn-dark text-white dark:text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 active:translate-x-1 active:translate-y-1'
                   : 'bg-studio-sidebar text-studio-text/40 cursor-not-allowed opacity-60'
               }`}
             >

@@ -37,8 +37,8 @@ export default function FeedView() {
             onClick={() => setFeedFilter(tab.id)}
             className={`px-4 py-2 rounded-xl text-xs font-black border-2 border-black transition-all ${
               feedFilter === tab.id
-                ? 'bg-studio-btn-dark text-studio-btn-darkText shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
-                : 'bg-studio-card text-studio-text hover:bg-studio-chip shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                ? 'bg-studio-btn-dark text-white dark:text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
+                : 'bg-studio-card text-studio-text hover:bg-studio-sidebar shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
             }`}
           >
             {tab.label}

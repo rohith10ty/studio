@@ -107,7 +107,7 @@ export default function MobileNavbar() {
                     openAuthModal('login');
                     setIsDrawerOpen(false);
                   }}
-                  className="w-full py-2.5 rounded-xl bg-studio-btn-dark text-studio-btn-darkText text-xs font-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                  className="w-full py-2.5 rounded-xl bg-studio-btn-dark text-white dark:text-black text-xs font-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
                 >
                   Sign In
                 </button>

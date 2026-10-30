@@ -177,7 +177,7 @@ export default function EditProfileModal() {
             </button>
             <button
               type="submit"
-              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-studio-btn-dark text-studio-btn-darkText text-xs font-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5"
+              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-studio-btn-dark text-white dark:text-black text-xs font-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5"
             >
               <Check className="w-3.5 h-3.5" />
               <span>Save</span>

@@ -69,7 +69,7 @@ export default function Sidebar() {
           <button
             onClick={toggleTheme}
             type="button"
-            className="p-2 rounded-xl border-2 border-black bg-studio-card text-studio-text hover:bg-studio-chip transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+            className="p-2 rounded-xl border-2 border-black bg-studio-card text-studio-text hover:bg-studio-sidebar transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
             title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} mode`}
           >
             {theme === 'dark' ? (
@@ -119,7 +119,7 @@ export default function Sidebar() {
               setIsCreatePostOpen(true);
             }
           }}
-          className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl font-black text-xs tracking-wide bg-studio-btn-dark text-studio-btn-darkText border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 active:translate-x-1 active:translate-y-1 transition-all"
+          className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl font-black text-xs tracking-wide bg-studio-btn-dark text-white dark:text-black border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 active:translate-x-1 active:translate-y-1 transition-all"
         >
           <Plus className="w-4 h-4 stroke-[3]" />
           <span>New Post</span>
@@ -185,7 +185,7 @@ export default function Sidebar() {
         ) : (
           <button
             onClick={() => openAuthModal('login')}
-            className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-studio-btn-dark text-studio-btn-darkText border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] text-xs font-black hover:opacity-90 transition-opacity"
+            className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-studio-btn-dark text-white dark:text-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] text-xs font-black hover:opacity-90 transition-opacity"
           >
             <LogIn className="w-3.5 h-3.5 stroke-[2.5]" />
             <span>Sign In</span>
