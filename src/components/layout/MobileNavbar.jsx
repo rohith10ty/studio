@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Sun, Moon, Bell, Menu, X, PlusSquare, Compass, Home, MessageSquare, User, LogOut } from 'lucide-react';
+import { Sun, Moon, Bell, Menu, X, Home, Compass, MessageSquare, User, LogOut } from 'lucide-react';
 
 export default function MobileNavbar() {
   const {
@@ -13,60 +13,54 @@ export default function MobileNavbar() {
     isAuthenticated,
     openAuthModal,
     logout,
-    setIsCreatePostOpen,
   } = useApp();
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
     <>
-      <header className="md:hidden sticky top-0 z-40 w-full px-4 py-3.5 flex items-center justify-between border-b border-studio-dark-border/40 dark:border-studio-dark-border/40 light:border-studio-light-border/60 bg-studio-dark-bg/90 dark:bg-studio-dark-bg/90 light:bg-studio-light-bg/90 backdrop-blur-xl">
-        {/* Brand */}
+      <header className="md:hidden sticky top-0 z-40 w-full px-4 py-3 flex items-center justify-between border-b border-studio-border/50 bg-studio-bg/95 backdrop-blur-md">
+        {/* Minimal Studio Wordmark */}
         <div
           onClick={() => setActiveTab('feed')}
-          className="flex items-center gap-2.5 cursor-pointer"
+          className="cursor-pointer"
         >
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-studio-dark-border to-studio-dark-text dark:from-studio-dark-border dark:to-studio-dark-text light:from-studio-light-muted light:to-studio-light-text flex items-center justify-center shadow-md">
-            <span className="font-bold text-base text-white dark:text-studio-dark-bg light:text-studio-light-bg">
-              S
-            </span>
-          </div>
-          <span className="font-bold text-xl tracking-tight text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text font-outfit">
+          <span className="font-semibold text-xl tracking-tight text-studio-text font-outfit">
             Studio
           </span>
         </div>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5">
           {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-xl text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext hover:bg-studio-dark-card dark:hover:bg-studio-dark-card light:hover:bg-studio-light-card transition-colors"
+            className="p-2 rounded-lg text-studio-muted hover:text-studio-text transition-colors"
             aria-label="Toggle theme"
           >
             {theme === 'dark' ? (
               <Sun className="w-4 h-4 text-amber-300" />
             ) : (
-              <Moon className="w-4 h-4 text-indigo-500" />
+              <Moon className="w-4 h-4 text-indigo-400" />
             )}
           </button>
 
-          {/* Notifications Button */}
+          {/* Notifications */}
           <button
             onClick={() => setActiveTab('notifications')}
-            className="relative p-2 rounded-xl text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext hover:bg-studio-dark-card dark:hover:bg-studio-dark-card light:hover:bg-studio-light-card transition-colors"
+            className="relative p-2 rounded-lg text-studio-muted hover:text-studio-text transition-colors"
             aria-label="Notifications"
           >
-            <Bell className="w-5 h-5 text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text" />
+            <Bell className="w-4 h-4" />
             {unreadNotificationsCount > 0 && (
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-rose-500" />
+              <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-rose-500" />
             )}
           </button>
 
-          {/* Drawer Menu Button */}
+          {/* Menu Drawer */}
           <button
             onClick={() => setIsDrawerOpen(!isDrawerOpen)}
-            className="p-2 rounded-xl text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text hover:bg-studio-dark-card dark:hover:bg-studio-dark-card light:hover:bg-studio-light-card transition-colors"
+            className="p-2 rounded-lg text-studio-text"
             aria-label="Menu"
           >
             {isDrawerOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -74,36 +68,35 @@ export default function MobileNavbar() {
         </div>
       </header>
 
-      {/* Mobile Drawer */}
+      {/* Drawer */}
       {isDrawerOpen && (
-        <div className="md:hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm animate-fade-in">
-          <div className="absolute top-0 right-0 w-3/4 max-w-xs h-full bg-studio-dark-card dark:bg-studio-dark-card light:bg-studio-light-card p-6 flex flex-col justify-between shadow-2xl border-l border-studio-dark-border dark:border-studio-dark-border light:border-studio-light-border">
+        <div className="md:hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm animate-fade-in">
+          <div className="absolute top-0 right-0 w-3/4 max-w-xs h-full bg-studio-card p-6 flex flex-col justify-between shadow-studio-modal border-l border-studio-border">
             <div className="flex flex-col gap-6">
-              <div className="flex items-center justify-between pb-4 border-b border-studio-dark-border/40 dark:border-studio-dark-border/40 light:border-studio-light-border">
-                <span className="font-bold text-lg text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text">
-                  Studio Menu
+              <div className="flex items-center justify-between pb-3 border-b border-studio-border/40">
+                <span className="font-semibold text-base text-studio-text font-outfit">
+                  Studio
                 </span>
                 <button
                   onClick={() => setIsDrawerOpen(false)}
-                  className="p-1 rounded-lg text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext"
+                  className="p-1 rounded-lg text-studio-muted"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4" />
                 </button>
               </div>
 
-              {/* User Snapshot */}
               {isAuthenticated ? (
-                <div className="flex items-center gap-3 p-3 rounded-2xl bg-studio-dark-bg/50 dark:bg-studio-dark-bg/50 light:bg-studio-light-bg/50">
+                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-studio-bg/50">
                   <img
                     src={currentUser.avatar}
                     alt={currentUser.name}
-                    className="w-10 h-10 rounded-full object-cover"
+                    className="w-9 h-9 rounded-full object-cover"
                   />
                   <div className="flex flex-col overflow-hidden">
-                    <span className="font-semibold text-sm text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text truncate">
+                    <span className="font-medium text-xs text-studio-text truncate">
                       {currentUser.name}
                     </span>
-                    <span className="text-xs text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext truncate">
+                    <span className="text-[11px] text-studio-muted truncate">
                       @{currentUser.handle}
                     </span>
                   </div>
@@ -114,14 +107,13 @@ export default function MobileNavbar() {
                     openAuthModal('login');
                     setIsDrawerOpen(false);
                   }}
-                  className="w-full py-2.5 rounded-xl bg-studio-dark-border text-white text-sm font-semibold"
+                  className="w-full py-2 rounded-xl bg-studio-btn-bg text-studio-btn-text text-xs font-medium"
                 >
                   Sign In
                 </button>
               )}
 
-              {/* Links */}
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1">
                 {[
                   { id: 'feed', label: 'Feed', icon: Home },
                   { id: 'explore', label: 'Explore', icon: Compass },
@@ -137,9 +129,9 @@ export default function MobileNavbar() {
                         setActiveTab(item.id);
                         setIsDrawerOpen(false);
                       }}
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text hover:bg-studio-dark-bg/60 dark:hover:bg-studio-dark-bg/60 light:hover:bg-studio-light-bg/60 text-sm font-medium transition-colors"
+                      className="flex items-center gap-3 px-3 py-2 rounded-lg text-studio-text hover:bg-studio-bg/60 text-xs font-medium transition-colors"
                     >
-                      <Icon className="w-4 h-4 text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext" />
+                      <Icon className="w-4 h-4 text-studio-muted" />
                       <span>{item.label}</span>
                     </button>
                   );
@@ -147,14 +139,13 @@ export default function MobileNavbar() {
               </div>
             </div>
 
-            {/* Bottom logout */}
             {isAuthenticated && (
               <button
                 onClick={() => {
                   logout();
                   setIsDrawerOpen(false);
                 }}
-                className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-rose-400 hover:bg-rose-500/10 text-sm font-medium transition-colors"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg text-rose-400 hover:bg-rose-500/10 text-xs font-medium"
               >
                 <LogOut className="w-4 h-4" />
                 <span>Log Out</span>

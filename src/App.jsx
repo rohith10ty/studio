@@ -20,18 +20,17 @@ import AuthModal from './components/auth/AuthModal';
 import Toast from './components/ui/Toast';
 
 export default function App() {
-  const { activeTab, theme } = useApp();
+  const { activeTab } = useApp();
 
-  // Initialize Lenis Smooth Scrolling for entire website
+  // Initialize Lenis Smooth Scrolling for main window
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
-      gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1.0,
-      touchMultiplier: 1.8,
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.5,
     });
 
     let animationFrameId;
@@ -48,16 +47,16 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen w-full bg-studio-dark-bg text-studio-dark-text dark:bg-studio-dark-bg dark:text-studio-dark-text light:bg-studio-light-bg light:text-studio-light-text flex flex-col font-outfit transition-colors duration-200">
-      {/* Top Bar on Mobile */}
+    <div className="min-h-screen w-full bg-studio-bg text-studio-text flex flex-col font-outfit transition-colors duration-200">
+      {/* Mobile Top Navbar */}
       <MobileNavbar />
 
       <div className="flex-1 w-full max-w-7xl mx-auto flex justify-center">
-        {/* Left Navigation Sidebar */}
+        {/* Left Sidebar */}
         <Sidebar />
 
-        {/* Center Main Stage Content */}
-        <main className="flex-1 min-w-0 max-w-2xl px-4 sm:px-6 py-4 sm:py-6">
+        {/* Center Main Stage */}
+        <main className="flex-1 min-w-0 max-w-2xl px-4 sm:px-6 py-5 sm:py-7">
           {activeTab === 'feed' && <FeedView />}
           {activeTab === 'explore' && <ExploreView />}
           {activeTab === 'notifications' && <NotificationsView />}
@@ -65,14 +64,14 @@ export default function App() {
           {activeTab === 'profile' && <ProfileView />}
         </main>
 
-        {/* Right Navigation / Trending Sidebar */}
+        {/* Right Sidebar */}
         <RightSidebar />
       </div>
 
       {/* Floating Bottom Bar for Mobile Devices */}
       <MobileBottomBar />
 
-      {/* All Overlay Modals */}
+      {/* Modals & Overlays */}
       <StoryViewerModal />
       <CreatePostModal />
       <ShareModal />

@@ -3,17 +3,52 @@
 @tailwind utilities;
 
 @layer base {
+  :root,
+  html.light {
+    /* Light Mode Palette: https://colorhunt.co/palette/ebe2ccded6c1cfc6b1b7b09e */
+    --studio-bg: #EBE2CC;
+    --studio-card: #DED6C1;
+    --studio-surface: #E3DBC7;
+    --studio-border: #CFC6B1;
+    --studio-muted: #8E8777;
+    --studio-text: #2A2438;
+    --studio-subtext: #5C5470;
+    --studio-accent: #2A2438;
+    --studio-contrast-btn-bg: #2A2438;
+    --studio-contrast-btn-text: #EBE2CC;
+    color-scheme: light;
+  }
+
+  html.dark {
+    /* Dark Mode Palette: https://colorhunt.co/palette/dbd8e35c5470352f442a2438 */
+    --studio-bg: #2A2438;
+    --studio-card: #352F44;
+    --studio-surface: #3E374F;
+    --studio-border: #5C5470;
+    --studio-muted: #9E96B0;
+    --studio-text: #DBD8E3;
+    --studio-subtext: #DBD8E3;
+    --studio-accent: #DBD8E3;
+    --studio-contrast-btn-bg: #DBD8E3;
+    --studio-contrast-btn-text: #2A2438;
+    color-scheme: dark;
+  }
+
   html {
     font-family: 'Outfit', sans-serif;
     scroll-behavior: smooth;
+    background-color: var(--studio-bg);
+    color: var(--studio-text);
   }
-  
-  /* Hide scrollbars completely while keeping full scroll functionality */
-  * {
+
+  /* Completely hide scrollbars everywhere across all browsers */
+  *,
+  *::before,
+  *::after {
     scrollbar-width: none !important;
     -ms-overflow-style: none !important;
   }
-  
+
   *::-webkit-scrollbar {
     display: none !important;
     width: 0 !important;
@@ -22,13 +57,16 @@
   }
 
   body {
+    background-color: var(--studio-bg);
+    color: var(--studio-text);
     overflow-x: hidden;
-    transition: background-color 0.25s ease, color 0.25s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 }
 
-/* Lenis smooth scroll recommended CSS */
-html.lenis, html.lenis body {
+/* Lenis smooth scrolling rules */
+html.lenis,
+html.lenis body {
   height: auto;
 }
 
@@ -44,32 +82,13 @@ html.lenis, html.lenis body {
   overflow: hidden;
 }
 
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
-}
-
-/* Glassmorphism helpers */
-.glass-dark {
-  background: rgba(53, 47, 68, 0.78);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(92, 84, 112, 0.35);
-}
-
-.glass-light {
-  background: rgba(222, 214, 193, 0.82);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(207, 198, 177, 0.6);
-}
-
-/* Custom interactive pulse & animations */
+/* Animations */
 @keyframes heartBurst {
   0% { transform: scale(1); }
-  50% { transform: scale(1.3) rotate(-8deg); }
-  100% { transform: scale(1) rotate(0deg); }
+  45% { transform: scale(1.25); }
+  100% { transform: scale(1); }
 }
 
 .animate-heart-burst {
-  animation: heartBurst 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: heartBurst 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }

@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useApp } from '../../context/AppContext';
-import { X, Camera, Check, Upload } from 'lucide-react';
+import { X, Camera, Check } from 'lucide-react';
 
 export default function EditProfileModal() {
   const { isEditProfileOpen, setIsEditProfileOpen, currentUser, updateProfile } = useApp();
@@ -52,32 +52,33 @@ export default function EditProfileModal() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md animate-fade-in">
-      <div className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-3xl bg-studio-dark-card dark:bg-studio-dark-card light:bg-studio-light-card border border-studio-dark-border dark:border-studio-dark-border light:border-studio-light-border shadow-studio-dark-float p-6 flex flex-col gap-5">
-        {/* Modal Header */}
-        <div className="flex items-center justify-between pb-3 border-b border-studio-dark-border/40 dark:border-studio-dark-border/40 light:border-studio-light-border/60">
-          <h2 className="font-bold text-base text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text font-outfit">
-            Edit Studio Profile
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in select-none">
+      <div
+        data-lenis-prevent
+        className="w-full max-w-md max-h-[90vh] overflow-y-auto rounded-2xl bg-studio-card border border-studio-border shadow-studio-modal p-5 flex flex-col gap-4"
+      >
+        <div className="flex items-center justify-between pb-2 border-b border-studio-border/40">
+          <h2 className="font-semibold text-sm text-studio-text font-outfit">
+            Edit Profile
           </h2>
           <button
             onClick={() => setIsEditProfileOpen(false)}
-            className="p-1 rounded-lg text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext hover:bg-studio-dark-bg/60 dark:hover:bg-studio-dark-bg/60 light:hover:bg-studio-light-bg/60"
+            className="p-1 rounded-lg text-studio-muted hover:text-studio-text"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          {/* Cover & Avatar previews */}
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
           <div className="relative">
-            <div className="relative h-28 rounded-2xl overflow-hidden bg-black/40 border border-studio-dark-border/40">
+            <div className="relative h-24 rounded-xl overflow-hidden bg-black/40 border border-studio-border/50">
               <img src={coverImage} alt="Cover" className="w-full h-full object-cover" />
               <button
                 type="button"
                 onClick={() => coverInputRef.current?.click()}
-                className="absolute inset-0 bg-black/40 flex items-center justify-center text-white text-xs font-medium gap-1.5 opacity-80 hover:opacity-100 transition-opacity"
+                className="absolute inset-0 bg-black/40 flex items-center justify-center text-white text-xs gap-1 opacity-80 hover:opacity-100"
               >
-                <Camera className="w-4 h-4" /> Change Cover
+                <Camera className="w-3.5 h-3.5" /> Change Cover
               </button>
               <input
                 type="file"
@@ -88,15 +89,15 @@ export default function EditProfileModal() {
               />
             </div>
 
-            <div className="relative -mt-10 ml-4 inline-block">
-              <div className="w-20 h-20 rounded-2xl overflow-hidden ring-4 ring-studio-dark-card dark:ring-studio-dark-card light:ring-studio-light-card shadow-lg bg-black">
+            <div className="relative -mt-8 ml-3 inline-block">
+              <div className="w-16 h-16 rounded-xl overflow-hidden ring-2 ring-studio-card bg-black">
                 <img src={avatar} alt="Avatar" className="w-full h-full object-cover" />
                 <button
                   type="button"
                   onClick={() => avatarInputRef.current?.click()}
-                  className="absolute inset-0 bg-black/40 rounded-2xl flex items-center justify-center text-white opacity-80 hover:opacity-100 transition-opacity"
+                  className="absolute inset-0 bg-black/40 flex items-center justify-center text-white opacity-80 hover:opacity-100"
                 >
-                  <Camera className="w-4 h-4" />
+                  <Camera className="w-3.5 h-3.5" />
                 </button>
               </div>
               <input
@@ -109,27 +110,25 @@ export default function EditProfileModal() {
             </div>
           </div>
 
-          {/* Name Field */}
-          <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-semibold text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text">
-              Display Name *
+          <div className="flex flex-col gap-1">
+            <label className="text-xs font-medium text-studio-text">
+              Name
             </label>
             <input
               type="text"
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="px-3.5 py-2.5 rounded-xl bg-studio-dark-bg/60 dark:bg-studio-dark-bg/60 light:bg-studio-light-bg/60 border border-studio-dark-border/40 dark:border-studio-dark-border/40 light:border-studio-light-border text-xs sm:text-sm text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text focus:outline-none"
+              className="px-3 py-1.5 rounded-xl bg-studio-bg/60 border border-studio-border/50 text-xs text-studio-text focus:outline-none"
             />
           </div>
 
-          {/* Bio Field */}
-          <div className="flex flex-col gap-1.5">
+          <div className="flex flex-col gap-1">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-semibold text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text">
-                Studio Bio
+              <label className="text-xs font-medium text-studio-text">
+                Bio
               </label>
-              <span className="text-[11px] text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext">
+              <span className="text-[10px] text-studio-muted">
                 {bio.length}/200
               </span>
             </div>
@@ -138,14 +137,12 @@ export default function EditProfileModal() {
               maxLength={200}
               value={bio}
               onChange={(e) => setBio(e.target.value)}
-              placeholder="Tell other creators about your craft and aesthetic philosophy..."
-              className="px-3.5 py-2.5 rounded-xl bg-studio-dark-bg/60 dark:bg-studio-dark-bg/60 light:bg-studio-light-bg/60 border border-studio-dark-border/40 dark:border-studio-dark-border/40 light:border-studio-light-border text-xs sm:text-sm text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text focus:outline-none resize-none"
+              className="px-3 py-1.5 rounded-xl bg-studio-bg/60 border border-studio-border/50 text-xs text-studio-text focus:outline-none resize-none"
             />
           </div>
 
-          {/* Location Field */}
-          <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-semibold text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text">
+          <div className="flex flex-col gap-1">
+            <label className="text-xs font-medium text-studio-text">
               Location
             </label>
             <input
@@ -153,39 +150,37 @@ export default function EditProfileModal() {
               value={location}
               onChange={(e) => setLocation(e.target.value)}
               placeholder="e.g. Tokyo & San Francisco"
-              className="px-3.5 py-2.5 rounded-xl bg-studio-dark-bg/60 dark:bg-studio-dark-bg/60 light:bg-studio-light-bg/60 border border-studio-dark-border/40 dark:border-studio-dark-border/40 light:border-studio-light-border text-xs sm:text-sm text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text focus:outline-none"
+              className="px-3 py-1.5 rounded-xl bg-studio-bg/60 border border-studio-border/50 text-xs text-studio-text focus:outline-none"
             />
           </div>
 
-          {/* Website Field */}
-          <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-semibold text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text">
-              Portfolio Link
+          <div className="flex flex-col gap-1">
+            <label className="text-xs font-medium text-studio-text">
+              Website
             </label>
             <input
               type="url"
               value={website}
               onChange={(e) => setWebsite(e.target.value)}
-              placeholder="https://yourportfolio.studio"
-              className="px-3.5 py-2.5 rounded-xl bg-studio-dark-bg/60 dark:bg-studio-dark-bg/60 light:bg-studio-light-bg/60 border border-studio-dark-border/40 dark:border-studio-dark-border/40 light:border-studio-light-border text-xs sm:text-sm text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text focus:outline-none"
+              placeholder="https://..."
+              className="px-3 py-1.5 rounded-xl bg-studio-bg/60 border border-studio-border/50 text-xs text-studio-text focus:outline-none"
             />
           </div>
 
-          {/* Footer Submit Buttons */}
-          <div className="flex items-center justify-end gap-2 pt-3 border-t border-studio-dark-border/30 dark:border-studio-dark-border/30 light:border-studio-light-border/40">
+          <div className="flex items-center justify-end gap-2 pt-2 border-t border-studio-border/30">
             <button
               type="button"
               onClick={() => setIsEditProfileOpen(false)}
-              className="px-4 py-2 rounded-xl text-xs font-medium text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext hover:bg-studio-dark-bg/50"
+              className="px-3 py-1.5 rounded-lg text-xs font-medium text-studio-muted hover:text-studio-text"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-studio-dark-border dark:bg-studio-dark-text dark:text-studio-dark-bg light:bg-studio-light-text light:text-white text-white text-xs font-semibold shadow-md hover:scale-105 transition-all"
+              className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-studio-btn-bg text-studio-btn-text text-xs font-medium hover:opacity-90"
             >
-              <Check className="w-4 h-4" />
-              <span>Save Changes</span>
+              <Check className="w-3.5 h-3.5" />
+              <span>Save</span>
             </button>
           </div>
         </form>

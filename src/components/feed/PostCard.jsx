@@ -6,11 +6,9 @@ import {
   Share2,
   Bookmark,
   MoreHorizontal,
-  CheckCircle,
   Send,
   Trash2,
-  Copy,
-  ExternalLink
+  Copy
 } from 'lucide-react';
 
 export default function PostCard({ post }) {
@@ -39,7 +37,7 @@ export default function PostCard({ post }) {
     }
     setIsLikeAnimating(true);
     likePost(post.id);
-    setTimeout(() => setIsLikeAnimating(false), 500);
+    setTimeout(() => setIsLikeAnimating(false), 400);
   };
 
   const handleCommentSubmit = (e) => {
@@ -57,30 +55,27 @@ export default function PostCard({ post }) {
   const isOwner = currentUser.id === post.author.id;
 
   return (
-    <article className="w-full rounded-3xl bg-studio-dark-card/60 dark:bg-studio-dark-card/60 light:bg-studio-light-card/70 border border-studio-dark-border/40 dark:border-studio-dark-border/40 light:border-studio-light-border/60 p-5 sm:p-6 transition-all duration-300 hover:border-studio-dark-border/70 dark:hover:border-studio-dark-border/70 light:hover:border-studio-light-border shadow-studio-subtle flex flex-col gap-4">
+    <article className="w-full rounded-2xl bg-studio-card border border-studio-border/50 p-4 sm:p-5 transition-all shadow-studio-subtle flex flex-col gap-3.5">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
           <img
             src={post.author.avatar}
             alt={post.author.name}
-            className="w-11 h-11 rounded-full object-cover ring-2 ring-studio-dark-border/40 dark:ring-studio-dark-border/40 light:ring-studio-light-border"
+            className="w-9 h-9 rounded-full object-cover ring-1 ring-studio-border/40"
           />
           <div className="flex flex-col">
             <div className="flex items-center gap-1.5 flex-wrap">
-              <span className="font-semibold text-sm sm:text-base text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text">
+              <span className="font-medium text-sm text-studio-text">
                 {post.author.name}
               </span>
-              {post.author.isVerified && (
-                <CheckCircle className="w-4 h-4 text-sky-400 fill-sky-400/20" />
-              )}
               {post.author.badge && (
-                <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-md bg-studio-dark-bg/60 dark:bg-studio-dark-bg/60 light:bg-studio-light-bg/60 text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext border border-studio-dark-border/30 dark:border-studio-dark-border/30 light:border-studio-light-border">
+                <span className="text-[10px] uppercase tracking-wider px-1.5 py-0.2 rounded border border-studio-border/50 text-studio-muted">
                   {post.author.badge}
                 </span>
               )}
             </div>
-            <div className="flex items-center gap-2 text-xs text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext">
+            <div className="flex items-center gap-1.5 text-[11px] text-studio-muted">
               <span>@{post.author.handle}</span>
               <span>•</span>
               <span>{post.timestamp}</span>
@@ -88,37 +83,37 @@ export default function PostCard({ post }) {
           </div>
         </div>
 
-        {/* Options Menu Trigger */}
+        {/* Options */}
         <div className="relative">
           <button
             onClick={() => setShowMenu(!showMenu)}
-            className="p-2 rounded-xl text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext hover:text-studio-dark-text dark:hover:text-studio-dark-text light:hover:text-studio-light-text hover:bg-studio-dark-bg/50 dark:hover:bg-studio-dark-bg/50 light:hover:bg-studio-light-bg/50 transition-colors"
+            className="p-1.5 rounded-lg text-studio-muted hover:text-studio-text hover:bg-studio-bg/50 transition-colors"
           >
-            <MoreHorizontal className="w-5 h-5" />
+            <MoreHorizontal className="w-4 h-4" />
           </button>
 
           {showMenu && (
-            <div className="absolute right-0 top-full mt-1 w-44 rounded-2xl bg-studio-dark-card dark:bg-studio-dark-card light:bg-studio-light-card border border-studio-dark-border dark:border-studio-dark-border light:border-studio-light-border shadow-studio-dark-float p-1.5 z-20 animate-fade-in">
+            <div className="absolute right-0 top-full mt-1 w-40 rounded-xl bg-studio-card border border-studio-border shadow-studio-modal p-1 z-20 animate-fade-in">
               <button
                 onClick={() => {
                   navigator.clipboard.writeText(`${window.location.origin}/#post-${post.id}`);
-                  showToast('Post link copied to clipboard!', 'info');
+                  showToast('Post link copied!', 'info');
                   setShowMenu(false);
                 }}
-                className="w-full flex items-center gap-2.5 px-3 py-2 text-xs font-medium rounded-xl text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text hover:bg-studio-dark-bg/60 dark:hover:bg-studio-dark-bg/60 light:hover:bg-studio-light-bg/60 transition-colors"
+                className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs rounded-lg text-studio-text hover:bg-studio-bg transition-colors"
               >
-                <Copy className="w-3.5 h-3.5" />
-                <span>Copy Post Link</span>
+                <Copy className="w-3.5 h-3.5 text-studio-muted" />
+                <span>Copy Link</span>
               </button>
               <button
                 onClick={() => {
                   toggleSavePost(post.id);
                   setShowMenu(false);
                 }}
-                className="w-full flex items-center gap-2.5 px-3 py-2 text-xs font-medium rounded-xl text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text hover:bg-studio-dark-bg/60 dark:hover:bg-studio-dark-bg/60 light:hover:bg-studio-light-bg/60 transition-colors"
+                className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs rounded-lg text-studio-text hover:bg-studio-bg transition-colors"
               >
-                <Bookmark className="w-3.5 h-3.5" />
-                <span>{post.isSaved ? 'Remove from Saved' : 'Save Post'}</span>
+                <Bookmark className="w-3.5 h-3.5 text-studio-muted" />
+                <span>{post.isSaved ? 'Unsave' : 'Save'}</span>
               </button>
               {isOwner && (
                 <button
@@ -126,10 +121,10 @@ export default function PostCard({ post }) {
                     deletePost(post.id);
                     setShowMenu(false);
                   }}
-                  className="w-full flex items-center gap-2.5 px-3 py-2 text-xs font-medium rounded-xl text-rose-400 hover:bg-rose-500/10 transition-colors"
+                  className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs rounded-lg text-rose-400 hover:bg-rose-500/10 transition-colors"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
-                  <span>Delete Post</span>
+                  <span>Delete</span>
                 </button>
               )}
             </div>
@@ -137,18 +132,18 @@ export default function PostCard({ post }) {
         </div>
       </div>
 
-      {/* Content Text */}
-      <p className="text-sm sm:text-[15px] text-studio-dark-text/95 dark:text-studio-dark-text/95 light:text-studio-light-text leading-relaxed whitespace-pre-line font-normal">
+      {/* Content */}
+      <p className="text-sm text-studio-text leading-relaxed whitespace-pre-line font-normal">
         {post.content}
       </p>
 
       {/* Tags */}
       {post.tags && post.tags.length > 0 && (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-1.5">
           {post.tags.map((tag, i) => (
             <span
               key={i}
-              className="text-xs font-medium text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext hover:underline cursor-pointer"
+              className="text-xs text-studio-muted hover:underline cursor-pointer"
             >
               #{tag}
             </span>
@@ -156,11 +151,11 @@ export default function PostCard({ post }) {
         </div>
       )}
 
-      {/* Image Gallery */}
+      {/* Images */}
       {post.images && post.images.length > 0 && (
         <div
           onClick={() => setPostDetailModal(post)}
-          className={`grid gap-2 rounded-2xl overflow-hidden cursor-pointer group ${
+          className={`grid gap-1.5 rounded-xl overflow-hidden cursor-pointer ${
             post.images.length === 1 ? 'grid-cols-1' : 'grid-cols-2'
           }`}
         >
@@ -168,125 +163,115 @@ export default function PostCard({ post }) {
             <div
               key={idx}
               className={`relative overflow-hidden ${
-                post.images.length === 1 ? 'max-h-[500px]' : 'h-64'
+                post.images.length === 1 ? 'max-h-[460px]' : 'h-56'
               }`}
             >
               <img
                 src={img}
                 alt={`Media ${idx + 1}`}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-full object-cover hover:opacity-95 transition-opacity"
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
             </div>
           ))}
         </div>
       )}
 
-      {/* Interactive Action Bar */}
-      <div className="flex items-center justify-between pt-2 border-t border-studio-dark-border/30 dark:border-studio-dark-border/30 light:border-studio-light-border/40">
-        <div className="flex items-center gap-4 sm:gap-6">
-          {/* Like Button */}
+      {/* Action Bar */}
+      <div className="flex items-center justify-between pt-2 border-t border-studio-border/30">
+        <div className="flex items-center gap-5">
           <button
             onClick={handleLike}
-            className={`flex items-center gap-1.5 text-xs sm:text-sm font-medium transition-all group ${
+            className={`flex items-center gap-1.5 text-xs font-medium transition-all ${
               post.isLiked
                 ? 'text-rose-500'
-                : 'text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext hover:text-rose-400'
+                : 'text-studio-muted hover:text-studio-text'
             }`}
           >
             <Heart
-              className={`w-5 h-5 transition-transform ${
-                post.isLiked ? 'fill-rose-500 scale-110' : 'group-hover:scale-115'
+              className={`w-4 h-4 ${
+                post.isLiked ? 'fill-rose-500' : ''
               } ${isLikeAnimating ? 'animate-heart-burst' : ''}`}
             />
             <span>{post.likesCount}</span>
           </button>
 
-          {/* Comment Button */}
           <button
             onClick={() => setShowComments(!showComments)}
-            className="flex items-center gap-1.5 text-xs sm:text-sm font-medium text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext hover:text-studio-dark-text dark:hover:text-studio-dark-text light:hover:text-studio-light-text transition-colors group"
+            className="flex items-center gap-1.5 text-xs font-medium text-studio-muted hover:text-studio-text transition-colors"
           >
-            <MessageCircle className="w-5 h-5 transition-transform group-hover:scale-110" />
+            <MessageCircle className="w-4 h-4" />
             <span>{post.comments?.length || 0}</span>
           </button>
 
-          {/* Share Button */}
           <button
             onClick={() => setShareModalData(post)}
-            className="flex items-center gap-1.5 text-xs sm:text-sm font-medium text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext hover:text-studio-dark-text dark:hover:text-studio-dark-text light:hover:text-studio-light-text transition-colors group"
+            className="flex items-center gap-1.5 text-xs font-medium text-studio-muted hover:text-studio-text transition-colors"
           >
-            <Share2 className="w-5 h-5 transition-transform group-hover:scale-110" />
+            <Share2 className="w-4 h-4" />
             <span>{post.sharesCount}</span>
           </button>
         </div>
 
-        {/* Bookmark / Save Button */}
         <button
           onClick={() => toggleSavePost(post.id)}
-          className={`p-2 rounded-xl transition-all ${
+          className={`p-1.5 rounded-lg transition-colors ${
             post.isSaved
-              ? 'text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text bg-studio-dark-bg/60 dark:bg-studio-dark-bg/60 light:bg-studio-light-bg/60'
-              : 'text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext hover:text-studio-dark-text dark:hover:text-studio-dark-text light:hover:text-studio-light-text'
+              ? 'text-studio-text'
+              : 'text-studio-muted hover:text-studio-text'
           }`}
         >
-          <Bookmark className={`w-5 h-5 ${post.isSaved ? 'fill-current' : ''}`} />
+          <Bookmark className={`w-4 h-4 ${post.isSaved ? 'fill-current' : ''}`} />
         </button>
       </div>
 
-      {/* Expandable Comments Drawer */}
+      {/* Expandable Comments */}
       {showComments && (
-        <div className="flex flex-col gap-3.5 pt-3 border-t border-studio-dark-border/30 dark:border-studio-dark-border/30 light:border-studio-light-border/40 animate-fade-in">
-          {/* Comments List */}
-          {post.comments && post.comments.length > 0 ? (
-            <div className="flex flex-col gap-2.5 max-h-56 overflow-y-auto pr-1">
+        <div className="flex flex-col gap-3 pt-2 border-t border-studio-border/30 animate-fade-in">
+          {post.comments && post.comments.length > 0 && (
+            <div className="flex flex-col gap-2 max-h-48 overflow-y-auto pr-1">
               {post.comments.map(c => (
                 <div
                   key={c.id}
-                  className="flex items-start gap-2.5 p-2.5 rounded-2xl bg-studio-dark-bg/50 dark:bg-studio-dark-bg/50 light:bg-studio-light-bg/50 border border-studio-dark-border/20 dark:border-studio-dark-border/20 light:border-studio-light-border/30"
+                  className="flex items-start gap-2 p-2 rounded-xl bg-studio-bg/40 border border-studio-border/30"
                 >
                   <img
                     src={c.author.avatar}
                     alt={c.author.name}
-                    className="w-8 h-8 rounded-full object-cover shrink-0 mt-0.5"
+                    className="w-6 h-6 rounded-full object-cover shrink-0 mt-0.5"
                   />
                   <div className="flex-1 flex flex-col">
                     <div className="flex items-center justify-between">
-                      <span className="font-semibold text-xs text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text">
+                      <span className="font-medium text-xs text-studio-text">
                         {c.author.name}
                       </span>
-                      <span className="text-[11px] text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext">
+                      <span className="text-[10px] text-studio-muted">
                         {c.timestamp}
                       </span>
                     </div>
-                    <p className="text-xs text-studio-dark-text/90 dark:text-studio-dark-text/90 light:text-studio-light-text mt-0.5">
+                    <p className="text-xs text-studio-text/90 mt-0.5">
                       {c.text}
                     </p>
                   </div>
                 </div>
               ))}
             </div>
-          ) : (
-            <p className="text-xs text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext italic">
-              No comments yet. Start the conversation!
-            </p>
           )}
 
-          {/* Add Comment Input */}
-          <form onSubmit={handleCommentSubmit} className="flex items-center gap-2 pt-1">
+          {/* Add Comment */}
+          <form onSubmit={handleCommentSubmit} className="flex items-center gap-1.5">
             <input
               type="text"
               value={commentInput}
               onChange={(e) => setCommentInput(e.target.value)}
-              placeholder="Add your thought..."
-              className="flex-1 px-4 py-2.5 rounded-2xl bg-studio-dark-bg/60 dark:bg-studio-dark-bg/60 light:bg-studio-light-bg/60 border border-studio-dark-border/40 dark:border-studio-dark-border/40 light:border-studio-light-border text-xs sm:text-sm text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text placeholder-studio-dark-muted dark:placeholder-studio-dark-muted light:placeholder-studio-light-subtext focus:outline-none focus:border-studio-dark-border dark:focus:border-studio-dark-text light:focus:border-studio-light-text"
+              placeholder="Write a comment..."
+              className="flex-1 px-3 py-1.5 rounded-xl bg-studio-bg/60 border border-studio-border/50 text-xs text-studio-text placeholder-studio-muted focus:outline-none focus:border-studio-border"
             />
             <button
               type="submit"
               disabled={!commentInput.trim()}
-              className="p-2.5 rounded-xl bg-studio-dark-border dark:bg-studio-dark-text dark:text-studio-dark-bg light:bg-studio-light-text light:text-white text-white disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+              className="p-1.5 rounded-xl bg-studio-btn-bg text-studio-btn-text disabled:opacity-40 transition-opacity"
             >
-              <Send className="w-4 h-4" />
+              <Send className="w-3.5 h-3.5" />
             </button>
           </form>
         </div>

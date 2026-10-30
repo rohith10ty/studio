@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Image, Video, Sparkles, Hash, Send, X, Globe, Lock, Smile } from 'lucide-react';
+import { Image, Sparkles, Hash, Send, X, Globe, Lock } from 'lucide-react';
 
 export default function CreatePostCard() {
   const { currentUser, createPost, isAuthenticated, openAuthModal } = useApp();
@@ -45,12 +45,12 @@ export default function CreatePostCard() {
   };
 
   return (
-    <div className="w-full p-4 sm:p-5 rounded-3xl bg-studio-dark-card/70 dark:bg-studio-dark-card/70 light:bg-studio-light-card/80 border border-studio-dark-border/40 dark:border-studio-dark-border/40 light:border-studio-light-border/60 shadow-studio-subtle transition-all">
-      <div className="flex gap-3.5">
+    <div className="w-full p-4 sm:p-5 rounded-2xl bg-studio-card border border-studio-border/50 shadow-studio-subtle transition-all">
+      <div className="flex gap-3">
         <img
           src={currentUser.avatar}
           alt={currentUser.name}
-          className="w-10 h-10 sm:w-11 sm:h-11 rounded-full object-cover shrink-0 ring-2 ring-studio-dark-border/40 dark:ring-studio-dark-border/40 light:ring-studio-light-border"
+          className="w-9 h-9 rounded-full object-cover shrink-0 ring-1 ring-studio-border"
         />
 
         <div className="flex-1 flex flex-col gap-3">
@@ -58,14 +58,13 @@ export default function CreatePostCard() {
             value={content}
             onFocus={() => setIsExpanded(true)}
             onChange={(e) => setContent(e.target.value)}
-            placeholder={`What are you crafting today, ${currentUser.name.split(' ')[0]}?`}
+            placeholder={`Share a concept, ${currentUser.name.split(' ')[0]}...`}
             rows={isExpanded ? 3 : 2}
-            className="w-full bg-transparent resize-none text-sm sm:text-base text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text placeholder-studio-dark-muted dark:placeholder-studio-dark-muted light:placeholder-studio-light-subtext focus:outline-none leading-relaxed transition-all"
+            className="w-full bg-transparent resize-none text-sm text-studio-text placeholder-studio-muted focus:outline-none leading-relaxed transition-all"
           />
 
-          {/* Media Preview Box */}
           {mediaPreview && (
-            <div className="relative rounded-2xl overflow-hidden border border-studio-dark-border/50 dark:border-studio-dark-border/50 light:border-studio-light-border max-h-64 group">
+            <div className="relative rounded-xl overflow-hidden border border-studio-border max-h-60 group">
               <img
                 src={mediaPreview}
                 alt="Upload preview"
@@ -74,28 +73,27 @@ export default function CreatePostCard() {
               <button
                 type="button"
                 onClick={() => setMediaPreview(null)}
-                className="absolute top-3 right-3 p-1.5 rounded-full bg-black/60 hover:bg-black/80 text-white transition-colors"
+                className="absolute top-2.5 right-2.5 p-1 rounded-full bg-black/60 hover:bg-black/80 text-white transition-colors"
               >
-                <X className="w-4 h-4" />
+                <X className="w-3.5 h-3.5" />
               </button>
             </div>
           )}
 
-          {/* Expanded controls */}
           {isExpanded && (
-            <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-studio-dark-border/30 dark:border-studio-dark-border/30 light:border-studio-light-border/40">
-              <span className="text-xs text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext flex items-center gap-1">
-                <Hash className="w-3.5 h-3.5" /> Tags:
+            <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-studio-border/30">
+              <span className="text-[11px] text-studio-muted flex items-center gap-1">
+                <Hash className="w-3 h-3" /> Tags:
               </span>
               {suggestedTags.map(tag => (
                 <button
                   key={tag}
                   type="button"
                   onClick={() => setSelectedTag(selectedTag === tag ? '' : tag)}
-                  className={`text-xs px-2.5 py-1 rounded-lg font-medium transition-colors ${
+                  className={`text-xs px-2 py-0.5 rounded-md font-medium transition-colors ${
                     selectedTag === tag
-                      ? 'bg-studio-dark-border dark:bg-studio-dark-text dark:text-studio-dark-bg light:bg-studio-light-text light:text-white text-white'
-                      : 'bg-studio-dark-bg/60 dark:bg-studio-dark-bg/60 light:bg-studio-light-bg/60 text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext hover:text-studio-dark-text dark:hover:text-studio-dark-text light:hover:text-studio-light-text'
+                      ? 'bg-studio-btn-bg text-studio-btn-text'
+                      : 'bg-studio-bg/60 text-studio-muted hover:text-studio-text'
                   }`}
                 >
                   #{tag}
@@ -104,16 +102,15 @@ export default function CreatePostCard() {
             </div>
           )}
 
-          {/* Bottom Bar Buttons */}
-          <div className="flex items-center justify-between pt-2">
-            <div className="flex items-center gap-1.5">
+          <div className="flex items-center justify-between pt-1">
+            <div className="flex items-center gap-1">
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="p-2 rounded-xl text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext hover:text-studio-dark-text dark:hover:text-studio-dark-text light:hover:text-studio-light-text hover:bg-studio-dark-bg/50 dark:hover:bg-studio-dark-bg/50 light:hover:bg-studio-light-bg/50 transition-colors flex items-center gap-1.5 text-xs font-medium"
+                className="p-1.5 rounded-lg text-studio-muted hover:text-studio-text hover:bg-studio-bg/50 transition-colors flex items-center gap-1 text-xs"
               >
-                <Image className="w-4 h-4 text-emerald-400" />
-                <span className="hidden sm:inline">Photo</span>
+                <Image className="w-3.5 h-3.5 text-emerald-500" />
+                <span className="hidden sm:inline">Image</span>
               </button>
               <input
                 type="file"
@@ -129,18 +126,18 @@ export default function CreatePostCard() {
                   setMediaPreview('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80');
                   setIsExpanded(true);
                 }}
-                className="p-2 rounded-xl text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext hover:text-studio-dark-text dark:hover:text-studio-dark-text light:hover:text-studio-light-text hover:bg-studio-dark-bg/50 dark:hover:bg-studio-dark-bg/50 light:hover:bg-studio-light-bg/50 transition-colors flex items-center gap-1.5 text-xs font-medium"
+                className="p-1.5 rounded-lg text-studio-muted hover:text-studio-text hover:bg-studio-bg/50 transition-colors flex items-center gap-1 text-xs"
               >
-                <Sparkles className="w-4 h-4 text-amber-400" />
-                <span className="hidden sm:inline">Add Artwork</span>
+                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                <span className="hidden sm:inline">Artwork</span>
               </button>
 
               <button
                 type="button"
-                onClick={() => setPrivacy(privacy === 'Public' ? 'Followers' : 'Public')}
-                className="p-2 rounded-xl text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext hover:text-studio-dark-text dark:hover:text-studio-dark-text light:hover:text-studio-light-text hover:bg-studio-dark-bg/50 dark:hover:bg-studio-dark-bg/50 light:hover:bg-studio-light-bg/50 transition-colors flex items-center gap-1 text-xs font-medium"
+                onClick={() => setPrivacy(privacy === 'Public' ? 'Private' : 'Public')}
+                className="p-1.5 rounded-lg text-studio-muted hover:text-studio-text hover:bg-studio-bg/50 transition-colors flex items-center gap-1 text-xs"
               >
-                {privacy === 'Public' ? <Globe className="w-3.5 h-3.5" /> : <Lock className="w-3.5 h-3.5" />}
+                {privacy === 'Public' ? <Globe className="w-3 h-3" /> : <Lock className="w-3 h-3" />}
                 <span>{privacy}</span>
               </button>
             </div>
@@ -148,14 +145,14 @@ export default function CreatePostCard() {
             <button
               onClick={handleSubmit}
               disabled={!content.trim() && !mediaPreview}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold tracking-wide transition-all ${
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
                 content.trim() || mediaPreview
-                  ? 'bg-studio-dark-border dark:bg-studio-dark-text dark:text-studio-dark-bg light:bg-studio-light-text light:text-white text-white shadow-md hover:scale-105 active:scale-95'
-                  : 'bg-studio-dark-border/30 dark:bg-studio-dark-border/30 light:bg-studio-light-border text-studio-dark-muted/50 dark:text-studio-dark-muted/50 light:text-studio-light-subtext/50 cursor-not-allowed'
+                  ? 'bg-studio-btn-bg text-studio-btn-text hover:opacity-90'
+                  : 'bg-studio-border/30 text-studio-muted/50 cursor-not-allowed'
               }`}
             >
               <span>Publish</span>
-              <Send className="w-3.5 h-3.5" />
+              <Send className="w-3 h-3" />
             </button>
           </div>
         </div>

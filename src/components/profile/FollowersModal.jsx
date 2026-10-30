@@ -1,6 +1,6 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
-import { X, UserCheck, UserPlus } from 'lucide-react';
+import { X } from 'lucide-react';
 import { suggestedUsers } from '../../data/mockData';
 
 export default function FollowersModal() {
@@ -9,36 +9,39 @@ export default function FollowersModal() {
   if (!followersModal.isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md animate-fade-in">
-      <div className="w-full max-w-sm rounded-3xl bg-studio-dark-card dark:bg-studio-dark-card light:bg-studio-light-card border border-studio-dark-border dark:border-studio-dark-border light:border-studio-light-border shadow-studio-dark-float p-5 flex flex-col gap-4">
-        <div className="flex items-center justify-between pb-3 border-b border-studio-dark-border/40 dark:border-studio-dark-border/40 light:border-studio-light-border/60">
-          <span className="font-bold text-base text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text font-outfit">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in select-none">
+      <div
+        data-lenis-prevent
+        className="w-full max-w-xs rounded-2xl bg-studio-card border border-studio-border shadow-studio-modal p-4 flex flex-col gap-3"
+      >
+        <div className="flex items-center justify-between pb-2 border-b border-studio-border/40">
+          <span className="font-semibold text-xs text-studio-text uppercase tracking-wider">
             {followersModal.title}
           </span>
           <button
             onClick={() => setFollowersModal({ isOpen: false, title: 'Followers' })}
-            className="p-1 rounded-lg text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext hover:bg-studio-dark-bg/60"
+            className="p-1 rounded-lg text-studio-muted hover:text-studio-text"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
         </div>
 
-        <div className="flex flex-col gap-3 max-h-72 overflow-y-auto">
+        <div data-lenis-prevent className="flex flex-col gap-2 max-h-60 overflow-y-auto">
           {suggestedUsers.map(u => {
             const isFollowing = !!followingMap[u.id];
             return (
-              <div key={u.id} className="flex items-center justify-between gap-3">
-                <div className="flex items-center gap-2.5 overflow-hidden">
+              <div key={u.id} className="flex items-center justify-between gap-2 p-1">
+                <div className="flex items-center gap-2 overflow-hidden">
                   <img
                     src={u.avatar}
                     alt={u.name}
-                    className="w-10 h-10 rounded-full object-cover shrink-0"
+                    className="w-8 h-8 rounded-full object-cover shrink-0"
                   />
                   <div className="flex flex-col truncate">
-                    <span className="text-xs font-semibold text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text truncate">
+                    <span className="text-xs font-medium text-studio-text truncate">
                       {u.name}
                     </span>
-                    <span className="text-[11px] text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext truncate">
+                    <span className="text-[10px] text-studio-muted truncate">
                       @{u.handle}
                     </span>
                   </div>
@@ -46,10 +49,10 @@ export default function FollowersModal() {
 
                 <button
                   onClick={() => toggleFollowUser(u.id, u.name)}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all shrink-0 ${
+                  className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors shrink-0 ${
                     isFollowing
-                      ? 'bg-studio-dark-bg/60 dark:bg-studio-dark-bg/60 light:bg-studio-light-bg/60 text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext'
-                      : 'bg-studio-dark-border dark:bg-studio-dark-text dark:text-studio-dark-bg light:bg-studio-light-text light:text-white text-white shadow-sm'
+                      ? 'text-studio-muted'
+                      : 'bg-studio-btn-bg text-studio-btn-text'
                   }`}
                 >
                   {isFollowing ? 'Following' : 'Follow'}

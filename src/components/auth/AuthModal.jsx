@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { X, Lock, Mail, User, Eye, EyeOff, Sparkles, Check } from 'lucide-react';
+import { X, Lock, Mail, User, Eye, EyeOff } from 'lucide-react';
 
 export default function AuthModal() {
   const { authModal, closeAuthModal, login, register } = useApp();
-  const [mode, setMode] = useState(authModal.mode || 'login'); // 'login' | 'register'
+  const [mode, setMode] = useState(authModal.mode || 'login');
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -18,19 +18,19 @@ export default function AuthModal() {
   const validate = () => {
     const errs = {};
     if (!email) {
-      errs.email = 'Email is required';
+      errs.email = 'Email required';
     } else if (!/\S+@\S+\.\S+/.test(email)) {
-      errs.email = 'Please enter a valid email';
+      errs.email = 'Invalid email';
     }
 
     if (!password) {
-      errs.password = 'Password is required';
+      errs.password = 'Password required';
     } else if (password.length < 6) {
-      errs.password = 'Password must be at least 6 characters';
+      errs.password = 'Min 6 characters';
     }
 
     if (mode === 'register' && !name.trim()) {
-      errs.name = 'Full name is required';
+      errs.name = 'Name required';
     }
 
     setErrors(errs);
@@ -53,39 +53,34 @@ export default function AuthModal() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md animate-fade-in select-none">
-      <div className="w-full max-w-md rounded-3xl bg-studio-dark-card dark:bg-studio-dark-card light:bg-studio-light-card border border-studio-dark-border dark:border-studio-dark-border light:border-studio-light-border shadow-studio-dark-float p-6 sm:p-8 flex flex-col gap-6">
-        {/* Modal Header */}
-        <div className="flex items-center justify-between pb-3 border-b border-studio-dark-border/40 dark:border-studio-dark-border/40 light:border-studio-light-border/60">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-studio-dark-border to-studio-dark-text dark:from-studio-dark-border dark:to-studio-dark-text light:from-studio-light-muted light:to-studio-light-text flex items-center justify-center text-white dark:text-studio-dark-bg light:text-studio-light-bg font-bold text-sm">
-              S
-            </div>
-            <span className="font-bold text-lg text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text font-outfit">
-              Studio Pass
-            </span>
-          </div>
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in select-none">
+      <div className="w-full max-w-sm rounded-2xl bg-studio-card border border-studio-border shadow-studio-modal p-6 flex flex-col gap-5">
+        {/* Header */}
+        <div className="flex items-center justify-between pb-2 border-b border-studio-border/40">
+          <span className="font-semibold text-lg text-studio-text font-outfit">
+            Studio
+          </span>
 
           <button
             onClick={closeAuthModal}
-            className="p-1.5 rounded-lg text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext hover:bg-studio-dark-bg/60"
+            className="p-1 rounded-lg text-studio-muted hover:text-studio-text"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Mode Switcher Tabs */}
-        <div className="flex rounded-2xl bg-studio-dark-bg/60 dark:bg-studio-dark-bg/60 light:bg-studio-light-bg/60 p-1 border border-studio-dark-border/30 dark:border-studio-dark-border/30 light:border-studio-light-border/40">
+        {/* Tabs */}
+        <div className="flex rounded-xl bg-studio-bg/60 p-1 border border-studio-border/30">
           <button
             type="button"
             onClick={() => {
               setMode('login');
               setErrors({});
             }}
-            className={`flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+            className={`flex-1 py-1.5 rounded-lg text-xs font-medium transition-colors ${
               mode === 'login'
-                ? 'bg-studio-dark-card dark:bg-studio-dark-card light:bg-studio-light-card text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text shadow-sm'
-                : 'text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext hover:text-studio-dark-text'
+                ? 'bg-studio-card text-studio-text shadow-sm'
+                : 'text-studio-muted hover:text-studio-text'
             }`}
           >
             Sign In
@@ -96,116 +91,105 @@ export default function AuthModal() {
               setMode('register');
               setErrors({});
             }}
-            className={`flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+            className={`flex-1 py-1.5 rounded-lg text-xs font-medium transition-colors ${
               mode === 'register'
-                ? 'bg-studio-dark-card dark:bg-studio-dark-card light:bg-studio-light-card text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text shadow-sm'
-                : 'text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext hover:text-studio-dark-text'
+                ? 'bg-studio-card text-studio-text shadow-sm'
+                : 'text-studio-muted hover:text-studio-text'
             }`}
           >
-            Create Account
+            Register
           </button>
         </div>
 
-        {/* Auth Form */}
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
           {mode === 'register' && (
-            <div className="flex flex-col gap-1.5">
-              <label className="text-xs font-semibold text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text">
-                Your Full Name
+            <div className="flex flex-col gap-1">
+              <label className="text-xs font-medium text-studio-text">
+                Full Name
               </label>
               <div className="relative">
-                <User className="w-4 h-4 text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <User className="w-3.5 h-3.5 text-studio-muted absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Maya Lin"
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-studio-dark-bg/60 dark:bg-studio-dark-bg/60 light:bg-studio-light-bg/60 border border-studio-dark-border/40 dark:border-studio-dark-border/40 light:border-studio-light-border text-xs sm:text-sm text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text focus:outline-none"
+                  placeholder="Your Name"
+                  className="w-full pl-8 pr-3 py-2 rounded-xl bg-studio-bg/60 border border-studio-border/50 text-xs text-studio-text placeholder-studio-muted focus:outline-none"
                 />
               </div>
-              {errors.name && <span className="text-[11px] text-rose-400">{errors.name}</span>}
+              {errors.name && <span className="text-[10px] text-rose-500">{errors.name}</span>}
             </div>
           )}
 
-          <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-semibold text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text">
-              Email Address
+          <div className="flex flex-col gap-1">
+            <label className="text-xs font-medium text-studio-text">
+              Email
             </label>
             <div className="relative">
-              <Mail className="w-4 h-4 text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <Mail className="w-3.5 h-3.5 text-studio-muted absolute left-3 top-1/2 -translate-y-1/2" />
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="creator@studio.design"
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-studio-dark-bg/60 dark:bg-studio-dark-bg/60 light:bg-studio-light-bg/60 border border-studio-dark-border/40 dark:border-studio-dark-border/40 light:border-studio-light-border text-xs sm:text-sm text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text focus:outline-none"
+                placeholder="name@example.com"
+                className="w-full pl-8 pr-3 py-2 rounded-xl bg-studio-bg/60 border border-studio-border/50 text-xs text-studio-text placeholder-studio-muted focus:outline-none"
               />
             </div>
-            {errors.email && <span className="text-[11px] text-rose-400">{errors.email}</span>}
+            {errors.email && <span className="text-[10px] text-rose-500">{errors.email}</span>}
           </div>
 
-          <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-semibold text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text">
+          <div className="flex flex-col gap-1">
+            <label className="text-xs font-medium text-studio-text">
               Password
             </label>
             <div className="relative">
-              <Lock className="w-4 h-4 text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <Lock className="w-3.5 h-3.5 text-studio-muted absolute left-3 top-1/2 -translate-y-1/2" />
               <input
                 type={showPassword ? 'text' : 'password'}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full pl-10 pr-10 py-2.5 rounded-xl bg-studio-dark-bg/60 dark:bg-studio-dark-bg/60 light:bg-studio-light-bg/60 border border-studio-dark-border/40 dark:border-studio-dark-border/40 light:border-studio-light-border text-xs sm:text-sm text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text focus:outline-none"
+                className="w-full pl-8 pr-8 py-2 rounded-xl bg-studio-bg/60 border border-studio-border/50 text-xs text-studio-text placeholder-studio-muted focus:outline-none"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext hover:text-studio-dark-text"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-studio-muted"
               >
-                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                {showPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
               </button>
             </div>
-            {errors.password && <span className="text-[11px] text-rose-400">{errors.password}</span>}
+            {errors.password && <span className="text-[10px] text-rose-500">{errors.password}</span>}
           </div>
 
-          {/* Remember Me & Forgot Password */}
           <div className="flex items-center justify-between text-xs pt-1">
-            <label className="flex items-center gap-2 cursor-pointer text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text">
+            <label className="flex items-center gap-1.5 cursor-pointer text-studio-text text-xs">
               <input
                 type="checkbox"
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
-                className="rounded border-studio-dark-border accent-studio-dark-border"
+                className="rounded accent-studio-text"
               />
               <span>Remember me</span>
             </label>
-
-            <button
-              type="button"
-              className="text-studio-dark-muted dark:text-studio-dark-muted light:text-studio-light-subtext hover:underline text-[11px]"
-            >
-              Need help?
-            </button>
           </div>
 
-          {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-3 rounded-2xl bg-studio-dark-border dark:bg-studio-dark-text dark:text-studio-dark-bg light:bg-studio-light-text light:text-white text-white font-semibold text-sm shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all mt-2"
+            className="w-full py-2.5 rounded-xl bg-studio-btn-bg text-studio-btn-text text-xs font-semibold hover:opacity-90 transition-opacity mt-1"
           >
-            {mode === 'login' ? 'Sign In to Studio' : 'Create Studio Account'}
+            {mode === 'login' ? 'Sign In' : 'Create Account'}
           </button>
         </form>
 
-        {/* Demo Fast Login */}
-        <div className="pt-2 border-t border-studio-dark-border/30 dark:border-studio-dark-border/30 light:border-studio-light-border/40 flex flex-col gap-2">
+        <div className="pt-2 border-t border-studio-border/40">
           <button
             type="button"
             onClick={handleDemoLogin}
-            className="w-full py-2.5 rounded-xl bg-studio-dark-bg/60 dark:bg-studio-dark-bg/60 light:bg-studio-light-bg/60 border border-studio-dark-border/40 dark:border-studio-dark-border/40 light:border-studio-light-border text-xs font-semibold text-studio-dark-text dark:text-studio-dark-text light:text-studio-light-text flex items-center justify-center gap-2 hover:bg-studio-dark-bg transition-colors"
+            className="w-full py-2 rounded-xl border border-studio-border/60 text-xs font-medium text-studio-text hover:bg-studio-bg transition-colors"
           >
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Auto-fill Demo Account (1-Click)</span>
+            1-Click Demo Login
           </button>
         </div>
       </div>
