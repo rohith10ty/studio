@@ -10,7 +10,7 @@ import {
   Sun,
   Moon,
   LogOut,
-  MoreHorizontal,
+  ChevronDown,
   LogIn
 } from 'lucide-react';
 
@@ -52,22 +52,36 @@ export default function Sidebar() {
   return (
     <aside
       data-lenis-prevent
-      className="hidden md:flex flex-col justify-between w-60 lg:w-64 h-screen sticky top-0 px-4 py-7 border-r border-studio-border/50 bg-studio-bg select-none z-30 overflow-y-auto"
+      className="hidden md:flex flex-col justify-between w-60 lg:w-64 h-screen sticky top-0 px-4 py-6 border-r border-studio-border bg-studio-surface select-none z-30 overflow-y-auto"
     >
-      {/* Top Branding & Navigation */}
-      <div className="flex flex-col gap-8">
-        {/* Minimal Studio Logo */}
-        <div
-          onClick={() => setActiveTab('feed')}
-          className="px-3 cursor-pointer group flex items-center justify-between"
-        >
-          <span className="font-semibold text-2xl tracking-tight text-studio-text hover:opacity-80 transition-opacity font-outfit">
+      {/* Top Section */}
+      <div className="flex flex-col gap-6">
+        {/* Brand & Theme Switcher Header */}
+        <div className="flex items-center justify-between px-2 pt-1">
+          <span
+            onClick={() => setActiveTab('feed')}
+            className="font-bold text-2xl tracking-tight text-studio-text cursor-pointer hover:opacity-80 transition-opacity font-outfit"
+          >
             Studio
           </span>
+
+          {/* Theme Switcher in Top Bar */}
+          <button
+            onClick={toggleTheme}
+            type="button"
+            className="p-2 rounded-xl border border-studio-border/70 bg-studio-card text-studio-text hover:border-studio-border transition-all shadow-sm"
+            title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} mode`}
+          >
+            {theme === 'dark' ? (
+              <Sun className="w-4 h-4 text-amber-300" />
+            ) : (
+              <Moon className="w-4 h-4 text-indigo-400" />
+            )}
+          </button>
         </div>
 
-        {/* Minimal Nav Items */}
-        <nav className="flex flex-col gap-1">
+        {/* Navigation List */}
+        <nav className="flex flex-col gap-1.5">
           {navItems.map(item => {
             const Icon = item.icon;
             const isActive = activeTab === item.id;
@@ -75,19 +89,19 @@ export default function Sidebar() {
               <button
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
-                className={`relative flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all ${
                   isActive
-                    ? 'bg-studio-card text-studio-text border border-studio-border/60'
-                    : 'text-studio-muted hover:text-studio-text hover:bg-studio-card/40'
+                    ? 'bg-studio-card text-studio-text border border-studio-border shadow-sm'
+                    : 'text-studio-muted hover:text-studio-text hover:bg-studio-card/50'
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <Icon className="w-4 h-4 stroke-[1.75]" />
+                  <Icon className="w-4 h-4 stroke-[2]" />
                   <span>{item.label}</span>
                 </div>
 
                 {item.badge && (
-                  <span className="px-1.5 py-0.5 text-[10px] font-semibold rounded-full bg-rose-500 text-white">
+                  <span className="px-1.5 py-0.5 text-[10px] font-bold rounded-full bg-rose-500 text-white">
                     {item.badge}
                   </span>
                 )}
@@ -96,7 +110,7 @@ export default function Sidebar() {
           })}
         </nav>
 
-        {/* Create Post Minimal Button */}
+        {/* New Post Button */}
         <button
           onClick={() => {
             if (!isAuthenticated) {
@@ -105,40 +119,20 @@ export default function Sidebar() {
               setIsCreatePostOpen(true);
             }
           }}
-          className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl font-medium text-xs tracking-wide bg-studio-btn-bg text-studio-btn-text hover:opacity-90 active:scale-[0.99] transition-all"
+          className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl font-semibold text-xs tracking-wide bg-studio-btn-bg text-studio-btn-text hover:opacity-90 active:scale-[0.98] transition-all shadow-sm"
         >
-          <Plus className="w-4 h-4 stroke-[2]" />
+          <Plus className="w-4 h-4 stroke-[2.5]" />
           <span>New Post</span>
         </button>
       </div>
 
-      {/* Bottom Controls: Theme Switcher & User Profile */}
-      <div className="flex flex-col gap-3 pt-4 border-t border-studio-border/40">
-        {/* Minimal Theme Switcher */}
-        <button
-          onClick={toggleTheme}
-          type="button"
-          className="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium text-studio-muted hover:text-studio-text hover:bg-studio-card/50 transition-colors"
-        >
-          <div className="flex items-center gap-2.5">
-            {theme === 'dark' ? (
-              <Sun className="w-4 h-4 text-amber-300" />
-            ) : (
-              <Moon className="w-4 h-4 text-indigo-400" />
-            )}
-            <span>{theme === 'dark' ? 'Light mode' : 'Dark mode'}</span>
-          </div>
-          <span className="text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded border border-studio-border/40 text-studio-muted">
-            {theme}
-          </span>
-        </button>
-
-        {/* User Snapshot */}
+      {/* Bottom User Profile Section - No Overlap */}
+      <div className="pt-4 border-t border-studio-border">
         {isAuthenticated ? (
-          <div className="relative">
+          <div className="flex flex-col gap-2">
             <div
               onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-              className="flex items-center justify-between p-2 rounded-xl cursor-pointer hover:bg-studio-card/50 transition-all border border-transparent hover:border-studio-border/40"
+              className="flex items-center justify-between p-2 rounded-xl bg-studio-card border border-studio-border/70 hover:border-studio-border cursor-pointer transition-all shadow-sm"
             >
               <div className="flex items-center gap-2.5 overflow-hidden">
                 <img
@@ -147,7 +141,7 @@ export default function Sidebar() {
                   className="w-8 h-8 rounded-full object-cover shrink-0 ring-1 ring-studio-border"
                 />
                 <div className="flex flex-col truncate">
-                  <span className="font-medium text-xs text-studio-text truncate">
+                  <span className="font-semibold text-xs text-studio-text truncate">
                     {currentUser.name}
                   </span>
                   <span className="text-[11px] text-studio-muted truncate">
@@ -155,30 +149,35 @@ export default function Sidebar() {
                   </span>
                 </div>
               </div>
-              <MoreHorizontal className="w-4 h-4 text-studio-muted shrink-0" />
+              <ChevronDown
+                className={`w-4 h-4 text-studio-muted transition-transform duration-200 shrink-0 ${
+                  isUserMenuOpen ? 'rotate-180' : ''
+                }`}
+              />
             </div>
 
+            {/* In-flow Collapsible Menu (Never overlaps) */}
             {isUserMenuOpen && (
-              <div className="absolute bottom-full left-0 w-full mb-1 p-1 rounded-xl bg-studio-card border border-studio-border shadow-studio-modal z-50 animate-fade-in">
+              <div className="flex flex-col gap-1 p-1.5 rounded-xl bg-studio-card border border-studio-border animate-fade-in shadow-sm">
                 <button
                   onClick={() => {
                     setActiveTab('profile');
                     setIsUserMenuOpen(false);
                   }}
-                  className="w-full flex items-center gap-2 px-3 py-2 text-xs rounded-lg text-studio-text hover:bg-studio-bg transition-colors"
+                  className="w-full flex items-center gap-2 px-3 py-2 text-xs font-medium rounded-lg text-studio-text hover:bg-studio-surface transition-colors"
                 >
                   <User className="w-3.5 h-3.5 text-studio-muted" />
-                  <span>Profile</span>
+                  <span>View Profile</span>
                 </button>
                 <button
                   onClick={() => {
                     logout();
                     setIsUserMenuOpen(false);
                   }}
-                  className="w-full flex items-center gap-2 px-3 py-2 text-xs rounded-lg text-rose-400 hover:bg-rose-500/10 transition-colors"
+                  className="w-full flex items-center gap-2 px-3 py-2 text-xs font-medium rounded-lg text-rose-500 hover:bg-rose-500/10 transition-colors"
                 >
                   <LogOut className="w-3.5 h-3.5" />
-                  <span>Log out</span>
+                  <span>Log Out</span>
                 </button>
               </div>
             )}
@@ -186,7 +185,7 @@ export default function Sidebar() {
         ) : (
           <button
             onClick={() => openAuthModal('login')}
-            className="flex items-center justify-center gap-2 w-full py-2 rounded-xl border border-studio-border text-xs font-medium text-studio-text hover:bg-studio-card transition-colors"
+            className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-studio-btn-bg text-studio-btn-text text-xs font-semibold hover:opacity-90 transition-opacity"
           >
             <LogIn className="w-3.5 h-3.5" />
             <span>Sign In</span>

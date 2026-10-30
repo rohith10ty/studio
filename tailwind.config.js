@@ -13,13 +13,12 @@ export default {
           card: 'var(--studio-card)',
           surface: 'var(--studio-surface)',
           border: 'var(--studio-border)',
-          muted: 'var(--studio-muted)',
+          divider: 'var(--studio-divider)',
           text: 'var(--studio-text)',
-          subtext: 'var(--studio-subtext)',
-          accent: 'var(--studio-accent)',
+          muted: 'var(--studio-muted)',
           btn: {
-            bg: 'var(--studio-contrast-btn-bg)',
-            text: 'var(--studio-contrast-btn-text)',
+            bg: 'var(--studio-btn-bg)',
+            text: 'var(--studio-btn-text)',
           }
         }
       },
@@ -28,8 +27,8 @@ export default {
         outfit: ['Outfit', 'sans-serif'],
       },
       boxShadow: {
-        'studio-subtle': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
-        'studio-modal': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+        'studio-card': 'var(--studio-shadow)',
+        'studio-modal': '0 25px 60px -15px rgba(0, 0, 0, 0.45)',
       }
     },
   },

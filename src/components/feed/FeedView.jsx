@@ -6,7 +6,7 @@ import PostCard from './PostCard';
 
 export default function FeedView() {
   const { posts, searchQuery } = useApp();
-  const [feedFilter, setFeedFilter] = useState('curated'); // 'curated' | 'latest' | 'following'
+  const [feedFilter, setFeedFilter] = useState('curated');
 
   const filteredPosts = posts.filter(post => {
     if (!searchQuery.trim()) return true;
@@ -25,20 +25,20 @@ export default function FeedView() {
       {/* Create Post Input Card */}
       <CreatePostCard />
 
-      {/* Minimal Feed Filter Tabs */}
+      {/* Feed Filter Segmented Controls */}
       <div className="flex items-center gap-1.5 pt-1">
         {[
           { id: 'curated', label: 'Curated' },
-          { id: 'latest', label: 'Latest' },
-          { id: 'following', label: 'Following' },
+          { id: 'latest', label: 'Latest Works' },
+          { id: 'following', label: 'Network' },
         ].map(tab => (
           <button
             key={tab.id}
             onClick={() => setFeedFilter(tab.id)}
-            className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all ${
               feedFilter === tab.id
-                ? 'bg-studio-card text-studio-text border border-studio-border/60'
-                : 'text-studio-muted hover:text-studio-text'
+                ? 'bg-studio-card text-studio-text border border-studio-border shadow-sm'
+                : 'text-studio-muted hover:text-studio-text hover:bg-studio-card/40'
             }`}
           >
             {tab.label}

@@ -39,7 +39,7 @@ export default function ExploreView() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search creators, works, tags..."
-            className="w-full pl-10 pr-3 py-2.5 rounded-xl bg-studio-card border border-studio-border/50 text-xs text-studio-text placeholder-studio-muted focus:outline-none focus:border-studio-border transition-colors"
+            className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-studio-card border border-studio-border text-xs text-studio-text placeholder-studio-muted focus:outline-none focus:border-studio-text transition-colors shadow-sm"
           />
         </div>
 
@@ -49,10 +49,10 @@ export default function ExploreView() {
             <button
               key={cat}
               onClick={() => setExploreCategory(cat)}
-              className={`px-3 py-1 rounded-lg text-xs font-medium whitespace-nowrap transition-colors ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors ${
                 exploreCategory === cat
-                  ? 'bg-studio-btn-bg text-studio-btn-text'
-                  : 'bg-studio-card text-studio-muted hover:text-studio-text border border-studio-border/50'
+                  ? 'bg-studio-btn-bg text-studio-btn-text shadow-sm'
+                  : 'bg-studio-card text-studio-muted hover:text-studio-text border border-studio-border'
               }`}
             >
               {cat}
@@ -63,7 +63,7 @@ export default function ExploreView() {
 
       {/* Grid */}
       {filteredItems.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
           {filteredItems.map(item => (
             <div
               key={item.id}
@@ -86,7 +86,7 @@ export default function ExploreView() {
                   comments: [],
                 })
               }
-              className="group relative rounded-xl overflow-hidden cursor-pointer bg-studio-card border border-studio-border/40 transition-all hover:opacity-95"
+              className="group relative rounded-2xl overflow-hidden cursor-pointer bg-studio-card border border-studio-border shadow-studio-card transition-all hover:-translate-y-0.5"
             >
               <div className="relative w-full h-64 overflow-hidden">
                 <img
@@ -96,22 +96,22 @@ export default function ExploreView() {
                   loading="lazy"
                 />
 
-                <span className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded text-[10px] font-medium bg-black/50 text-white">
+                <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-md text-[10px] font-bold bg-black/60 text-white backdrop-blur-sm">
                   {item.category}
                 </span>
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-3 flex flex-col justify-end">
-                  <span className="text-xs font-medium text-white">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-3.5 flex flex-col justify-end">
+                  <span className="text-xs font-bold text-white">
                     {item.title}
                   </span>
-                  <div className="flex items-center justify-between text-white/80 text-[11px] mt-1">
+                  <div className="flex items-center justify-between text-white/90 text-[11px] mt-1 font-medium">
                     <span>{item.author}</span>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2.5">
                       <span className="flex items-center gap-1">
-                        <Heart className="w-3 h-3 fill-white" /> {item.likes}
+                        <Heart className="w-3.5 h-3.5 fill-white" /> {item.likes}
                       </span>
                       <span className="flex items-center gap-1">
-                        <MessageCircle className="w-3 h-3" /> {item.comments}
+                        <MessageCircle className="w-3.5 h-3.5" /> {item.comments}
                       </span>
                     </div>
                   </div>
@@ -122,7 +122,7 @@ export default function ExploreView() {
         </div>
       ) : (
         <div className="w-full py-16 text-center text-xs text-studio-muted">
-          No results found.
+          No works found.
         </div>
       )}
     </div>

@@ -5,32 +5,50 @@
 @layer base {
   :root,
   html.light {
-    /* Light Mode Palette: https://colorhunt.co/palette/ebe2ccded6c1cfc6b1b7b09e */
+    /* Light Palette: https://colorhunt.co/palette/ebe2ccded6c1cfc6b1b7b09e */
+    /* Canvas / Body background */
     --studio-bg: #EBE2CC;
-    --studio-card: #DED6C1;
-    --studio-surface: #E3DBC7;
-    --studio-border: #CFC6B1;
-    --studio-muted: #8E8777;
+    /* Elevated Card Surface */
+    --studio-card: #FAF6ED;
+    /* Secondary surface (sidebars, inputs, inner containers) */
+    --studio-surface: #DED6C1;
+    /* Defined border */
+    --studio-border: #B7B09E;
+    /* Subtle divider */
+    --studio-divider: #CFC6B1;
+    /* Primary readable text */
     --studio-text: #2A2438;
-    --studio-subtext: #5C5470;
-    --studio-accent: #2A2438;
-    --studio-contrast-btn-bg: #2A2438;
-    --studio-contrast-btn-text: #EBE2CC;
+    /* Secondary muted text */
+    --studio-muted: #5C5470;
+    /* Pill button & contrast elements */
+    --studio-btn-bg: #2A2438;
+    --studio-btn-text: #FAF6ED;
+    /* Card shadow */
+    --studio-shadow: 0 4px 20px -2px rgba(42, 36, 56, 0.08), 0 2px 6px -1px rgba(42, 36, 56, 0.04);
     color-scheme: light;
   }
 
   html.dark {
-    /* Dark Mode Palette: https://colorhunt.co/palette/dbd8e35c5470352f442a2438 */
-    --studio-bg: #2A2438;
+    /* Dark Palette: https://colorhunt.co/palette/dbd8e35c5470352f442a2438 */
+    /* Canvas / Body background */
+    --studio-bg: #201B2B;
+    /* Elevated Card Surface */
     --studio-card: #352F44;
-    --studio-surface: #3E374F;
+    /* Secondary surface (sidebars, inputs, inner containers) */
+    --studio-surface: #2A2438;
+    /* Defined border */
     --studio-border: #5C5470;
-    --studio-muted: #9E96B0;
+    /* Subtle divider */
+    --studio-divider: #443C56;
+    /* Primary readable text */
     --studio-text: #DBD8E3;
-    --studio-subtext: #DBD8E3;
-    --studio-accent: #DBD8E3;
-    --studio-contrast-btn-bg: #DBD8E3;
-    --studio-contrast-btn-text: #2A2438;
+    /* Secondary muted text */
+    --studio-muted: #9E96B0;
+    /* Pill button & contrast elements */
+    --studio-btn-bg: #DBD8E3;
+    --studio-btn-text: #2A2438;
+    /* Card shadow */
+    --studio-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.45);
     color-scheme: dark;
   }
 
@@ -85,10 +103,10 @@ html.lenis body {
 /* Animations */
 @keyframes heartBurst {
   0% { transform: scale(1); }
-  45% { transform: scale(1.25); }
+  45% { transform: scale(1.3); }
   100% { transform: scale(1); }
 }
 
 .animate-heart-burst {
-  animation: heartBurst 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: heartBurst 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }

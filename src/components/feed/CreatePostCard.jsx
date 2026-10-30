@@ -45,12 +45,12 @@ export default function CreatePostCard() {
   };
 
   return (
-    <div className="w-full p-4 sm:p-5 rounded-2xl bg-studio-card border border-studio-border/50 shadow-studio-subtle transition-all">
+    <div className="w-full p-4 sm:p-5 rounded-2xl bg-studio-card border border-studio-border shadow-studio-card transition-all">
       <div className="flex gap-3">
         <img
           src={currentUser.avatar}
           alt={currentUser.name}
-          className="w-9 h-9 rounded-full object-cover shrink-0 ring-1 ring-studio-border"
+          className="w-10 h-10 rounded-full object-cover shrink-0 ring-1 ring-studio-border"
         />
 
         <div className="flex-1 flex flex-col gap-3">
@@ -58,7 +58,7 @@ export default function CreatePostCard() {
             value={content}
             onFocus={() => setIsExpanded(true)}
             onChange={(e) => setContent(e.target.value)}
-            placeholder={`Share a concept, ${currentUser.name.split(' ')[0]}...`}
+            placeholder={`What are you crafting, ${currentUser.name.split(' ')[0]}?`}
             rows={isExpanded ? 3 : 2}
             className="w-full bg-transparent resize-none text-sm text-studio-text placeholder-studio-muted focus:outline-none leading-relaxed transition-all"
           />
@@ -73,7 +73,7 @@ export default function CreatePostCard() {
               <button
                 type="button"
                 onClick={() => setMediaPreview(null)}
-                className="absolute top-2.5 right-2.5 p-1 rounded-full bg-black/60 hover:bg-black/80 text-white transition-colors"
+                className="absolute top-2.5 right-2.5 p-1 rounded-full bg-black/70 text-white transition-colors"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -81,8 +81,8 @@ export default function CreatePostCard() {
           )}
 
           {isExpanded && (
-            <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-studio-border/30">
-              <span className="text-[11px] text-studio-muted flex items-center gap-1">
+            <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-studio-border/50">
+              <span className="text-[11px] font-semibold text-studio-muted flex items-center gap-1">
                 <Hash className="w-3 h-3" /> Tags:
               </span>
               {suggestedTags.map(tag => (
@@ -90,10 +90,10 @@ export default function CreatePostCard() {
                   key={tag}
                   type="button"
                   onClick={() => setSelectedTag(selectedTag === tag ? '' : tag)}
-                  className={`text-xs px-2 py-0.5 rounded-md font-medium transition-colors ${
+                  className={`text-xs px-2.5 py-0.5 rounded-md font-medium transition-colors ${
                     selectedTag === tag
                       ? 'bg-studio-btn-bg text-studio-btn-text'
-                      : 'bg-studio-bg/60 text-studio-muted hover:text-studio-text'
+                      : 'bg-studio-surface border border-studio-border/60 text-studio-muted hover:text-studio-text'
                   }`}
                 >
                   #{tag}
@@ -107,9 +107,9 @@ export default function CreatePostCard() {
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="p-1.5 rounded-lg text-studio-muted hover:text-studio-text hover:bg-studio-bg/50 transition-colors flex items-center gap-1 text-xs"
+                className="p-1.5 rounded-lg text-studio-muted hover:text-studio-text hover:bg-studio-surface transition-colors flex items-center gap-1.5 text-xs font-medium"
               >
-                <Image className="w-3.5 h-3.5 text-emerald-500" />
+                <Image className="w-4 h-4 text-emerald-500" />
                 <span className="hidden sm:inline">Image</span>
               </button>
               <input
@@ -126,18 +126,18 @@ export default function CreatePostCard() {
                   setMediaPreview('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80');
                   setIsExpanded(true);
                 }}
-                className="p-1.5 rounded-lg text-studio-muted hover:text-studio-text hover:bg-studio-bg/50 transition-colors flex items-center gap-1 text-xs"
+                className="p-1.5 rounded-lg text-studio-muted hover:text-studio-text hover:bg-studio-surface transition-colors flex items-center gap-1.5 text-xs font-medium"
               >
-                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                <Sparkles className="w-4 h-4 text-amber-500" />
                 <span className="hidden sm:inline">Artwork</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setPrivacy(privacy === 'Public' ? 'Private' : 'Public')}
-                className="p-1.5 rounded-lg text-studio-muted hover:text-studio-text hover:bg-studio-bg/50 transition-colors flex items-center gap-1 text-xs"
+                className="p-1.5 rounded-lg text-studio-muted hover:text-studio-text hover:bg-studio-surface transition-colors flex items-center gap-1 text-xs font-medium"
               >
-                {privacy === 'Public' ? <Globe className="w-3 h-3" /> : <Lock className="w-3 h-3" />}
+                {privacy === 'Public' ? <Globe className="w-3.5 h-3.5" /> : <Lock className="w-3.5 h-3.5" />}
                 <span>{privacy}</span>
               </button>
             </div>
@@ -145,14 +145,14 @@ export default function CreatePostCard() {
             <button
               onClick={handleSubmit}
               disabled={!content.trim() && !mediaPreview}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold tracking-wide transition-all ${
                 content.trim() || mediaPreview
-                  ? 'bg-studio-btn-bg text-studio-btn-text hover:opacity-90'
-                  : 'bg-studio-border/30 text-studio-muted/50 cursor-not-allowed'
+                  ? 'bg-studio-btn-bg text-studio-btn-text hover:opacity-90 shadow-sm active:scale-95'
+                  : 'bg-studio-border/40 text-studio-muted/40 cursor-not-allowed'
               }`}
             >
               <span>Publish</span>
-              <Send className="w-3 h-3" />
+              <Send className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>
