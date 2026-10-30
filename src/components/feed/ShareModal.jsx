@@ -25,30 +25,30 @@ export default function ShareModal() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in select-none">
-      <div className="w-full max-w-sm rounded-2xl bg-studio-card border-2 border-studio-border shadow-studio-modal p-5 flex flex-col gap-4">
-        <div className="flex items-center justify-between pb-2 border-b-2 border-studio-border">
-          <span className="font-bold text-sm text-studio-text">
-            Share
+      <div className="w-full max-w-sm rounded-2xl bg-studio-card border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] p-5 flex flex-col gap-4">
+        <div className="flex items-center justify-between pb-2 border-b-2 border-black">
+          <span className="font-extrabold text-sm text-studio-text">
+            Share Creation
           </span>
           <button
             onClick={() => setShareModalData(null)}
-            className="p-1 rounded-lg text-studio-text hover:bg-studio-sidebar"
+            className="p-1 rounded-lg text-studio-text hover:bg-studio-sidebar border border-black"
           >
-            <X className="w-4 h-4" />
+            <X className="w-4 h-4 stroke-[2.5]" />
           </button>
         </div>
 
-        <div className="p-3 rounded-xl bg-studio-sidebar border-2 border-studio-border flex items-center gap-2.5">
+        <div className="p-3 rounded-xl bg-studio-sidebar border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center gap-2.5">
           <img
             src={shareModalData.author.avatar}
             alt={shareModalData.author.name}
-            className="w-8 h-8 rounded-full object-cover shrink-0 ring-1 ring-studio-border"
+            className="w-8 h-8 rounded-full object-cover shrink-0 ring-2 ring-black"
           />
           <div className="flex flex-col truncate">
-            <span className="text-xs font-bold text-studio-text truncate">
+            <span className="text-xs font-black text-studio-text truncate">
               {shareModalData.author.name}
             </span>
-            <p className="text-[11px] text-studio-subtext font-medium truncate">
+            <p className="text-[11px] text-studio-subtext font-bold truncate">
               {shareModalData.content}
             </p>
           </div>
@@ -61,12 +61,12 @@ export default function ShareModal() {
               <button
                 key={i}
                 onClick={opt.action}
-                className="flex flex-col items-center gap-1.5 p-2.5 rounded-xl bg-studio-sidebar hover:opacity-85 border border-studio-border transition-all"
+                className="flex flex-col items-center gap-1.5 p-2.5 rounded-xl bg-studio-sidebar hover:bg-studio-chip border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
               >
                 <div className="p-1.5 rounded-lg text-studio-text">
                   <Icon className="w-4 h-4 stroke-[2.5]" />
                 </div>
-                <span className="text-[10px] font-bold text-studio-text">
+                <span className="text-[10px] font-black text-studio-text">
                   {opt.name}
                 </span>
               </button>
@@ -74,7 +74,7 @@ export default function ShareModal() {
           })}
         </div>
 
-        <div className="flex items-center gap-2 p-1 pl-3 rounded-xl bg-studio-sidebar border-2 border-studio-border">
+        <div className="flex items-center gap-2 p-1 pl-3 rounded-xl bg-studio-sidebar border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
           <input
             type="text"
             readOnly

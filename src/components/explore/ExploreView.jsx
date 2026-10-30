@@ -29,8 +29,8 @@ export default function ExploreView() {
   });
 
   return (
-    <div className="w-full flex flex-col gap-5 select-none animate-fade-in pb-16">
-      {/* Search Header */}
+    <div className="w-full flex flex-col gap-6 select-none animate-fade-in pb-16">
+      {/* Search Header with Black Border */}
       <div className="flex flex-col gap-3">
         <div className="relative w-full">
           <Search className="w-4 h-4 text-studio-text absolute left-3.5 top-1/2 -translate-y-1/2 stroke-[2.5]" />
@@ -39,20 +39,20 @@ export default function ExploreView() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search creators, works, tags..."
-            className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-studio-card border-2 border-studio-border text-xs font-bold text-studio-text placeholder-studio-subtext focus:outline-none focus:border-studio-borderStrong transition-colors shadow-sm"
+            className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-studio-card border-2 border-black text-xs font-bold text-studio-text placeholder-studio-text/60 focus:outline-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-colors"
           />
         </div>
 
         {/* Categories Bar */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
           {categories.map(cat => (
             <button
               key={cat}
               onClick={() => setExploreCategory(cat)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-colors ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-black border-2 border-black whitespace-nowrap transition-colors ${
                 exploreCategory === cat
-                  ? 'bg-studio-btn-dark text-studio-btn-darkText shadow-md'
-                  : 'bg-studio-card text-studio-text border-2 border-studio-border hover:bg-studio-sidebar'
+                  ? 'bg-studio-btn-dark text-studio-btn-darkText shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
+                  : 'bg-studio-card text-studio-text hover:bg-studio-chip shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
               }`}
             >
               {cat}
@@ -61,7 +61,7 @@ export default function ExploreView() {
         </div>
       </div>
 
-      {/* Grid */}
+      {/* Grid with Black Borders */}
       {filteredItems.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
           {filteredItems.map(item => (
@@ -86,7 +86,7 @@ export default function ExploreView() {
                   comments: [],
                 })
               }
-              className="group relative rounded-2xl overflow-hidden cursor-pointer bg-studio-card border-2 border-studio-border shadow-studio-card transition-all hover:-translate-y-0.5"
+              className="group relative rounded-2xl overflow-hidden cursor-pointer bg-studio-card border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-0.5"
             >
               <div className="relative w-full h-64 overflow-hidden">
                 <img
@@ -96,22 +96,22 @@ export default function ExploreView() {
                   loading="lazy"
                 />
 
-                <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-md text-[10px] font-bold bg-black/70 text-white backdrop-blur-sm">
+                <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-md text-[10px] font-black bg-black text-white border border-white">
                   {item.category}
                 </span>
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-3.5 flex flex-col justify-end">
-                  <span className="text-xs font-bold text-white">
+                  <span className="text-xs font-black text-white">
                     {item.title}
                   </span>
-                  <div className="flex items-center justify-between text-white text-[11px] mt-1 font-semibold">
+                  <div className="flex items-center justify-between text-white text-[11px] mt-1 font-bold">
                     <span>{item.author}</span>
                     <div className="flex items-center gap-2.5">
                       <span className="flex items-center gap-1">
-                        <Heart className="w-3.5 h-3.5 fill-white text-white" /> {item.likes}
+                        <Heart className="w-3.5 h-3.5 fill-white stroke-black" /> {item.likes}
                       </span>
                       <span className="flex items-center gap-1">
-                        <MessageCircle className="w-3.5 h-3.5" /> {item.comments}
+                        <MessageCircle className="w-3.5 h-3.5 stroke-black" /> {item.comments}
                       </span>
                     </div>
                   </div>
@@ -121,7 +121,7 @@ export default function ExploreView() {
           ))}
         </div>
       ) : (
-        <div className="w-full py-16 text-center text-xs text-studio-subtext font-bold">
+        <div className="w-full py-16 text-center text-xs text-studio-text font-black">
           No works found.
         </div>
       )}

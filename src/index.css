@@ -13,18 +13,21 @@
     /* 3. Cards & Posts */
     --studio-card: #CFC6B1;
     --studio-card-alt: #DED6C1;
-    /* 4. Buttons, Tags, Pills, Borders */
+    /* 4. Buttons, Tags, Badges */
     --studio-chip: #B7B09E;
-    --studio-border: #B7B09E;
-    --studio-border-strong: #8E8674;
-    --studio-btn-bg: #B7B09E;
-    --studio-btn-text: #2A2438;
-    --studio-btn-dark: #2A2438;
-    --studio-btn-dark-text: #EBE2CC;
+    /* Black Borders for all cards and buttons */
+    --studio-border: #000000;
+    --studio-border-strong: #000000;
     /* Text */
-    --studio-text: #2A2438;
-    --studio-subtext: #4E4738;
-    --studio-shadow: 0 4px 14px 0 rgba(42, 36, 56, 0.12), 0 1px 3px 0 rgba(42, 36, 56, 0.08);
+    --studio-text: #000000;
+    --studio-subtext: #2A2438;
+    /* Buttons */
+    --studio-btn-bg: #B7B09E;
+    --studio-btn-text: #000000;
+    --studio-btn-dark: #000000;
+    --studio-btn-dark-text: #EBE2CC;
+    /* Shadow */
+    --studio-shadow: 4px 4px 0px 0px #000000;
     color-scheme: light;
   }
 
@@ -37,18 +40,21 @@
     /* 3. Cards & Posts */
     --studio-card: #5C5470;
     --studio-card-alt: #352F44;
-    /* 4. Buttons, Tags, Highlights, Text */
-    --studio-chip: #352F44;
-    --studio-border: #352F44;
-    --studio-border-strong: #DBD8E3;
-    --studio-btn-bg: #DBD8E3;
-    --studio-btn-text: #2A2438;
-    --studio-btn-dark: #DBD8E3;
-    --studio-btn-dark-text: #2A2438;
+    /* 4. Buttons, Tags, Badges, Highlights */
+    --studio-chip: #DBD8E3;
+    /* Black Borders for all cards and buttons */
+    --studio-border: #000000;
+    --studio-border-strong: #000000;
     /* Text */
     --studio-text: #DBD8E3;
-    --studio-subtext: #E2DFE9;
-    --studio-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.45);
+    --studio-subtext: #DBD8E3;
+    /* Buttons */
+    --studio-btn-bg: #DBD8E3;
+    --studio-btn-text: #000000;
+    --studio-btn-dark: #DBD8E3;
+    --studio-btn-dark-text: #000000;
+    /* Shadow */
+    --studio-shadow: 4px 4px 0px 0px #000000;
     color-scheme: dark;
   }
 

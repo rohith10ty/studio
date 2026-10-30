@@ -18,14 +18,14 @@ export default function FeedView() {
   });
 
   return (
-    <div className="w-full flex flex-col gap-5 select-none animate-fade-in pb-16">
+    <div className="w-full flex flex-col gap-6 select-none animate-fade-in pb-16">
       {/* Stories Bar */}
       <StoriesBar />
 
       {/* Create Post Input Card */}
       <CreatePostCard />
 
-      {/* Feed Filter Segmented Controls */}
+      {/* Feed Filter Segmented Controls with Black Borders */}
       <div className="flex items-center gap-2 pt-1">
         {[
           { id: 'curated', label: 'Curated' },
@@ -35,10 +35,10 @@ export default function FeedView() {
           <button
             key={tab.id}
             onClick={() => setFeedFilter(tab.id)}
-            className={`px-4 py-1.5 rounded-xl text-xs font-bold transition-all ${
+            className={`px-4 py-2 rounded-xl text-xs font-black border-2 border-black transition-all ${
               feedFilter === tab.id
-                ? 'bg-studio-btn-bg text-studio-btn-text shadow-sm'
-                : 'bg-studio-card text-studio-text border border-studio-border hover:border-studio-borderStrong'
+                ? 'bg-studio-btn-dark text-studio-btn-darkText shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
+                : 'bg-studio-card text-studio-text hover:bg-studio-chip shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
             }`}
           >
             {tab.label}
@@ -47,13 +47,13 @@ export default function FeedView() {
       </div>
 
       {/* Posts Stream */}
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-5">
         {filteredPosts.length > 0 ? (
           filteredPosts.map(post => (
             <PostCard key={post.id} post={post} />
           ))
         ) : (
-          <div className="w-full py-16 text-center text-xs text-studio-muted">
+          <div className="w-full py-16 text-center text-xs text-studio-text font-black">
             No posts found.
           </div>
         )}

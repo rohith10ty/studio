@@ -43,21 +43,21 @@ export default function MessagesView() {
   return (
     <div
       data-lenis-prevent
-      className="w-full h-[calc(100vh-140px)] md:h-[calc(100vh-80px)] rounded-2xl bg-studio-card border-2 border-studio-border overflow-hidden flex select-none shadow-studio-card animate-fade-in"
+      className="w-full h-[calc(100vh-140px)] md:h-[calc(100vh-80px)] rounded-2xl bg-studio-card border-2 border-black overflow-hidden flex select-none shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] animate-fade-in"
     >
       {/* Left Chat List Column */}
       <div
         data-lenis-prevent
-        className={`w-full md:w-72 lg:w-80 border-r-2 border-studio-border bg-studio-sidebar flex flex-col ${
+        className={`w-full md:w-72 lg:w-80 border-r-2 border-black bg-studio-sidebar flex flex-col ${
           isMobileChatOpen ? 'hidden md:flex' : 'flex'
         }`}
       >
-        <div className="p-3.5 flex flex-col gap-2.5 border-b-2 border-studio-border">
+        <div className="p-3.5 flex flex-col gap-2.5 border-b-2 border-black">
           <div className="flex items-center justify-between">
-            <h2 className="text-sm font-extrabold text-studio-text font-outfit">
+            <h2 className="text-sm font-black text-studio-text font-outfit">
               Direct Messages
             </h2>
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-studio-card border border-studio-border text-studio-text">
+            <span className="text-[10px] font-black px-2 py-0.5 rounded-full bg-studio-card border-2 border-black text-studio-text shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">
               {conversations.length} Active
             </span>
           </div>
@@ -69,12 +69,12 @@ export default function MessagesView() {
               value={chatSearch}
               onChange={(e) => setChatSearch(e.target.value)}
               placeholder="Search chats..."
-              className="w-full pl-8 pr-2.5 py-1.5 rounded-xl bg-studio-card border-2 border-studio-border text-xs font-bold text-studio-text placeholder-studio-subtext focus:outline-none focus:border-studio-borderStrong"
+              className="w-full pl-8 pr-2.5 py-1.5 rounded-xl bg-studio-card border-2 border-black text-xs font-bold text-studio-text placeholder-studio-text/60 focus:outline-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
             />
           </div>
         </div>
 
-        <div data-lenis-prevent className="flex-1 overflow-y-auto p-2 flex flex-col gap-1.5">
+        <div data-lenis-prevent className="flex-1 overflow-y-auto p-2 flex flex-col gap-2">
           {filteredConversations.map(chat => {
             const isSelected = chat.id === activeChat.id;
             const lastMsg = chat.messages[chat.messages.length - 1];
@@ -86,10 +86,10 @@ export default function MessagesView() {
                   setActiveChatId(chat.id);
                   setIsMobileChatOpen(true);
                 }}
-                className={`p-2.5 rounded-xl flex items-center justify-between gap-2.5 cursor-pointer transition-all ${
+                className={`p-2.5 rounded-xl flex items-center justify-between gap-2.5 cursor-pointer transition-all border-2 border-black ${
                   isSelected
-                    ? 'bg-studio-card border-2 border-studio-border shadow-sm'
-                    : 'hover:bg-studio-card/50 border border-transparent'
+                    ? 'bg-studio-card shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
+                    : 'bg-studio-sidebar hover:bg-studio-chip shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]'
                 }`}
               >
                 <div className="flex items-center gap-2.5 overflow-hidden">
@@ -97,29 +97,29 @@ export default function MessagesView() {
                     <img
                       src={chat.user.avatar}
                       alt={chat.user.name}
-                      className="w-9 h-9 rounded-full object-cover ring-2 ring-studio-border"
+                      className="w-9 h-9 rounded-full object-cover ring-2 ring-black"
                     />
                     {chat.user.isOnline && (
-                      <div className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-studio-card" />
+                      <div className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-black" />
                     )}
                   </div>
 
                   <div className="flex flex-col truncate">
-                    <span className="font-bold text-xs text-studio-text truncate">
+                    <span className="font-black text-xs text-studio-text truncate">
                       {chat.user.name}
                     </span>
-                    <span className="text-[11px] text-studio-subtext font-medium truncate">
+                    <span className="text-[11px] text-studio-text/80 font-bold truncate">
                       {lastMsg ? lastMsg.text : 'Start chatting...'}
                     </span>
                   </div>
                 </div>
 
                 <div className="flex flex-col items-end gap-1 shrink-0">
-                  <span className="text-[10px] text-studio-subtext font-bold">
+                  <span className="text-[10px] text-studio-text font-black">
                     {lastMsg?.time || ''}
                   </span>
                   {chat.unreadCount > 0 && (
-                    <span className="w-4 h-4 rounded-full bg-rose-500 text-white text-[9px] font-bold flex items-center justify-center">
+                    <span className="w-4 h-4 rounded-full bg-rose-500 text-white text-[9px] font-black flex items-center justify-center border border-black">
                       {chat.unreadCount}
                     </span>
                   )}
@@ -139,31 +139,31 @@ export default function MessagesView() {
         {activeChat ? (
           <>
             {/* Header */}
-            <div className="p-3 px-4 border-b-2 border-studio-border flex items-center justify-between bg-studio-sidebar">
+            <div className="p-3 px-4 border-b-2 border-black flex items-center justify-between bg-studio-sidebar">
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => setIsMobileChatOpen(false)}
                   className="md:hidden p-1 rounded-lg text-studio-text"
                 >
-                  <ArrowLeft className="w-4 h-4" />
+                  <ArrowLeft className="w-4 h-4 stroke-[2.5]" />
                 </button>
 
                 <div className="relative">
                   <img
                     src={activeChat.user.avatar}
                     alt={activeChat.user.name}
-                    className="w-8 h-8 rounded-full object-cover ring-2 ring-studio-border"
+                    className="w-8 h-8 rounded-full object-cover ring-2 ring-black"
                   />
                   {activeChat.user.isOnline && (
-                    <div className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-studio-card" />
+                    <div className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-black" />
                   )}
                 </div>
 
                 <div className="flex flex-col">
-                  <span className="font-bold text-xs text-studio-text">
+                  <span className="font-black text-xs text-studio-text">
                     {activeChat.user.name}
                   </span>
-                  <span className="text-[10px] text-studio-subtext font-bold">
+                  <span className="text-[10px] text-studio-text/80 font-bold">
                     {activeChat.user.isOnline ? 'Online now' : activeChat.user.lastSeen}
                   </span>
                 </div>
@@ -185,17 +185,17 @@ export default function MessagesView() {
                     }`}
                   >
                     <div
-                      className={`px-4 py-2 rounded-2xl text-xs font-medium leading-relaxed shadow-sm ${
+                      className={`px-4 py-2 rounded-2xl text-xs font-bold leading-relaxed border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] ${
                         isMe
                           ? 'bg-studio-btn-dark text-studio-btn-darkText rounded-br-none'
-                          : 'bg-studio-card text-studio-text border-2 border-studio-border rounded-bl-none'
+                          : 'bg-studio-card text-studio-text rounded-bl-none'
                       }`}
                     >
                       {msg.text}
                     </div>
-                    <span className="text-[10px] text-studio-subtext font-bold mt-1 px-1 flex items-center gap-1">
+                    <span className="text-[10px] text-studio-text font-black mt-1 px-1 flex items-center gap-1">
                       {msg.time}
-                      {isMe && <CheckCheck className="w-3 h-3 text-emerald-500 inline stroke-[2.5]" />}
+                      {isMe && <CheckCheck className="w-3 h-3 text-emerald-500 inline stroke-[3]" />}
                     </span>
                   </div>
                 );
@@ -206,27 +206,27 @@ export default function MessagesView() {
             {/* Input Form */}
             <form
               onSubmit={handleSend}
-              className="p-3 border-t-2 border-studio-border flex items-center gap-2 bg-studio-sidebar"
+              className="p-3 border-t-2 border-black flex items-center gap-2 bg-studio-sidebar"
             >
               <input
                 type="text"
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
                 placeholder="Write a message..."
-                className="flex-1 px-3.5 py-2 rounded-xl bg-studio-card border-2 border-studio-border text-xs font-medium text-studio-text placeholder-studio-subtext focus:outline-none focus:border-studio-borderStrong"
+                className="flex-1 px-3.5 py-2 rounded-xl bg-studio-card border-2 border-black text-xs font-bold text-studio-text placeholder-studio-text/60 focus:outline-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
               />
               <button
                 type="submit"
                 disabled={!inputText.trim()}
-                className="p-2 px-3 rounded-xl bg-studio-btn-dark text-studio-btn-darkText text-xs font-bold disabled:opacity-40 transition-all flex items-center gap-1 shadow-sm"
+                className="p-2 px-3 rounded-xl bg-studio-btn-dark text-studio-btn-darkText border-2 border-black text-xs font-black disabled:opacity-40 transition-all flex items-center gap-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
               >
                 <span>Send</span>
-                <Send className="w-3.5 h-3.5" />
+                <Send className="w-3.5 h-3.5 stroke-[2.5]" />
               </button>
             </form>
           </>
         ) : (
-          <div className="flex-1 flex items-center justify-center text-xs text-studio-subtext font-bold">
+          <div className="flex-1 flex items-center justify-center text-xs text-studio-text font-black">
             Select a conversation
           </div>
         )}

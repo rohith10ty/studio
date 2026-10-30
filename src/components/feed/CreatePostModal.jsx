@@ -52,14 +52,14 @@ export default function CreatePostModal() {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in select-none">
       <div
         data-lenis-prevent
-        className="w-full max-w-lg rounded-2xl bg-studio-card border-2 border-studio-border shadow-studio-modal p-5 sm:p-6 flex flex-col gap-4"
+        className="w-full max-w-lg rounded-2xl bg-studio-card border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] p-5 sm:p-6 flex flex-col gap-4"
       >
-        <div className="flex items-center justify-between pb-2 border-b-2 border-studio-border">
+        <div className="flex items-center justify-between pb-2 border-b-2 border-black">
           <div className="flex items-center gap-2.5">
             <img
               src={currentUser.avatar}
               alt={currentUser.name}
-              className="w-8 h-8 rounded-full object-cover ring-2 ring-studio-border"
+              className="w-8 h-8 rounded-full object-cover ring-2 ring-black"
             />
             <span className="font-bold text-xs text-studio-text">
               {currentUser.name}
@@ -68,24 +68,24 @@ export default function CreatePostModal() {
 
           <button
             onClick={() => setIsCreatePostOpen(false)}
-            className="p-1 rounded-lg text-studio-text hover:bg-studio-sidebar"
+            className="p-1 rounded-lg text-studio-text hover:bg-studio-sidebar border border-black"
           >
-            <X className="w-4 h-4" />
+            <X className="w-4 h-4 stroke-[2.5]" />
           </button>
         </div>
 
-        <div className="p-3 rounded-xl bg-studio-sidebar border-2 border-studio-border">
+        <div className="p-3 rounded-xl bg-studio-sidebar border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
           <textarea
             value={content}
             onChange={(e) => setContent(e.target.value)}
             placeholder="What are you working on?"
             rows={4}
-            className="w-full bg-transparent resize-none text-sm font-medium text-studio-text placeholder-studio-subtext focus:outline-none leading-relaxed"
+            className="w-full bg-transparent resize-none text-sm font-bold text-studio-text placeholder-studio-text/60 focus:outline-none leading-relaxed"
             autoFocus
           />
 
           {mediaPreview && (
-            <div className="relative mt-2 rounded-xl overflow-hidden max-h-52 border-2 border-studio-border">
+            <div className="relative mt-2 rounded-xl overflow-hidden max-h-52 border-2 border-black">
               <img
                 src={mediaPreview}
                 alt="Media preview"
@@ -93,9 +93,9 @@ export default function CreatePostModal() {
               />
               <button
                 onClick={() => setMediaPreview(null)}
-                className="absolute top-2 right-2 p-1 rounded-full bg-black/70 text-white"
+                className="absolute top-2 right-2 p-1 rounded-full bg-black text-white"
               >
-                <X className="w-3.5 h-3.5" />
+                <X className="w-3.5 h-3.5 stroke-[3]" />
               </button>
             </div>
           )}
@@ -103,7 +103,7 @@ export default function CreatePostModal() {
 
         {!mediaPreview && (
           <div className="flex flex-col gap-1.5">
-            <span className="text-[11px] font-bold text-studio-text">
+            <span className="text-[11px] font-black text-studio-text">
               Select visual:
             </span>
             <div className="grid grid-cols-3 gap-2">
@@ -111,7 +111,7 @@ export default function CreatePostModal() {
                 <div
                   key={i}
                   onClick={() => setMediaPreview(src)}
-                  className="h-14 rounded-lg overflow-hidden cursor-pointer border-2 border-studio-border hover:opacity-80 transition-opacity"
+                  className="h-14 rounded-lg overflow-hidden cursor-pointer border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:opacity-80 transition-opacity"
                 >
                   <img src={src} alt="Sample" className="w-full h-full object-cover" />
                 </div>
@@ -120,14 +120,14 @@ export default function CreatePostModal() {
           </div>
         )}
 
-        <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-studio-sidebar border-2 border-studio-border">
+        <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-studio-sidebar border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
           <Hash className="w-3.5 h-3.5 text-studio-text stroke-[2.5]" />
           <input
             type="text"
             value={tag}
             onChange={(e) => setTag(e.target.value)}
             placeholder="Tag (e.g. Minimal, WebGL)"
-            className="w-full bg-transparent text-xs font-bold text-studio-text placeholder-studio-subtext focus:outline-none"
+            className="w-full bg-transparent text-xs font-bold text-studio-text placeholder-studio-text/60 focus:outline-none"
           />
         </div>
 
@@ -135,9 +135,9 @@ export default function CreatePostModal() {
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="p-2 px-3 rounded-xl bg-studio-sidebar border-2 border-studio-border text-studio-text hover:bg-studio-card transition-colors flex items-center gap-1.5 text-xs font-bold shadow-sm"
+            className="p-2 px-3 rounded-xl bg-studio-sidebar border-2 border-black text-studio-text hover:bg-studio-chip transition-colors flex items-center gap-1.5 text-xs font-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
           >
-            <Image className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+            <Image className="w-4 h-4 text-emerald-600 dark:text-emerald-300 stroke-[2.5]" />
             <span>Upload Image</span>
           </button>
           <input
@@ -152,21 +152,21 @@ export default function CreatePostModal() {
             <button
               type="button"
               onClick={() => setIsCreatePostOpen(false)}
-              className="px-3.5 py-2 rounded-xl text-xs font-bold text-studio-text hover:bg-studio-sidebar"
+              className="px-3.5 py-2 rounded-xl text-xs font-black text-studio-text hover:bg-studio-sidebar border-2 border-black"
             >
               Cancel
             </button>
             <button
               onClick={handleSubmit}
               disabled={!content.trim() && !mediaPreview}
-              className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-md ${
+              className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-black border-2 border-black transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${
                 content.trim() || mediaPreview
-                  ? 'bg-studio-btn-dark text-studio-btn-darkText hover:opacity-90 active:scale-95'
-                  : 'bg-studio-border text-studio-text/40 cursor-not-allowed'
+                  ? 'bg-studio-btn-dark text-studio-btn-darkText hover:translate-x-0.5 hover:translate-y-0.5'
+                  : 'bg-studio-sidebar text-studio-text/40 cursor-not-allowed'
               }`}
             >
               <span>Publish</span>
-              <Send className="w-3.5 h-3.5" />
+              <Send className="w-3.5 h-3.5 stroke-[2.5]" />
             </button>
           </div>
         </div>
