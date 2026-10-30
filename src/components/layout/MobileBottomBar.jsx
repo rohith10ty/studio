@@ -13,8 +13,8 @@ export default function MobileBottomBar() {
   } = useApp();
 
   return (
-    <div className="md:hidden fixed bottom-3 left-4 right-4 z-40 select-none">
-      <nav className="flex items-center justify-around py-2.5 px-3 rounded-2xl bg-studio-sidebar border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+    <div className="md:hidden fixed bottom-2.5 left-2.5 right-2.5 sm:bottom-3 sm:left-4 sm:right-4 z-40 select-none">
+      <nav className="flex items-center justify-around py-2 px-2 sm:px-3 rounded-2xl bg-studio-sidebar border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
         <button
           onClick={() => setActiveTab('feed')}
           className={`p-2 rounded-xl transition-colors ${

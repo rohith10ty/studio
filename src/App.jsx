@@ -56,7 +56,7 @@ export default function App() {
         <Sidebar />
 
         {/* Center Main Stage */}
-        <main className="flex-1 min-w-0 flex justify-center px-4 sm:px-6 py-6 sm:py-7">
+        <main className="flex-1 min-w-0 flex justify-center px-2.5 sm:px-6 py-4 sm:py-7">
           <div className={`w-full ${activeTab === 'messages' || activeTab === 'profile' ? 'max-w-3xl' : 'max-w-2xl'}`}>
             {activeTab === 'feed' && <FeedView />}
             {activeTab === 'explore' && <ExploreView />}

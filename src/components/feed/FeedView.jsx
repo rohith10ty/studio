@@ -18,7 +18,7 @@ export default function FeedView() {
   });
 
   return (
-    <div className="w-full flex flex-col gap-6 select-none animate-fade-in pb-16">
+    <div className="w-full flex flex-col gap-5 sm:gap-6 select-none animate-fade-in pb-20">
       {/* Stories Bar */}
       <StoriesBar />
 
@@ -26,7 +26,7 @@ export default function FeedView() {
       <CreatePostCard />
 
       {/* Feed Filter Segmented Controls with Black Borders */}
-      <div className="flex items-center gap-2 pt-1">
+      <div className="flex items-center gap-1.5 sm:gap-2 pt-1 overflow-x-auto scrollbar-none pb-0.5">
         {[
           { id: 'curated', label: 'Curated' },
           { id: 'latest', label: 'Latest Works' },
@@ -35,7 +35,7 @@ export default function FeedView() {
           <button
             key={tab.id}
             onClick={() => setFeedFilter(tab.id)}
-            className={`px-4 py-2 rounded-xl text-xs font-black border-2 border-black transition-all ${
+            className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-black border-2 border-black whitespace-nowrap transition-all ${
               feedFilter === tab.id
                 ? 'bg-studio-btn-dark text-white dark:text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
                 : 'bg-studio-card text-studio-text hover:bg-studio-sidebar shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'

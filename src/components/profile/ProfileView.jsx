@@ -56,10 +56,10 @@ export default function ProfileView() {
         </div>
 
         {/* Profile Content Body */}
-        <div className="px-5 sm:px-6 pb-6 flex flex-col gap-5">
+        <div className="px-3.5 sm:px-6 pb-5 sm:pb-6 flex flex-col gap-4 sm:gap-5">
           {/* Avatar & Action Buttons Bar */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 -mt-14 sm:-mt-16">
-            <div className="relative inline-block w-24 h-24 sm:w-28 sm:h-28 rounded-2xl p-1 bg-studio-card ring-4 ring-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] shrink-0">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 -mt-12 sm:-mt-16">
+            <div className="relative inline-block w-20 h-20 sm:w-28 sm:h-28 rounded-2xl p-1 bg-studio-card ring-4 ring-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] shrink-0">
               <img
                 src={currentUser.avatar}
                 alt={currentUser.name}
@@ -67,7 +67,7 @@ export default function ProfileView() {
               />
               {currentUser.isVerified && (
                 <div className="absolute -bottom-1 -right-1 p-1 rounded-full bg-studio-card border-2 border-black shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">
-                  <CheckCircle className="w-4 h-4 text-sky-500 fill-sky-500/20 stroke-black stroke-[1.5]" />
+                  <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-sky-500 fill-sky-500/20 stroke-black stroke-[1.5]" />
                 </div>
               )}
             </div>
@@ -75,7 +75,7 @@ export default function ProfileView() {
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setIsEditProfileOpen(true)}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-studio-btn-dark text-white dark:text-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] text-xs font-black hover:opacity-90 transition-opacity"
+                className="flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-studio-btn-dark text-white dark:text-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] text-[11px] sm:text-xs font-black hover:opacity-90 transition-opacity"
               >
                 <Edit3 className="w-3.5 h-3.5 stroke-[2.5]" />
                 <span>Edit Profile</span>
@@ -83,7 +83,7 @@ export default function ProfileView() {
 
               <button
                 onClick={handleShareProfile}
-                className="p-2 rounded-xl border-2 border-black bg-studio-sidebar text-studio-text hover:bg-studio-card transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                className="p-1.5 sm:p-2 rounded-xl border-2 border-black bg-studio-sidebar text-studio-text hover:bg-studio-card transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
                 title="Share profile"
               >
                 <Share2 className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -137,45 +137,45 @@ export default function ProfileView() {
           </div>
 
           {/* Distinct Stats Mini-Cards with Black Borders */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-3 border-t-2 border-black">
-            <div className="p-3 rounded-xl bg-studio-sidebar border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center justify-center">
-              <span className="text-base font-black text-studio-text font-outfit">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5 pt-3 border-t-2 border-black">
+            <div className="p-2 sm:p-3 rounded-xl bg-studio-sidebar border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center justify-center">
+              <span className="text-sm sm:text-base font-black text-studio-text font-outfit">
                 {currentUser.stats?.postsCount || userPosts.length}
               </span>
-              <span className="text-[11px] text-studio-text font-black">
+              <span className="text-[10px] sm:text-[11px] text-studio-text font-black">
                 Posts
               </span>
             </div>
 
             <div
               onClick={() => setFollowersModal({ isOpen: true, title: 'Followers' })}
-              className="p-3 rounded-xl bg-studio-sidebar border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center justify-center cursor-pointer hover:bg-studio-card transition-colors"
+              className="p-2 sm:p-3 rounded-xl bg-studio-sidebar border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center justify-center cursor-pointer hover:bg-studio-card transition-colors"
             >
-              <span className="text-base font-black text-studio-text font-outfit">
+              <span className="text-sm sm:text-base font-black text-studio-text font-outfit">
                 {currentUser.stats?.followersCount ? (currentUser.stats.followersCount / 1000).toFixed(1) + 'k' : '14.8k'}
               </span>
-              <span className="text-[11px] text-studio-text font-black">
+              <span className="text-[10px] sm:text-[11px] text-studio-text font-black">
                 Followers
               </span>
             </div>
 
             <div
               onClick={() => setFollowersModal({ isOpen: true, title: 'Following' })}
-              className="p-3 rounded-xl bg-studio-sidebar border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center justify-center cursor-pointer hover:bg-studio-card transition-colors"
+              className="p-2 sm:p-3 rounded-xl bg-studio-sidebar border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center justify-center cursor-pointer hover:bg-studio-card transition-colors"
             >
-              <span className="text-base font-black text-studio-text font-outfit">
+              <span className="text-sm sm:text-base font-black text-studio-text font-outfit">
                 {currentUser.stats?.followingCount || 420}
               </span>
-              <span className="text-[11px] text-studio-text font-black">
+              <span className="text-[10px] sm:text-[11px] text-studio-text font-black">
                 Following
               </span>
             </div>
 
-            <div className="p-3 rounded-xl bg-studio-sidebar border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center justify-center">
-              <span className="text-base font-black text-studio-text font-outfit">
+            <div className="p-2 sm:p-3 rounded-xl bg-studio-sidebar border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center justify-center">
+              <span className="text-sm sm:text-base font-black text-studio-text font-outfit">
                 {currentUser.stats?.likesCount ? (currentUser.stats.likesCount / 1000).toFixed(1) + 'k' : '98.4k'}
               </span>
-              <span className="text-[11px] text-studio-text font-black">
+              <span className="text-[10px] sm:text-[11px] text-studio-text font-black">
                 Appreciations
               </span>
             </div>
@@ -184,7 +184,7 @@ export default function ProfileView() {
       </div>
 
       {/* Tabs Row */}
-      <div className="flex items-center gap-2 border-b-2 border-black pb-3">
+      <div className="flex items-center gap-1.5 sm:gap-2 border-b-2 border-black pb-3 overflow-x-auto scrollbar-none">
         {[
           { id: 'posts', label: 'My Works', icon: Grid, count: userPosts.length },
           { id: 'saved', label: 'Saved Archive', icon: Bookmark, count: savedPosts.length },
@@ -196,7 +196,7 @@ export default function ProfileView() {
             <button
               key={tab.id}
               onClick={() => setActiveProfileTab(tab.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black border-2 border-black transition-all ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-black border-2 border-black whitespace-nowrap transition-all ${
                 isActive
                   ? 'bg-studio-btn-dark text-white dark:text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
                   : 'bg-studio-card text-studio-text hover:bg-studio-sidebar shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'

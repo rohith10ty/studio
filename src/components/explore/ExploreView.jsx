@@ -29,7 +29,7 @@ export default function ExploreView() {
   });
 
   return (
-    <div className="w-full flex flex-col gap-6 select-none animate-fade-in pb-16">
+    <div className="w-full flex flex-col gap-5 sm:gap-6 select-none animate-fade-in pb-20">
       {/* Search Header with Black Border */}
       <div className="flex flex-col gap-3">
         <div className="relative w-full">
@@ -44,12 +44,12 @@ export default function ExploreView() {
         </div>
 
         {/* Categories Bar */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+        <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 scrollbar-none">
           {categories.map(cat => (
             <button
               key={cat}
               onClick={() => setExploreCategory(cat)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-black border-2 border-black whitespace-nowrap transition-colors ${
+              className={`px-3 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-black border-2 border-black whitespace-nowrap transition-colors ${
                 exploreCategory === cat
                   ? 'bg-studio-btn-dark text-white dark:text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
                   : 'bg-studio-card text-studio-text hover:bg-studio-sidebar shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'

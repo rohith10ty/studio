@@ -56,30 +56,30 @@ export default function PostCard({ post }) {
   const isOwner = currentUser.id === post.author.id;
 
   return (
-    <article className="w-full rounded-2xl bg-studio-card border-2 border-black p-5 transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col gap-4">
+    <article className="w-full rounded-2xl bg-studio-card border-2 border-black p-3.5 sm:p-5 transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col gap-3 sm:gap-4 overflow-hidden min-w-0">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
+      <div className="flex items-center justify-between gap-2 min-w-0">
+        <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 overflow-hidden">
           <img
             src={post.author.avatar}
             alt={post.author.name}
-            className="w-10 h-10 rounded-full object-cover ring-2 ring-black"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-cover ring-2 ring-black shrink-0"
           />
-          <div className="flex flex-col">
+          <div className="flex flex-col min-w-0">
             <div className="flex items-center gap-1.5 flex-wrap">
-              <span className="font-black text-sm text-studio-text">
+              <span className="font-black text-xs sm:text-sm text-studio-text truncate">
                 {post.author.name}
               </span>
               {post.author.isVerified && (
-                <CheckCircle className="w-4 h-4 text-sky-500 fill-sky-500/20 stroke-black stroke-[1.5]" />
+                <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-sky-500 fill-sky-500/20 stroke-black stroke-[1.5] shrink-0" />
               )}
               {post.author.badge && (
-                <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md bg-studio-sidebar border-2 border-black shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] text-studio-text">
+                <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-wider px-1.5 sm:px-2 py-0.5 rounded-md bg-studio-sidebar border-2 border-black shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] text-studio-text shrink-0">
                   {post.author.badge}
                 </span>
               )}
             </div>
-            <div className="flex items-center gap-1.5 text-[11px] text-studio-text/80 font-bold">
+            <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] text-studio-text/80 font-bold truncate">
               <span>@{post.author.handle}</span>
               <span>•</span>
               <span>{post.timestamp}</span>
@@ -181,18 +181,18 @@ export default function PostCard({ post }) {
       )}
 
       {/* Action Bar */}
-      <div className="flex items-center justify-between pt-2 border-t-2 border-black">
-        <div className="flex items-center gap-3 sm:gap-4">
+      <div className="flex items-center justify-between gap-1.5 pt-2 border-t-2 border-black w-full min-w-0">
+        <div className="flex items-center gap-1.5 sm:gap-4 overflow-x-auto scrollbar-none">
           <button
             onClick={handleLike}
-            className={`flex items-center gap-1.5 px-3 py-1 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] text-xs font-black transition-all ${
+            className={`flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] text-[11px] sm:text-xs font-black transition-all ${
               post.isLiked
                 ? 'bg-rose-500 text-white'
                 : 'bg-studio-sidebar text-studio-text hover:opacity-85'
             }`}
           >
             <Heart
-              className={`w-4 h-4 ${
+              className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
                 post.isLiked ? 'fill-white stroke-black stroke-[1.5]' : 'stroke-black stroke-[2.5]'
               } ${isLikeAnimating ? 'animate-heart-burst' : ''}`}
             />
@@ -201,30 +201,30 @@ export default function PostCard({ post }) {
 
           <button
             onClick={() => setShowComments(!showComments)}
-            className="flex items-center gap-1.5 px-3 py-1 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-studio-sidebar text-studio-text hover:opacity-85 text-xs font-black transition-opacity"
+            className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-studio-sidebar text-studio-text hover:opacity-85 text-[11px] sm:text-xs font-black transition-opacity"
           >
-            <MessageCircle className="w-4 h-4 stroke-[2.5]" />
+            <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
             <span>{post.comments?.length || 0}</span>
           </button>
 
           <button
             onClick={() => setShareModalData(post)}
-            className="flex items-center gap-1.5 px-3 py-1 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-studio-sidebar text-studio-text hover:opacity-85 text-xs font-black transition-opacity"
+            className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-studio-sidebar text-studio-text hover:opacity-85 text-[11px] sm:text-xs font-black transition-opacity"
           >
-            <Share2 className="w-4 h-4 stroke-[2.5]" />
+            <Share2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
             <span>{post.sharesCount}</span>
           </button>
         </div>
 
         <button
           onClick={() => toggleSavePost(post.id)}
-          className={`p-1.5 px-2 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-colors ${
+          className={`p-1 sm:p-1.5 px-1.5 sm:px-2 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-colors shrink-0 ${
             post.isSaved
               ? 'bg-studio-btn-dark text-white dark:text-black'
               : 'bg-studio-sidebar text-studio-text hover:opacity-85'
           }`}
         >
-          <Bookmark className={`w-4 h-4 stroke-[2.5] ${post.isSaved ? 'fill-current' : ''}`} />
+          <Bookmark className={`w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5] ${post.isSaved ? 'fill-current' : ''}`} />
         </button>
       </div>
 

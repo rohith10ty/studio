@@ -41,7 +41,7 @@ export default function NotificationsView() {
   };
 
   return (
-    <div className="w-full flex flex-col gap-6 select-none animate-fade-in pb-16">
+    <div className="w-full flex flex-col gap-5 sm:gap-6 select-none animate-fade-in pb-20">
       {/* Header */}
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-black text-studio-text font-outfit">
