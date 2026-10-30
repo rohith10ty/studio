@@ -5,50 +5,50 @@
 @layer base {
   :root,
   html.light {
-    /* Light Palette: https://colorhunt.co/palette/ebe2ccded6c1cfc6b1b7b09e */
-    /* Color 1: #EBE2CC - Canvas backdrop */
+    /* Exact Color Hunt Light Palette: https://colorhunt.co/palette/ebe2ccded6c1cfc6b1b7b09e */
+    /* 1. Canvas / Feed Backdrop */
     --studio-canvas: #EBE2CC;
-    /* Color 2: #DED6C1 - Sidebars & structural panels */
+    /* 2. Sidebars (Left & Right) */
     --studio-sidebar: #DED6C1;
-    /* Crisp elevated card surface so cards pop cleanly from #EBE2CC */
-    --studio-card: #FFFFFF;
-    /* Card inner wells & search */
-    --studio-card-alt: #F7F3E9;
-    /* Color 3: #CFC6B1 - Chips, tags, active tabs, inputs */
-    --studio-chip: #CFC6B1;
-    /* Color 4: #B7B09E - Defined borders & outlines */
+    /* 3. Cards & Posts */
+    --studio-card: #CFC6B1;
+    --studio-card-alt: #DED6C1;
+    /* 4. Buttons, Tags, Pills, Borders */
+    --studio-chip: #B7B09E;
     --studio-border: #B7B09E;
-    --studio-border-strong: #968F7E;
-    /* High contrast text */
+    --studio-border-strong: #8E8674;
+    --studio-btn-bg: #B7B09E;
+    --studio-btn-text: #2A2438;
+    --studio-btn-dark: #2A2438;
+    --studio-btn-dark-text: #EBE2CC;
+    /* Text */
     --studio-text: #2A2438;
-    --studio-subtext: #5C5470;
-    /* High contrast buttons */
-    --studio-btn-bg: #2A2438;
-    --studio-btn-text: #EBE2CC;
-    --studio-shadow: 0 4px 20px -2px rgba(42, 36, 56, 0.08), 0 2px 6px -1px rgba(42, 36, 56, 0.04);
+    --studio-subtext: #4E4738;
+    --studio-shadow: 0 4px 14px 0 rgba(42, 36, 56, 0.12), 0 1px 3px 0 rgba(42, 36, 56, 0.08);
     color-scheme: light;
   }
 
   html.dark {
-    /* Dark Palette: https://colorhunt.co/palette/dbd8e35c5470352f442a2438 */
-    /* Deep dark canvas backdrop */
-    --studio-canvas: #1E1928;
-    /* Color 1: #2A2438 - Sidebars & structural panels */
-    --studio-sidebar: #2A2438;
-    /* Color 2: #352F44 - Elevated Cards */
-    --studio-card: #352F44;
-    /* Card inner wells & search */
-    --studio-card-alt: #2C263A;
-    /* Color 3: #5C5470 - Chips, tags, active tabs, borders */
-    --studio-chip: #5C5470;
-    --studio-border: #5C5470;
-    --studio-border-strong: #786F8F;
-    /* Color 4: #DBD8E3 - High contrast text & primary buttons */
-    --studio-text: #DBD8E3;
-    --studio-subtext: #9E96B0;
+    /* Exact Color Hunt Dark Palette: https://colorhunt.co/palette/dbd8e35c5470352f442a2438 */
+    /* 1. Canvas / Feed Backdrop */
+    --studio-canvas: #2A2438;
+    /* 2. Sidebars (Left & Right) */
+    --studio-sidebar: #352F44;
+    /* 3. Cards & Posts */
+    --studio-card: #5C5470;
+    --studio-card-alt: #352F44;
+    /* 4. Buttons, Tags, Highlights, Text */
+    --studio-chip: #352F44;
+    --studio-border: #352F44;
+    --studio-border-strong: #DBD8E3;
     --studio-btn-bg: #DBD8E3;
     --studio-btn-text: #2A2438;
-    --studio-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 4px 10px -2px rgba(0, 0, 0, 0.35);
+    --studio-btn-dark: #DBD8E3;
+    --studio-btn-dark-text: #2A2438;
+    /* Text */
+    --studio-text: #DBD8E3;
+    --studio-subtext: #E2DFE9;
+    --studio-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.45);
     color-scheme: dark;
   }
 

@@ -52,24 +52,24 @@ export default function Sidebar() {
   return (
     <aside
       data-lenis-prevent
-      className="hidden md:flex flex-col justify-between w-60 lg:w-64 h-screen sticky top-0 px-4 py-6 border-r border-studio-border bg-studio-sidebar select-none z-30 overflow-y-auto"
+      className="hidden md:flex flex-col justify-between w-60 lg:w-64 h-screen sticky top-0 px-4 py-6 border-r-2 border-studio-border bg-studio-sidebar select-none z-30 overflow-y-auto shadow-sm"
     >
-      {/* Top Branding & Navigation */}
+      {/* Top Section */}
       <div className="flex flex-col gap-6">
         {/* Brand & Theme Switcher Header */}
         <div className="flex items-center justify-between px-2 pt-1">
           <span
             onClick={() => setActiveTab('feed')}
-            className="font-bold text-2xl tracking-tight text-studio-text cursor-pointer hover:opacity-80 transition-opacity font-outfit"
+            className="font-extrabold text-2xl tracking-tight text-studio-text cursor-pointer hover:opacity-85 transition-opacity font-outfit"
           >
             Studio
           </span>
 
-          {/* Theme Switcher in Top Bar */}
+          {/* Theme Switcher Button */}
           <button
             onClick={toggleTheme}
             type="button"
-            className="p-2 rounded-xl border border-studio-border bg-studio-card text-studio-text hover:border-studio-borderStrong transition-all shadow-sm"
+            className="p-2 rounded-xl border-2 border-studio-border bg-studio-card text-studio-text hover:border-studio-borderStrong transition-all shadow-sm"
             title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} mode`}
           >
             {theme === 'dark' ? (
@@ -89,14 +89,14 @@ export default function Sidebar() {
               <button
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
-                className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-bold transition-all ${
                   isActive
-                    ? 'bg-studio-card text-studio-text border border-studio-border shadow-sm'
-                    : 'text-studio-muted hover:text-studio-text hover:bg-studio-card/50'
+                    ? 'bg-studio-card text-studio-text border-2 border-studio-border shadow-sm'
+                    : 'text-studio-text/80 hover:text-studio-text hover:bg-studio-card/60'
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <Icon className="w-4 h-4 stroke-[2]" />
+                  <Icon className="w-4 h-4 stroke-[2.5]" />
                   <span>{item.label}</span>
                 </div>
 
@@ -119,54 +119,54 @@ export default function Sidebar() {
               setIsCreatePostOpen(true);
             }
           }}
-          className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl font-bold text-xs tracking-wide bg-studio-btn-bg text-studio-btn-text hover:opacity-90 active:scale-[0.98] transition-all shadow-sm"
+          className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl font-bold text-xs tracking-wide bg-studio-btn-dark text-studio-btn-darkText hover:opacity-90 active:scale-[0.98] transition-all shadow-md"
         >
-          <Plus className="w-4 h-4 stroke-[2.5]" />
+          <Plus className="w-4 h-4 stroke-[3]" />
           <span>New Post</span>
         </button>
       </div>
 
       {/* Bottom User Profile Section */}
-      <div className="pt-4 border-t border-studio-border">
+      <div className="pt-4 border-t-2 border-studio-border">
         {isAuthenticated ? (
           <div className="flex flex-col gap-2">
             <div
               onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-              className="flex items-center justify-between p-2 rounded-xl bg-studio-card border border-studio-border hover:border-studio-borderStrong cursor-pointer transition-all shadow-sm"
+              className="flex items-center justify-between p-2 rounded-xl bg-studio-card border-2 border-studio-border hover:border-studio-borderStrong cursor-pointer transition-all shadow-sm"
             >
               <div className="flex items-center gap-2.5 overflow-hidden">
                 <img
                   src={currentUser.avatar}
                   alt={currentUser.name}
-                  className="w-8 h-8 rounded-full object-cover shrink-0 ring-1 ring-studio-border"
+                  className="w-8 h-8 rounded-full object-cover shrink-0 ring-2 ring-studio-border"
                 />
                 <div className="flex flex-col truncate">
-                  <span className="font-semibold text-xs text-studio-text truncate">
+                  <span className="font-bold text-xs text-studio-text truncate">
                     {currentUser.name}
                   </span>
-                  <span className="text-[11px] text-studio-muted truncate">
+                  <span className="text-[11px] text-studio-subtext font-medium truncate">
                     @{currentUser.handle}
                   </span>
                 </div>
               </div>
               <ChevronDown
-                className={`w-4 h-4 text-studio-muted transition-transform duration-200 shrink-0 ${
+                className={`w-4 h-4 text-studio-text transition-transform duration-200 shrink-0 ${
                   isUserMenuOpen ? 'rotate-180' : ''
                 }`}
               />
             </div>
 
-            {/* In-flow Collapsible Menu */}
+            {/* In-flow Menu */}
             {isUserMenuOpen && (
-              <div className="flex flex-col gap-1 p-1.5 rounded-xl bg-studio-card border border-studio-border animate-fade-in shadow-sm">
+              <div className="flex flex-col gap-1 p-1.5 rounded-xl bg-studio-card border-2 border-studio-border animate-fade-in shadow-md">
                 <button
                   onClick={() => {
                     setActiveTab('profile');
                     setIsUserMenuOpen(false);
                   }}
-                  className="w-full flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg text-studio-text hover:bg-studio-sidebar transition-colors"
+                  className="w-full flex items-center gap-2 px-3 py-2 text-xs font-bold rounded-lg text-studio-text hover:bg-studio-sidebar transition-colors"
                 >
-                  <User className="w-3.5 h-3.5 text-studio-muted" />
+                  <User className="w-3.5 h-3.5" />
                   <span>View Profile</span>
                 </button>
                 <button
@@ -174,7 +174,7 @@ export default function Sidebar() {
                     logout();
                     setIsUserMenuOpen(false);
                   }}
-                  className="w-full flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg text-rose-500 hover:bg-rose-500/10 transition-colors"
+                  className="w-full flex items-center gap-2 px-3 py-2 text-xs font-bold rounded-lg text-rose-500 hover:bg-rose-500/10 transition-colors"
                 >
                   <LogOut className="w-3.5 h-3.5" />
                   <span>Log Out</span>
@@ -185,7 +185,7 @@ export default function Sidebar() {
         ) : (
           <button
             onClick={() => openAuthModal('login')}
-            className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-studio-btn-bg text-studio-btn-text text-xs font-bold hover:opacity-90 transition-opacity"
+            className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-studio-btn-dark text-studio-btn-darkText text-xs font-bold hover:opacity-90 transition-opacity"
           >
             <LogIn className="w-3.5 h-3.5" />
             <span>Sign In</span>

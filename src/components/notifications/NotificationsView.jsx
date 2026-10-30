@@ -32,9 +32,9 @@ export default function NotificationsView() {
       case 'comment':
         return <MessageCircle className="w-3.5 h-3.5 text-indigo-400" />;
       case 'follow':
-        return <UserPlus className="w-3.5 h-3.5 text-emerald-400" />;
+        return <UserPlus className="w-3.5 h-3.5 text-emerald-500" />;
       case 'mention':
-        return <AtSign className="w-3.5 h-3.5 text-amber-400" />;
+        return <AtSign className="w-3.5 h-3.5 text-amber-500" />;
       default:
         return null;
     }
@@ -44,15 +44,15 @@ export default function NotificationsView() {
     <div className="w-full flex flex-col gap-5 select-none animate-fade-in pb-16">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-bold text-studio-text font-outfit">
+        <h1 className="text-xl font-extrabold text-studio-text font-outfit">
           Notifications
         </h1>
 
         <button
           onClick={markAllNotificationsAsRead}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-studio-border bg-studio-card text-xs font-semibold text-studio-text hover:bg-studio-surface transition-colors shadow-sm"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border-2 border-studio-border bg-studio-card text-xs font-bold text-studio-text hover:bg-studio-sidebar transition-colors shadow-sm"
         >
-          <CheckCheck className="w-3.5 h-3.5 text-emerald-500" />
+          <CheckCheck className="w-3.5 h-3.5 text-emerald-500 stroke-[2.5]" />
           <span>Mark all read</span>
         </button>
       </div>
@@ -68,10 +68,10 @@ export default function NotificationsView() {
           <button
             key={tab.id}
             onClick={() => setFilter(tab.id)}
-            className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-colors ${
               filter === tab.id
-                ? 'bg-studio-card text-studio-text border border-studio-border shadow-sm'
-                : 'text-studio-muted hover:text-studio-text'
+                ? 'bg-studio-btn-dark text-studio-btn-darkText shadow-sm'
+                : 'bg-studio-card text-studio-text border-2 border-studio-border hover:bg-studio-sidebar'
             }`}
           >
             {tab.label}
@@ -86,10 +86,10 @@ export default function NotificationsView() {
             <div
               key={item.id}
               onClick={() => markNotificationAsRead(item.id)}
-              className={`p-3.5 rounded-2xl border transition-all flex items-center justify-between gap-3 cursor-pointer shadow-sm ${
+              className={`p-3.5 rounded-2xl border-2 transition-all flex items-center justify-between gap-3 cursor-pointer shadow-studio-card ${
                 item.isRead
-                  ? 'bg-studio-card/60 border-studio-border/50'
-                  : 'bg-studio-card border-studio-border ring-1 ring-studio-border/30'
+                  ? 'bg-studio-card border-studio-border'
+                  : 'bg-studio-card border-studio-border ring-2 ring-studio-borderStrong'
               }`}
             >
               <div className="flex items-center gap-3 overflow-hidden">
@@ -97,23 +97,23 @@ export default function NotificationsView() {
                   <img
                     src={item.user.avatar}
                     alt={item.user.name}
-                    className="w-10 h-10 rounded-full object-cover ring-1 ring-studio-border"
+                    className="w-10 h-10 rounded-full object-cover ring-2 ring-studio-border"
                   />
-                  <div className="absolute -bottom-1 -right-1 p-1 rounded-full bg-studio-card border border-studio-border shadow-sm">
+                  <div className="absolute -bottom-1 -right-1 p-1 rounded-full bg-studio-sidebar border border-studio-border shadow-sm">
                     {getIcon(item.type)}
                   </div>
                 </div>
 
                 <div className="flex flex-col overflow-hidden">
                   <div className="flex items-center gap-1.5 flex-wrap">
-                    <span className="font-semibold text-xs text-studio-text">
+                    <span className="font-bold text-xs text-studio-text">
                       {item.user.name}
                     </span>
-                    <span className="text-xs text-studio-muted">
+                    <span className="text-xs text-studio-subtext font-medium">
                       {item.actionText}
                     </span>
                   </div>
-                  <span className="text-[10px] text-studio-muted">
+                  <span className="text-[10px] text-studio-subtext font-semibold">
                     {item.time}
                   </span>
                 </div>
@@ -126,19 +126,19 @@ export default function NotificationsView() {
                       e.stopPropagation();
                       toggleFollowUser(item.user.handle, item.user.name);
                     }}
-                    className="px-3 py-1 rounded-xl bg-studio-btn-bg text-studio-btn-text text-xs font-semibold shadow-sm hover:opacity-90"
+                    className="px-3 py-1 rounded-xl bg-studio-btn-dark text-studio-btn-darkText text-xs font-bold shadow-sm hover:opacity-90"
                   >
                     Follow
                   </button>
                 )}
                 {!item.isRead && (
-                  <div className="w-2 h-2 rounded-full bg-rose-500 shrink-0" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-rose-500 shrink-0" />
                 )}
               </div>
             </div>
           ))
         ) : (
-          <div className="py-16 text-center text-xs text-studio-muted">
+          <div className="py-16 text-center text-xs text-studio-subtext font-bold">
             No notifications.
           </div>
         )}

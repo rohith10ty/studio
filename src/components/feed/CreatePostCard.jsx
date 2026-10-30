@@ -45,7 +45,7 @@ export default function CreatePostCard() {
   };
 
   return (
-    <div className="w-full p-4 sm:p-5 rounded-2xl bg-studio-card border border-studio-border shadow-studio-card transition-all">
+    <div className="w-full p-4 sm:p-5 rounded-2xl bg-studio-card border-2 border-studio-border shadow-studio-card transition-all">
       <div className="flex gap-3.5">
         <img
           src={currentUser.avatar}
@@ -54,19 +54,19 @@ export default function CreatePostCard() {
         />
 
         <div className="flex-1 flex flex-col gap-3">
-          {/* Inner Well for text input */}
-          <div className="p-3 rounded-xl bg-studio-cardAlt border border-studio-border/50">
+          {/* Inner Textarea Well */}
+          <div className="p-3 rounded-xl bg-studio-sidebar border-2 border-studio-border">
             <textarea
               value={content}
               onFocus={() => setIsExpanded(true)}
               onChange={(e) => setContent(e.target.value)}
               placeholder={`What are you crafting today, ${currentUser.name.split(' ')[0]}?`}
               rows={isExpanded ? 3 : 2}
-              className="w-full bg-transparent resize-none text-sm text-studio-text placeholder-studio-muted focus:outline-none leading-relaxed transition-all"
+              className="w-full bg-transparent resize-none text-sm font-medium text-studio-text placeholder-studio-subtext focus:outline-none leading-relaxed transition-all"
             />
 
             {mediaPreview && (
-              <div className="relative mt-2 rounded-xl overflow-hidden border border-studio-border max-h-60 group">
+              <div className="relative mt-2 rounded-xl overflow-hidden border-2 border-studio-border max-h-60 group">
                 <img
                   src={mediaPreview}
                   alt="Upload preview"
@@ -85,18 +85,18 @@ export default function CreatePostCard() {
 
           {isExpanded && (
             <div className="flex flex-wrap items-center gap-1.5 pt-1">
-              <span className="text-[11px] font-bold text-studio-muted flex items-center gap-1">
-                <Hash className="w-3 h-3" /> Tags:
+              <span className="text-[11px] font-bold text-studio-text flex items-center gap-1">
+                <Hash className="w-3 h-3 stroke-[2.5]" /> Tags:
               </span>
               {suggestedTags.map(tag => (
                 <button
                   key={tag}
                   type="button"
                   onClick={() => setSelectedTag(selectedTag === tag ? '' : tag)}
-                  className={`text-xs px-2.5 py-0.5 rounded-md font-semibold transition-colors ${
+                  className={`text-xs px-2.5 py-0.5 rounded-md font-bold transition-colors ${
                     selectedTag === tag
-                      ? 'bg-studio-btn-bg text-studio-btn-text'
-                      : 'bg-studio-chip border border-studio-border text-studio-text hover:opacity-85'
+                      ? 'bg-studio-btn-dark text-studio-btn-darkText'
+                      : 'bg-studio-sidebar border border-studio-border text-studio-text hover:opacity-85'
                   }`}
                 >
                   #{tag}
@@ -110,9 +110,9 @@ export default function CreatePostCard() {
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="p-1.5 px-2 rounded-lg text-studio-text hover:bg-studio-cardAlt border border-studio-border/60 transition-colors flex items-center gap-1.5 text-xs font-semibold"
+                className="p-1.5 px-2.5 rounded-lg text-studio-text hover:bg-studio-sidebar border border-studio-border transition-colors flex items-center gap-1.5 text-xs font-bold"
               >
-                <Image className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                <Image className="w-4 h-4 text-emerald-600 dark:text-emerald-300" />
                 <span className="hidden sm:inline">Photo</span>
               </button>
               <input
@@ -129,16 +129,16 @@ export default function CreatePostCard() {
                   setMediaPreview('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80');
                   setIsExpanded(true);
                 }}
-                className="p-1.5 px-2 rounded-lg text-studio-text hover:bg-studio-cardAlt border border-studio-border/60 transition-colors flex items-center gap-1.5 text-xs font-semibold"
+                className="p-1.5 px-2.5 rounded-lg text-studio-text hover:bg-studio-sidebar border border-studio-border transition-colors flex items-center gap-1.5 text-xs font-bold"
               >
-                <Sparkles className="w-4 h-4 text-amber-500" />
+                <Sparkles className="w-4 h-4 text-amber-500 fill-amber-500" />
                 <span className="hidden sm:inline">Artwork</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setPrivacy(privacy === 'Public' ? 'Private' : 'Public')}
-                className="p-1.5 px-2 rounded-lg text-studio-text hover:bg-studio-cardAlt border border-studio-border/60 transition-colors flex items-center gap-1 text-xs font-semibold"
+                className="p-1.5 px-2.5 rounded-lg text-studio-text hover:bg-studio-sidebar border border-studio-border transition-colors flex items-center gap-1 text-xs font-bold"
               >
                 {privacy === 'Public' ? <Globe className="w-3.5 h-3.5" /> : <Lock className="w-3.5 h-3.5" />}
                 <span>{privacy}</span>
@@ -150,8 +150,8 @@ export default function CreatePostCard() {
               disabled={!content.trim() && !mediaPreview}
               className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-all ${
                 content.trim() || mediaPreview
-                  ? 'bg-studio-btn-bg text-studio-btn-text hover:opacity-90 shadow-sm active:scale-95'
-                  : 'bg-studio-border/50 text-studio-muted/50 cursor-not-allowed'
+                  ? 'bg-studio-btn-dark text-studio-btn-darkText hover:opacity-90 shadow-md active:scale-95'
+                  : 'bg-studio-border text-studio-text/40 cursor-not-allowed'
               }`}
             >
               <span>Publish</span>

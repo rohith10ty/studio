@@ -19,7 +19,7 @@ export default function StoriesBar() {
 
   return (
     <div className="w-full pb-1 select-none">
-      <div className="flex items-center gap-3 overflow-x-auto py-1 scrollbar-none">
+      <div className="flex items-center gap-3.5 overflow-x-auto py-1 scrollbar-none">
         {/* Add Story Button */}
         <div className="flex flex-col items-center gap-1.5 shrink-0 cursor-pointer group">
           <div
@@ -30,14 +30,14 @@ export default function StoriesBar() {
                 fileInputRef.current?.click();
               }
             }}
-            className="relative w-14 h-14 rounded-full p-0.5 border border-dashed border-studio-border group-hover:border-studio-text transition-all"
+            className="relative w-14 h-14 rounded-full p-0.5 border-2 border-dashed border-studio-border group-hover:border-studio-text transition-all bg-studio-sidebar"
           >
             <img
               src={currentUser.avatar}
               alt={currentUser.name}
               className="w-full h-full rounded-full object-cover"
             />
-            <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-studio-btn-bg text-studio-btn-text flex items-center justify-center">
+            <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-studio-btn-dark text-studio-btn-darkText flex items-center justify-center">
               <Plus className="w-3 h-3 stroke-[2.5]" />
             </div>
             <input
@@ -48,7 +48,7 @@ export default function StoriesBar() {
               className="hidden"
             />
           </div>
-          <span className="text-[11px] font-medium text-studio-text truncate max-w-[60px]">
+          <span className="text-[11px] font-bold text-studio-text truncate max-w-[60px]">
             Your story
           </span>
         </div>
@@ -63,11 +63,11 @@ export default function StoriesBar() {
             <div
               className={`w-14 h-14 rounded-full p-[2px] transition-transform group-hover:scale-105 ${
                 story.hasUnseen
-                  ? 'border-2 border-studio-text'
-                  : 'border border-studio-border/60'
+                  ? 'border-2 border-studio-borderStrong ring-2 ring-studio-border'
+                  : 'border-2 border-studio-border'
               }`}
             >
-              <div className="w-full h-full rounded-full p-0.5 bg-studio-bg">
+              <div className="w-full h-full rounded-full p-0.5 bg-studio-card">
                 <img
                   src={story.avatar}
                   alt={story.userName}
@@ -75,7 +75,7 @@ export default function StoriesBar() {
                 />
               </div>
             </div>
-            <span className="text-[11px] font-medium text-studio-muted group-hover:text-studio-text transition-colors truncate max-w-[64px]">
+            <span className="text-[11px] font-bold text-studio-text group-hover:underline transition-colors truncate max-w-[64px]">
               {story.userName.split(' ')[0]}
             </span>
           </div>

@@ -33,13 +33,13 @@ export default function ExploreView() {
       {/* Search Header */}
       <div className="flex flex-col gap-3">
         <div className="relative w-full">
-          <Search className="w-4 h-4 text-studio-muted absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-studio-text absolute left-3.5 top-1/2 -translate-y-1/2 stroke-[2.5]" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search creators, works, tags..."
-            className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-studio-card border border-studio-border text-xs text-studio-text placeholder-studio-muted focus:outline-none focus:border-studio-borderStrong transition-colors shadow-sm"
+            className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-studio-card border-2 border-studio-border text-xs font-bold text-studio-text placeholder-studio-subtext focus:outline-none focus:border-studio-borderStrong transition-colors shadow-sm"
           />
         </div>
 
@@ -51,8 +51,8 @@ export default function ExploreView() {
               onClick={() => setExploreCategory(cat)}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-colors ${
                 exploreCategory === cat
-                  ? 'bg-studio-btn-bg text-studio-btn-text shadow-sm'
-                  : 'bg-studio-card text-studio-text border border-studio-border hover:border-studio-borderStrong'
+                  ? 'bg-studio-btn-dark text-studio-btn-darkText shadow-md'
+                  : 'bg-studio-card text-studio-text border-2 border-studio-border hover:bg-studio-sidebar'
               }`}
             >
               {cat}
@@ -86,7 +86,7 @@ export default function ExploreView() {
                   comments: [],
                 })
               }
-              className="group relative rounded-2xl overflow-hidden cursor-pointer bg-studio-card border border-studio-border shadow-studio-card transition-all hover:-translate-y-0.5"
+              className="group relative rounded-2xl overflow-hidden cursor-pointer bg-studio-card border-2 border-studio-border shadow-studio-card transition-all hover:-translate-y-0.5"
             >
               <div className="relative w-full h-64 overflow-hidden">
                 <img
@@ -96,19 +96,19 @@ export default function ExploreView() {
                   loading="lazy"
                 />
 
-                <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-md text-[10px] font-bold bg-black/60 text-white backdrop-blur-sm">
+                <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-md text-[10px] font-bold bg-black/70 text-white backdrop-blur-sm">
                   {item.category}
                 </span>
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-3.5 flex flex-col justify-end">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-3.5 flex flex-col justify-end">
                   <span className="text-xs font-bold text-white">
                     {item.title}
                   </span>
-                  <div className="flex items-center justify-between text-white/90 text-[11px] mt-1 font-semibold">
+                  <div className="flex items-center justify-between text-white text-[11px] mt-1 font-semibold">
                     <span>{item.author}</span>
                     <div className="flex items-center gap-2.5">
                       <span className="flex items-center gap-1">
-                        <Heart className="w-3.5 h-3.5 fill-white" /> {item.likes}
+                        <Heart className="w-3.5 h-3.5 fill-white text-white" /> {item.likes}
                       </span>
                       <span className="flex items-center gap-1">
                         <MessageCircle className="w-3.5 h-3.5" /> {item.comments}
@@ -121,7 +121,7 @@ export default function ExploreView() {
           ))}
         </div>
       ) : (
-        <div className="w-full py-16 text-center text-xs text-studio-muted">
+        <div className="w-full py-16 text-center text-xs text-studio-subtext font-bold">
           No works found.
         </div>
       )}

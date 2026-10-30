@@ -56,7 +56,7 @@ export default function PostCard({ post }) {
   const isOwner = currentUser.id === post.author.id;
 
   return (
-    <article className="w-full rounded-2xl bg-studio-card border border-studio-border p-5 transition-all shadow-studio-card flex flex-col gap-4">
+    <article className="w-full rounded-2xl bg-studio-card border-2 border-studio-border p-5 transition-all shadow-studio-card flex flex-col gap-4">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -74,12 +74,12 @@ export default function PostCard({ post }) {
                 <CheckCircle className="w-3.5 h-3.5 text-sky-500 fill-sky-500/20" />
               )}
               {post.author.badge && (
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-studio-chip border border-studio-border text-studio-text">
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-studio-sidebar border border-studio-border text-studio-text">
                   {post.author.badge}
                 </span>
               )}
             </div>
-            <div className="flex items-center gap-1.5 text-[11px] text-studio-muted font-medium">
+            <div className="flex items-center gap-1.5 text-[11px] text-studio-subtext font-medium">
               <span>@{post.author.handle}</span>
               <span>•</span>
               <span>{post.timestamp}</span>
@@ -91,22 +91,22 @@ export default function PostCard({ post }) {
         <div className="relative">
           <button
             onClick={() => setShowMenu(!showMenu)}
-            className="p-1.5 rounded-lg text-studio-muted hover:text-studio-text hover:bg-studio-cardAlt transition-colors"
+            className="p-1.5 rounded-lg text-studio-text hover:bg-studio-sidebar transition-colors"
           >
             <MoreHorizontal className="w-4 h-4" />
           </button>
 
           {showMenu && (
-            <div className="absolute right-0 top-full mt-1 w-40 rounded-xl bg-studio-card border border-studio-border shadow-studio-modal p-1.5 z-20 animate-fade-in">
+            <div className="absolute right-0 top-full mt-1 w-40 rounded-xl bg-studio-card border-2 border-studio-border shadow-studio-modal p-1.5 z-20 animate-fade-in">
               <button
                 onClick={() => {
                   navigator.clipboard.writeText(`${window.location.origin}/#post-${post.id}`);
                   showToast('Post link copied!', 'info');
                   setShowMenu(false);
                 }}
-                className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs font-semibold rounded-lg text-studio-text hover:bg-studio-cardAlt transition-colors"
+                className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs font-bold rounded-lg text-studio-text hover:bg-studio-sidebar transition-colors"
               >
-                <Copy className="w-3.5 h-3.5 text-studio-muted" />
+                <Copy className="w-3.5 h-3.5 text-studio-text" />
                 <span>Copy Link</span>
               </button>
               <button
@@ -114,9 +114,9 @@ export default function PostCard({ post }) {
                   toggleSavePost(post.id);
                   setShowMenu(false);
                 }}
-                className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs font-semibold rounded-lg text-studio-text hover:bg-studio-cardAlt transition-colors"
+                className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs font-bold rounded-lg text-studio-text hover:bg-studio-sidebar transition-colors"
               >
-                <Bookmark className="w-3.5 h-3.5 text-studio-muted" />
+                <Bookmark className="w-3.5 h-3.5 text-studio-text" />
                 <span>{post.isSaved ? 'Unsave' : 'Save'}</span>
               </button>
               {isOwner && (
@@ -125,7 +125,7 @@ export default function PostCard({ post }) {
                     deletePost(post.id);
                     setShowMenu(false);
                   }}
-                  className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs font-semibold rounded-lg text-rose-500 hover:bg-rose-500/10 transition-colors"
+                  className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs font-bold rounded-lg text-rose-500 hover:bg-rose-500/10 transition-colors"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                   <span>Delete</span>
@@ -137,7 +137,7 @@ export default function PostCard({ post }) {
       </div>
 
       {/* Content Text */}
-      <p className="text-sm text-studio-text leading-relaxed whitespace-pre-line font-normal">
+      <p className="text-sm font-medium text-studio-text leading-relaxed whitespace-pre-line">
         {post.content}
       </p>
 
@@ -147,7 +147,7 @@ export default function PostCard({ post }) {
           {post.tags.map((tag, i) => (
             <span
               key={i}
-              className="text-xs font-semibold px-2.5 py-0.5 rounded-md bg-studio-chip border border-studio-border text-studio-text hover:opacity-85 cursor-pointer transition-opacity"
+              className="text-xs font-bold px-2.5 py-0.5 rounded-md bg-studio-sidebar border border-studio-border text-studio-text hover:opacity-85 cursor-pointer transition-opacity"
             >
               #{tag}
             </span>
@@ -159,7 +159,7 @@ export default function PostCard({ post }) {
       {post.images && post.images.length > 0 && (
         <div
           onClick={() => setPostDetailModal(post)}
-          className={`grid gap-2 rounded-xl overflow-hidden cursor-pointer border border-studio-border/70 ${
+          className={`grid gap-2 rounded-xl overflow-hidden cursor-pointer border-2 border-studio-border ${
             post.images.length === 1 ? 'grid-cols-1' : 'grid-cols-2'
           }`}
         >
@@ -181,19 +181,19 @@ export default function PostCard({ post }) {
       )}
 
       {/* Action Bar */}
-      <div className="flex items-center justify-between pt-2 border-t border-studio-border/60">
+      <div className="flex items-center justify-between pt-2 border-t-2 border-studio-border/60">
         <div className="flex items-center gap-5">
           <button
             onClick={handleLike}
             className={`flex items-center gap-1.5 text-xs font-bold transition-all ${
               post.isLiked
                 ? 'text-rose-500'
-                : 'text-studio-muted hover:text-studio-text'
+                : 'text-studio-text hover:opacity-80'
             }`}
           >
             <Heart
               className={`w-4 h-4 ${
-                post.isLiked ? 'fill-rose-500' : ''
+                post.isLiked ? 'fill-rose-500 text-rose-500' : 'text-studio-text'
               } ${isLikeAnimating ? 'animate-heart-burst' : ''}`}
             />
             <span>{post.likesCount}</span>
@@ -201,7 +201,7 @@ export default function PostCard({ post }) {
 
           <button
             onClick={() => setShowComments(!showComments)}
-            className="flex items-center gap-1.5 text-xs font-bold text-studio-muted hover:text-studio-text transition-colors"
+            className="flex items-center gap-1.5 text-xs font-bold text-studio-text hover:opacity-80 transition-opacity"
           >
             <MessageCircle className="w-4 h-4" />
             <span>{post.comments?.length || 0}</span>
@@ -209,7 +209,7 @@ export default function PostCard({ post }) {
 
           <button
             onClick={() => setShareModalData(post)}
-            className="flex items-center gap-1.5 text-xs font-bold text-studio-muted hover:text-studio-text transition-colors"
+            className="flex items-center gap-1.5 text-xs font-bold text-studio-text hover:opacity-80 transition-opacity"
           >
             <Share2 className="w-4 h-4" />
             <span>{post.sharesCount}</span>
@@ -221,7 +221,7 @@ export default function PostCard({ post }) {
           className={`p-1.5 rounded-lg transition-colors ${
             post.isSaved
               ? 'text-studio-text'
-              : 'text-studio-muted hover:text-studio-text'
+              : 'text-studio-text/80 hover:text-studio-text'
           }`}
         >
           <Bookmark className={`w-4 h-4 ${post.isSaved ? 'fill-current' : ''}`} />
@@ -230,13 +230,13 @@ export default function PostCard({ post }) {
 
       {/* Comments Drawer */}
       {showComments && (
-        <div className="flex flex-col gap-3 pt-3 border-t border-studio-border/60 animate-fade-in">
+        <div className="flex flex-col gap-3 pt-3 border-t-2 border-studio-border/60 animate-fade-in">
           {post.comments && post.comments.length > 0 && (
             <div className="flex flex-col gap-2 max-h-52 overflow-y-auto pr-1">
               {post.comments.map(c => (
                 <div
                   key={c.id}
-                  className="flex items-start gap-2.5 p-2.5 rounded-xl bg-studio-cardAlt border border-studio-border/60"
+                  className="flex items-start gap-2.5 p-2.5 rounded-xl bg-studio-sidebar border border-studio-border"
                 >
                   <img
                     src={c.author.avatar}
@@ -248,11 +248,11 @@ export default function PostCard({ post }) {
                       <span className="font-bold text-xs text-studio-text">
                         {c.author.name}
                       </span>
-                      <span className="text-[10px] text-studio-muted">
+                      <span className="text-[10px] text-studio-subtext font-medium">
                         {c.timestamp}
                       </span>
                     </div>
-                    <p className="text-xs text-studio-text mt-0.5">
+                    <p className="text-xs font-medium text-studio-text mt-0.5">
                       {c.text}
                     </p>
                   </div>
@@ -267,12 +267,12 @@ export default function PostCard({ post }) {
               value={commentInput}
               onChange={(e) => setCommentInput(e.target.value)}
               placeholder="Add your thought..."
-              className="flex-1 px-3.5 py-2 rounded-xl bg-studio-cardAlt border border-studio-border text-xs text-studio-text placeholder-studio-muted focus:outline-none focus:border-studio-text"
+              className="flex-1 px-3.5 py-2 rounded-xl bg-studio-sidebar border-2 border-studio-border text-xs font-medium text-studio-text placeholder-studio-subtext focus:outline-none focus:border-studio-borderStrong"
             />
             <button
               type="submit"
               disabled={!commentInput.trim()}
-              className="p-2 rounded-xl bg-studio-btn-bg text-studio-btn-text disabled:opacity-40 transition-opacity"
+              className="p-2 rounded-xl bg-studio-btn-dark text-studio-btn-darkText disabled:opacity-40 transition-opacity"
             >
               <Send className="w-3.5 h-3.5" />
             </button>

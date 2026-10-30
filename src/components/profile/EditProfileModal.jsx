@@ -52,18 +52,18 @@ export default function EditProfileModal() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in select-none">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in select-none">
       <div
         data-lenis-prevent
-        className="w-full max-w-md max-h-[90vh] overflow-y-auto rounded-2xl bg-studio-card border border-studio-border shadow-studio-modal p-5 flex flex-col gap-4"
+        className="w-full max-w-md max-h-[90vh] overflow-y-auto rounded-2xl bg-studio-card border-2 border-studio-border shadow-studio-modal p-5 flex flex-col gap-4"
       >
-        <div className="flex items-center justify-between pb-2 border-b border-studio-border/40">
-          <h2 className="font-semibold text-sm text-studio-text font-outfit">
+        <div className="flex items-center justify-between pb-2 border-b-2 border-studio-border">
+          <h2 className="font-extrabold text-sm text-studio-text font-outfit">
             Edit Profile
           </h2>
           <button
             onClick={() => setIsEditProfileOpen(false)}
-            className="p-1 rounded-lg text-studio-muted hover:text-studio-text"
+            className="p-1 rounded-lg text-studio-text hover:bg-studio-sidebar"
           >
             <X className="w-4 h-4" />
           </button>
@@ -71,12 +71,12 @@ export default function EditProfileModal() {
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
           <div className="relative">
-            <div className="relative h-24 rounded-xl overflow-hidden bg-black/40 border border-studio-border/50">
+            <div className="relative h-24 rounded-xl overflow-hidden bg-black/40 border-2 border-studio-border">
               <img src={coverImage} alt="Cover" className="w-full h-full object-cover" />
               <button
                 type="button"
                 onClick={() => coverInputRef.current?.click()}
-                className="absolute inset-0 bg-black/40 flex items-center justify-center text-white text-xs gap-1 opacity-80 hover:opacity-100"
+                className="absolute inset-0 bg-black/50 flex items-center justify-center text-white text-xs font-bold gap-1 opacity-90 hover:opacity-100"
               >
                 <Camera className="w-3.5 h-3.5" /> Change Cover
               </button>
@@ -90,12 +90,12 @@ export default function EditProfileModal() {
             </div>
 
             <div className="relative -mt-8 ml-3 inline-block">
-              <div className="w-16 h-16 rounded-xl overflow-hidden ring-2 ring-studio-card bg-black">
+              <div className="w-16 h-16 rounded-xl overflow-hidden ring-4 ring-studio-border bg-black">
                 <img src={avatar} alt="Avatar" className="w-full h-full object-cover" />
                 <button
                   type="button"
                   onClick={() => avatarInputRef.current?.click()}
-                  className="absolute inset-0 bg-black/40 flex items-center justify-center text-white opacity-80 hover:opacity-100"
+                  className="absolute inset-0 bg-black/50 flex items-center justify-center text-white opacity-90 hover:opacity-100"
                 >
                   <Camera className="w-3.5 h-3.5" />
                 </button>
@@ -111,7 +111,7 @@ export default function EditProfileModal() {
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-xs font-medium text-studio-text">
+            <label className="text-xs font-bold text-studio-text">
               Name
             </label>
             <input
@@ -119,16 +119,16 @@ export default function EditProfileModal() {
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="px-3 py-1.5 rounded-xl bg-studio-bg/60 border border-studio-border/50 text-xs text-studio-text focus:outline-none"
+              className="px-3 py-2 rounded-xl bg-studio-sidebar border-2 border-studio-border text-xs font-medium text-studio-text focus:outline-none"
             />
           </div>
 
           <div className="flex flex-col gap-1">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-medium text-studio-text">
+              <label className="text-xs font-bold text-studio-text">
                 Bio
               </label>
-              <span className="text-[10px] text-studio-muted">
+              <span className="text-[10px] font-bold text-studio-subtext">
                 {bio.length}/200
               </span>
             </div>
@@ -137,12 +137,12 @@ export default function EditProfileModal() {
               maxLength={200}
               value={bio}
               onChange={(e) => setBio(e.target.value)}
-              className="px-3 py-1.5 rounded-xl bg-studio-bg/60 border border-studio-border/50 text-xs text-studio-text focus:outline-none resize-none"
+              className="px-3 py-2 rounded-xl bg-studio-sidebar border-2 border-studio-border text-xs font-medium text-studio-text focus:outline-none resize-none"
             />
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-xs font-medium text-studio-text">
+            <label className="text-xs font-bold text-studio-text">
               Location
             </label>
             <input
@@ -150,12 +150,12 @@ export default function EditProfileModal() {
               value={location}
               onChange={(e) => setLocation(e.target.value)}
               placeholder="e.g. Tokyo & San Francisco"
-              className="px-3 py-1.5 rounded-xl bg-studio-bg/60 border border-studio-border/50 text-xs text-studio-text focus:outline-none"
+              className="px-3 py-2 rounded-xl bg-studio-sidebar border-2 border-studio-border text-xs font-medium text-studio-text focus:outline-none"
             />
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-xs font-medium text-studio-text">
+            <label className="text-xs font-bold text-studio-text">
               Website
             </label>
             <input
@@ -163,21 +163,21 @@ export default function EditProfileModal() {
               value={website}
               onChange={(e) => setWebsite(e.target.value)}
               placeholder="https://..."
-              className="px-3 py-1.5 rounded-xl bg-studio-bg/60 border border-studio-border/50 text-xs text-studio-text focus:outline-none"
+              className="px-3 py-2 rounded-xl bg-studio-sidebar border-2 border-studio-border text-xs font-medium text-studio-text focus:outline-none"
             />
           </div>
 
-          <div className="flex items-center justify-end gap-2 pt-2 border-t border-studio-border/30">
+          <div className="flex items-center justify-end gap-2 pt-2 border-t-2 border-studio-border">
             <button
               type="button"
               onClick={() => setIsEditProfileOpen(false)}
-              className="px-3 py-1.5 rounded-lg text-xs font-medium text-studio-muted hover:text-studio-text"
+              className="px-3.5 py-1.5 rounded-xl text-xs font-bold text-studio-text hover:bg-studio-sidebar"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-studio-btn-bg text-studio-btn-text text-xs font-medium hover:opacity-90"
+              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-studio-btn-dark text-studio-btn-darkText text-xs font-bold shadow-md hover:opacity-90"
             >
               <Check className="w-3.5 h-3.5" />
               <span>Save</span>

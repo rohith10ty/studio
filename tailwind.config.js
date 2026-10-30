@@ -22,6 +22,8 @@ export default {
           btn: {
             bg: 'var(--studio-btn-bg)',
             text: 'var(--studio-btn-text)',
+            dark: 'var(--studio-btn-dark)',
+            darkText: 'var(--studio-btn-dark-text)',
           }
         }
       },

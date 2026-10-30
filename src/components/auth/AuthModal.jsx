@@ -53,34 +53,34 @@ export default function AuthModal() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in select-none">
-      <div className="w-full max-w-sm rounded-2xl bg-studio-card border border-studio-border shadow-studio-modal p-6 flex flex-col gap-5">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in select-none">
+      <div className="w-full max-w-sm rounded-2xl bg-studio-card border-2 border-studio-border shadow-studio-modal p-6 flex flex-col gap-5">
         {/* Header */}
-        <div className="flex items-center justify-between pb-2 border-b border-studio-border/40">
-          <span className="font-semibold text-lg text-studio-text font-outfit">
+        <div className="flex items-center justify-between pb-2 border-b-2 border-studio-border">
+          <span className="font-extrabold text-xl text-studio-text font-outfit">
             Studio
           </span>
 
           <button
             onClick={closeAuthModal}
-            className="p-1 rounded-lg text-studio-muted hover:text-studio-text"
+            className="p-1 rounded-lg text-studio-text hover:bg-studio-sidebar"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Tabs */}
-        <div className="flex rounded-xl bg-studio-bg/60 p-1 border border-studio-border/30">
+        <div className="flex rounded-xl bg-studio-sidebar p-1 border-2 border-studio-border">
           <button
             type="button"
             onClick={() => {
               setMode('login');
               setErrors({});
             }}
-            className={`flex-1 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+            className={`flex-1 py-1.5 rounded-lg text-xs font-bold transition-colors ${
               mode === 'login'
-                ? 'bg-studio-card text-studio-text shadow-sm'
-                : 'text-studio-muted hover:text-studio-text'
+                ? 'bg-studio-card text-studio-text shadow-sm border border-studio-border'
+                : 'text-studio-subtext hover:text-studio-text'
             }`}
           >
             Sign In
@@ -91,10 +91,10 @@ export default function AuthModal() {
               setMode('register');
               setErrors({});
             }}
-            className={`flex-1 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+            className={`flex-1 py-1.5 rounded-lg text-xs font-bold transition-colors ${
               mode === 'register'
-                ? 'bg-studio-card text-studio-text shadow-sm'
-                : 'text-studio-muted hover:text-studio-text'
+                ? 'bg-studio-card text-studio-text shadow-sm border border-studio-border'
+                : 'text-studio-subtext hover:text-studio-text'
             }`}
           >
             Register
@@ -105,66 +105,66 @@ export default function AuthModal() {
         <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
           {mode === 'register' && (
             <div className="flex flex-col gap-1">
-              <label className="text-xs font-medium text-studio-text">
+              <label className="text-xs font-bold text-studio-text">
                 Full Name
               </label>
               <div className="relative">
-                <User className="w-3.5 h-3.5 text-studio-muted absolute left-3 top-1/2 -translate-y-1/2" />
+                <User className="w-3.5 h-3.5 text-studio-subtext absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Your Name"
-                  className="w-full pl-8 pr-3 py-2 rounded-xl bg-studio-bg/60 border border-studio-border/50 text-xs text-studio-text placeholder-studio-muted focus:outline-none"
+                  className="w-full pl-8 pr-3 py-2 rounded-xl bg-studio-sidebar border-2 border-studio-border text-xs font-medium text-studio-text placeholder-studio-subtext focus:outline-none"
                 />
               </div>
-              {errors.name && <span className="text-[10px] text-rose-500">{errors.name}</span>}
+              {errors.name && <span className="text-[10px] font-bold text-rose-500">{errors.name}</span>}
             </div>
           )}
 
           <div className="flex flex-col gap-1">
-            <label className="text-xs font-medium text-studio-text">
+            <label className="text-xs font-bold text-studio-text">
               Email
             </label>
             <div className="relative">
-              <Mail className="w-3.5 h-3.5 text-studio-muted absolute left-3 top-1/2 -translate-y-1/2" />
+              <Mail className="w-3.5 h-3.5 text-studio-subtext absolute left-3 top-1/2 -translate-y-1/2" />
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="name@example.com"
-                className="w-full pl-8 pr-3 py-2 rounded-xl bg-studio-bg/60 border border-studio-border/50 text-xs text-studio-text placeholder-studio-muted focus:outline-none"
+                className="w-full pl-8 pr-3 py-2 rounded-xl bg-studio-sidebar border-2 border-studio-border text-xs font-medium text-studio-text placeholder-studio-subtext focus:outline-none"
               />
             </div>
-            {errors.email && <span className="text-[10px] text-rose-500">{errors.email}</span>}
+            {errors.email && <span className="text-[10px] font-bold text-rose-500">{errors.email}</span>}
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-xs font-medium text-studio-text">
+            <label className="text-xs font-bold text-studio-text">
               Password
             </label>
             <div className="relative">
-              <Lock className="w-3.5 h-3.5 text-studio-muted absolute left-3 top-1/2 -translate-y-1/2" />
+              <Lock className="w-3.5 h-3.5 text-studio-subtext absolute left-3 top-1/2 -translate-y-1/2" />
               <input
                 type={showPassword ? 'text' : 'password'}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full pl-8 pr-8 py-2 rounded-xl bg-studio-bg/60 border border-studio-border/50 text-xs text-studio-text placeholder-studio-muted focus:outline-none"
+                className="w-full pl-8 pr-8 py-2 rounded-xl bg-studio-sidebar border-2 border-studio-border text-xs font-medium text-studio-text placeholder-studio-subtext focus:outline-none"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-studio-muted"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-studio-text"
               >
                 {showPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
               </button>
             </div>
-            {errors.password && <span className="text-[10px] text-rose-500">{errors.password}</span>}
+            {errors.password && <span className="text-[10px] font-bold text-rose-500">{errors.password}</span>}
           </div>
 
           <div className="flex items-center justify-between text-xs pt-1">
-            <label className="flex items-center gap-1.5 cursor-pointer text-studio-text text-xs">
+            <label className="flex items-center gap-1.5 cursor-pointer text-studio-text font-bold text-xs">
               <input
                 type="checkbox"
                 checked={rememberMe}
@@ -177,17 +177,17 @@ export default function AuthModal() {
 
           <button
             type="submit"
-            className="w-full py-2.5 rounded-xl bg-studio-btn-bg text-studio-btn-text text-xs font-semibold hover:opacity-90 transition-opacity mt-1"
+            className="w-full py-2.5 rounded-xl bg-studio-btn-dark text-studio-btn-darkText text-xs font-bold hover:opacity-90 transition-opacity mt-1 shadow-md"
           >
             {mode === 'login' ? 'Sign In' : 'Create Account'}
           </button>
         </form>
 
-        <div className="pt-2 border-t border-studio-border/40">
+        <div className="pt-2 border-t-2 border-studio-border">
           <button
             type="button"
             onClick={handleDemoLogin}
-            className="w-full py-2 rounded-xl border border-studio-border/60 text-xs font-medium text-studio-text hover:bg-studio-bg transition-colors"
+            className="w-full py-2 rounded-xl bg-studio-sidebar border-2 border-studio-border text-xs font-bold text-studio-text hover:bg-studio-card transition-colors shadow-sm"
           >
             1-Click Demo Login
           </button>
