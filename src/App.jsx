@@ -47,7 +47,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen w-full bg-studio-bg text-studio-text flex flex-col font-outfit transition-colors duration-200">
+    <div className="min-h-screen w-full bg-studio-canvas text-studio-text flex flex-col font-outfit transition-colors duration-200">
       {/* Mobile Top Navbar */}
       <MobileNavbar />
 
@@ -56,7 +56,7 @@ export default function App() {
         <Sidebar />
 
         {/* Center Main Stage */}
-        <main className="flex-1 min-w-0 max-w-2xl px-4 sm:px-6 py-5 sm:py-7">
+        <main className="flex-1 min-w-0 max-w-2xl px-4 sm:px-6 py-6 sm:py-7">
           {activeTab === 'feed' && <FeedView />}
           {activeTab === 'explore' && <ExploreView />}
           {activeTab === 'notifications' && <NotificationsView />}

@@ -6,56 +6,56 @@
   :root,
   html.light {
     /* Light Palette: https://colorhunt.co/palette/ebe2ccded6c1cfc6b1b7b09e */
-    /* Canvas / Body background */
-    --studio-bg: #EBE2CC;
-    /* Elevated Card Surface */
-    --studio-card: #FAF6ED;
-    /* Secondary surface (sidebars, inputs, inner containers) */
-    --studio-surface: #DED6C1;
-    /* Defined border */
+    /* Color 1: #EBE2CC - Canvas backdrop */
+    --studio-canvas: #EBE2CC;
+    /* Color 2: #DED6C1 - Sidebars & structural panels */
+    --studio-sidebar: #DED6C1;
+    /* Crisp elevated card surface so cards pop cleanly from #EBE2CC */
+    --studio-card: #FFFFFF;
+    /* Card inner wells & search */
+    --studio-card-alt: #F7F3E9;
+    /* Color 3: #CFC6B1 - Chips, tags, active tabs, inputs */
+    --studio-chip: #CFC6B1;
+    /* Color 4: #B7B09E - Defined borders & outlines */
     --studio-border: #B7B09E;
-    /* Subtle divider */
-    --studio-divider: #CFC6B1;
-    /* Primary readable text */
+    --studio-border-strong: #968F7E;
+    /* High contrast text */
     --studio-text: #2A2438;
-    /* Secondary muted text */
-    --studio-muted: #5C5470;
-    /* Pill button & contrast elements */
+    --studio-subtext: #5C5470;
+    /* High contrast buttons */
     --studio-btn-bg: #2A2438;
-    --studio-btn-text: #FAF6ED;
-    /* Card shadow */
+    --studio-btn-text: #EBE2CC;
     --studio-shadow: 0 4px 20px -2px rgba(42, 36, 56, 0.08), 0 2px 6px -1px rgba(42, 36, 56, 0.04);
     color-scheme: light;
   }
 
   html.dark {
     /* Dark Palette: https://colorhunt.co/palette/dbd8e35c5470352f442a2438 */
-    /* Canvas / Body background */
-    --studio-bg: #201B2B;
-    /* Elevated Card Surface */
+    /* Deep dark canvas backdrop */
+    --studio-canvas: #1E1928;
+    /* Color 1: #2A2438 - Sidebars & structural panels */
+    --studio-sidebar: #2A2438;
+    /* Color 2: #352F44 - Elevated Cards */
     --studio-card: #352F44;
-    /* Secondary surface (sidebars, inputs, inner containers) */
-    --studio-surface: #2A2438;
-    /* Defined border */
+    /* Card inner wells & search */
+    --studio-card-alt: #2C263A;
+    /* Color 3: #5C5470 - Chips, tags, active tabs, borders */
+    --studio-chip: #5C5470;
     --studio-border: #5C5470;
-    /* Subtle divider */
-    --studio-divider: #443C56;
-    /* Primary readable text */
+    --studio-border-strong: #786F8F;
+    /* Color 4: #DBD8E3 - High contrast text & primary buttons */
     --studio-text: #DBD8E3;
-    /* Secondary muted text */
-    --studio-muted: #9E96B0;
-    /* Pill button & contrast elements */
+    --studio-subtext: #9E96B0;
     --studio-btn-bg: #DBD8E3;
     --studio-btn-text: #2A2438;
-    /* Card shadow */
-    --studio-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.45);
+    --studio-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 4px 10px -2px rgba(0, 0, 0, 0.35);
     color-scheme: dark;
   }
 
   html {
     font-family: 'Outfit', sans-serif;
     scroll-behavior: smooth;
-    background-color: var(--studio-bg);
+    background-color: var(--studio-canvas);
     color: var(--studio-text);
   }
 
@@ -75,7 +75,7 @@
   }
 
   body {
-    background-color: var(--studio-bg);
+    background-color: var(--studio-canvas);
     color: var(--studio-text);
     overflow-x: hidden;
     transition: background-color 0.2s ease, color 0.2s ease;

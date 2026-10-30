@@ -39,7 +39,7 @@ export default function ExploreView() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search creators, works, tags..."
-            className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-studio-card border border-studio-border text-xs text-studio-text placeholder-studio-muted focus:outline-none focus:border-studio-text transition-colors shadow-sm"
+            className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-studio-card border border-studio-border text-xs text-studio-text placeholder-studio-muted focus:outline-none focus:border-studio-borderStrong transition-colors shadow-sm"
           />
         </div>
 
@@ -49,10 +49,10 @@ export default function ExploreView() {
             <button
               key={cat}
               onClick={() => setExploreCategory(cat)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-colors ${
                 exploreCategory === cat
                   ? 'bg-studio-btn-bg text-studio-btn-text shadow-sm'
-                  : 'bg-studio-card text-studio-muted hover:text-studio-text border border-studio-border'
+                  : 'bg-studio-card text-studio-text border border-studio-border hover:border-studio-borderStrong'
               }`}
             >
               {cat}
@@ -104,7 +104,7 @@ export default function ExploreView() {
                   <span className="text-xs font-bold text-white">
                     {item.title}
                   </span>
-                  <div className="flex items-center justify-between text-white/90 text-[11px] mt-1 font-medium">
+                  <div className="flex items-center justify-between text-white/90 text-[11px] mt-1 font-semibold">
                     <span>{item.author}</span>
                     <div className="flex items-center gap-2.5">
                       <span className="flex items-center gap-1">

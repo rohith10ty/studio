@@ -26,7 +26,7 @@ export default function FeedView() {
       <CreatePostCard />
 
       {/* Feed Filter Segmented Controls */}
-      <div className="flex items-center gap-1.5 pt-1">
+      <div className="flex items-center gap-2 pt-1">
         {[
           { id: 'curated', label: 'Curated' },
           { id: 'latest', label: 'Latest Works' },
@@ -35,10 +35,10 @@ export default function FeedView() {
           <button
             key={tab.id}
             onClick={() => setFeedFilter(tab.id)}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+            className={`px-4 py-1.5 rounded-xl text-xs font-bold transition-all ${
               feedFilter === tab.id
-                ? 'bg-studio-card text-studio-text border border-studio-border shadow-sm'
-                : 'text-studio-muted hover:text-studio-text hover:bg-studio-card/40'
+                ? 'bg-studio-btn-bg text-studio-btn-text shadow-sm'
+                : 'bg-studio-card text-studio-text border border-studio-border hover:border-studio-borderStrong'
             }`}
           >
             {tab.label}

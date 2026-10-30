@@ -9,13 +9,16 @@ export default {
     extend: {
       colors: {
         studio: {
-          bg: 'var(--studio-bg)',
+          canvas: 'var(--studio-canvas)',
+          sidebar: 'var(--studio-sidebar)',
           card: 'var(--studio-card)',
-          surface: 'var(--studio-surface)',
+          cardAlt: 'var(--studio-card-alt)',
+          chip: 'var(--studio-chip)',
           border: 'var(--studio-border)',
-          divider: 'var(--studio-divider)',
+          borderStrong: 'var(--studio-border-strong)',
           text: 'var(--studio-text)',
-          muted: 'var(--studio-muted)',
+          subtext: 'var(--studio-subtext)',
+          muted: 'var(--studio-subtext)',
           btn: {
             bg: 'var(--studio-btn-bg)',
             text: 'var(--studio-btn-text)',

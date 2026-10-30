@@ -47,7 +47,7 @@ export default function ProfileView() {
       {/* Master Profile Container */}
       <div className="rounded-2xl overflow-hidden bg-studio-card border border-studio-border shadow-studio-card">
         {/* Cover Photo */}
-        <div className="relative w-full h-44 sm:h-56 bg-studio-surface overflow-hidden">
+        <div className="relative w-full h-44 sm:h-56 bg-studio-cardAlt overflow-hidden">
           <img
             src={currentUser.coverImage}
             alt="Profile Cover"
@@ -60,7 +60,6 @@ export default function ProfileView() {
         <div className="px-5 sm:px-6 pb-6 flex flex-col gap-5">
           {/* Avatar & Action Buttons Bar */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 -mt-14 sm:-mt-16">
-            {/* Avatar with clean high-contrast ring */}
             <div className="relative inline-block w-24 h-24 sm:w-28 sm:h-28 rounded-2xl p-1 bg-studio-card ring-2 ring-studio-border shadow-lg shrink-0">
               <img
                 src={currentUser.avatar}
@@ -74,11 +73,10 @@ export default function ProfileView() {
               )}
             </div>
 
-            {/* Action Buttons */}
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setIsEditProfileOpen(true)}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-studio-btn-bg text-studio-btn-text text-xs font-semibold shadow-sm hover:opacity-90 transition-opacity"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-studio-btn-bg text-studio-btn-text text-xs font-bold shadow-sm hover:opacity-90 transition-opacity"
               >
                 <Edit3 className="w-3.5 h-3.5" />
                 <span>Edit Profile</span>
@@ -86,7 +84,7 @@ export default function ProfileView() {
 
               <button
                 onClick={handleShareProfile}
-                className="p-2 rounded-xl border border-studio-border bg-studio-card text-studio-text hover:bg-studio-surface transition-colors shadow-sm"
+                className="p-2 rounded-xl border border-studio-border bg-studio-cardAlt text-studio-text hover:border-studio-borderStrong transition-colors shadow-sm"
                 title="Share profile"
               >
                 <Share2 className="w-3.5 h-3.5" />
@@ -100,12 +98,12 @@ export default function ProfileView() {
               <h1 className="text-xl sm:text-2xl font-bold text-studio-text font-outfit">
                 {currentUser.name}
               </h1>
-              <span className="text-[11px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-md bg-studio-surface border border-studio-border text-studio-muted">
+              <span className="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-studio-chip border border-studio-border text-studio-text">
                 PRO CREATOR
               </span>
             </div>
 
-            <span className="text-xs text-studio-muted font-mono">
+            <span className="text-xs text-studio-muted font-mono font-medium">
               @{currentUser.handle}
             </span>
 
@@ -114,7 +112,7 @@ export default function ProfileView() {
             </p>
 
             {/* Metadata Chips */}
-            <div className="flex flex-wrap items-center gap-4 text-xs text-studio-muted pt-1">
+            <div className="flex flex-wrap items-center gap-4 text-xs text-studio-muted font-medium pt-1">
               {currentUser.location && (
                 <div className="flex items-center gap-1.5">
                   <MapPin className="w-3.5 h-3.5 text-rose-500" />
@@ -126,7 +124,7 @@ export default function ProfileView() {
                   href={currentUser.website}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-1.5 text-studio-text hover:underline"
+                  className="flex items-center gap-1.5 text-studio-text font-semibold hover:underline"
                 >
                   <LinkIcon className="w-3.5 h-3.5" />
                   <span>{currentUser.website.replace('https://', '')}</span>
@@ -141,44 +139,44 @@ export default function ProfileView() {
 
           {/* Distinct Stats Mini-Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-3 border-t border-studio-border/60">
-            <div className="p-3 rounded-xl bg-studio-surface/50 border border-studio-border flex flex-col items-center justify-center">
+            <div className="p-3 rounded-xl bg-studio-cardAlt border border-studio-border flex flex-col items-center justify-center">
               <span className="text-base font-bold text-studio-text font-outfit">
                 {currentUser.stats?.postsCount || userPosts.length}
               </span>
-              <span className="text-[11px] text-studio-muted font-medium">
+              <span className="text-[11px] text-studio-muted font-semibold">
                 Posts
               </span>
             </div>
 
             <div
               onClick={() => setFollowersModal({ isOpen: true, title: 'Followers' })}
-              className="p-3 rounded-xl bg-studio-surface/50 border border-studio-border flex flex-col items-center justify-center cursor-pointer hover:bg-studio-surface transition-colors"
+              className="p-3 rounded-xl bg-studio-cardAlt border border-studio-border flex flex-col items-center justify-center cursor-pointer hover:bg-studio-chip transition-colors"
             >
               <span className="text-base font-bold text-studio-text font-outfit">
                 {currentUser.stats?.followersCount ? (currentUser.stats.followersCount / 1000).toFixed(1) + 'k' : '14.8k'}
               </span>
-              <span className="text-[11px] text-studio-muted font-medium">
+              <span className="text-[11px] text-studio-muted font-semibold">
                 Followers
               </span>
             </div>
 
             <div
               onClick={() => setFollowersModal({ isOpen: true, title: 'Following' })}
-              className="p-3 rounded-xl bg-studio-surface/50 border border-studio-border flex flex-col items-center justify-center cursor-pointer hover:bg-studio-surface transition-colors"
+              className="p-3 rounded-xl bg-studio-cardAlt border border-studio-border flex flex-col items-center justify-center cursor-pointer hover:bg-studio-chip transition-colors"
             >
               <span className="text-base font-bold text-studio-text font-outfit">
                 {currentUser.stats?.followingCount || 420}
               </span>
-              <span className="text-[11px] text-studio-muted font-medium">
+              <span className="text-[11px] text-studio-muted font-semibold">
                 Following
               </span>
             </div>
 
-            <div className="p-3 rounded-xl bg-studio-surface/50 border border-studio-border flex flex-col items-center justify-center">
+            <div className="p-3 rounded-xl bg-studio-cardAlt border border-studio-border flex flex-col items-center justify-center">
               <span className="text-base font-bold text-studio-text font-outfit">
                 {currentUser.stats?.likesCount ? (currentUser.stats.likesCount / 1000).toFixed(1) + 'k' : '98.4k'}
               </span>
-              <span className="text-[11px] text-studio-muted font-medium">
+              <span className="text-[11px] text-studio-muted font-semibold">
                 Appreciations
               </span>
             </div>
@@ -199,15 +197,15 @@ export default function ProfileView() {
             <button
               key={tab.id}
               onClick={() => setActiveProfileTab(tab.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                 isActive
-                  ? 'bg-studio-card text-studio-text border border-studio-border shadow-sm'
-                  : 'text-studio-muted hover:text-studio-text hover:bg-studio-card/40'
+                  ? 'bg-studio-btn-bg text-studio-btn-text shadow-sm'
+                  : 'bg-studio-card text-studio-text border border-studio-border hover:border-studio-borderStrong'
               }`}
             >
               <Icon className="w-3.5 h-3.5" />
               <span>{tab.label}</span>
-              <span className="text-[10px] px-1.5 py-0.2 rounded bg-studio-surface border border-studio-border/50 text-studio-muted">
+              <span className="text-[10px] px-1.5 py-0.2 rounded bg-studio-chip text-studio-text font-bold">
                 {tab.count}
               </span>
             </button>
@@ -249,7 +247,7 @@ export default function ProfileView() {
                     <p className="text-xs line-clamp-2">
                       {post.content}
                     </p>
-                    <div className="flex items-center gap-3 text-xs font-semibold">
+                    <div className="flex items-center gap-3 text-xs font-bold">
                       <span className="flex items-center gap-1">
                         <Heart className="w-3.5 h-3.5 fill-white" /> {post.likesCount}
                       </span>
@@ -269,7 +267,7 @@ export default function ProfileView() {
           {activeProfileTab === 'posts' && (
             <button
               onClick={() => setIsCreatePostOpen(true)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-studio-btn-bg text-studio-btn-text text-xs font-medium"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-studio-btn-bg text-studio-btn-text text-xs font-bold"
             >
               <Plus className="w-3.5 h-3.5" />
               <span>Create Post</span>

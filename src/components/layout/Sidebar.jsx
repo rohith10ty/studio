@@ -52,9 +52,9 @@ export default function Sidebar() {
   return (
     <aside
       data-lenis-prevent
-      className="hidden md:flex flex-col justify-between w-60 lg:w-64 h-screen sticky top-0 px-4 py-6 border-r border-studio-border bg-studio-surface select-none z-30 overflow-y-auto"
+      className="hidden md:flex flex-col justify-between w-60 lg:w-64 h-screen sticky top-0 px-4 py-6 border-r border-studio-border bg-studio-sidebar select-none z-30 overflow-y-auto"
     >
-      {/* Top Section */}
+      {/* Top Branding & Navigation */}
       <div className="flex flex-col gap-6">
         {/* Brand & Theme Switcher Header */}
         <div className="flex items-center justify-between px-2 pt-1">
@@ -69,7 +69,7 @@ export default function Sidebar() {
           <button
             onClick={toggleTheme}
             type="button"
-            className="p-2 rounded-xl border border-studio-border/70 bg-studio-card text-studio-text hover:border-studio-border transition-all shadow-sm"
+            className="p-2 rounded-xl border border-studio-border bg-studio-card text-studio-text hover:border-studio-borderStrong transition-all shadow-sm"
             title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} mode`}
           >
             {theme === 'dark' ? (
@@ -89,7 +89,7 @@ export default function Sidebar() {
               <button
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
-                className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
                   isActive
                     ? 'bg-studio-card text-studio-text border border-studio-border shadow-sm'
                     : 'text-studio-muted hover:text-studio-text hover:bg-studio-card/50'
@@ -119,20 +119,20 @@ export default function Sidebar() {
               setIsCreatePostOpen(true);
             }
           }}
-          className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl font-semibold text-xs tracking-wide bg-studio-btn-bg text-studio-btn-text hover:opacity-90 active:scale-[0.98] transition-all shadow-sm"
+          className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl font-bold text-xs tracking-wide bg-studio-btn-bg text-studio-btn-text hover:opacity-90 active:scale-[0.98] transition-all shadow-sm"
         >
           <Plus className="w-4 h-4 stroke-[2.5]" />
           <span>New Post</span>
         </button>
       </div>
 
-      {/* Bottom User Profile Section - No Overlap */}
+      {/* Bottom User Profile Section */}
       <div className="pt-4 border-t border-studio-border">
         {isAuthenticated ? (
           <div className="flex flex-col gap-2">
             <div
               onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-              className="flex items-center justify-between p-2 rounded-xl bg-studio-card border border-studio-border/70 hover:border-studio-border cursor-pointer transition-all shadow-sm"
+              className="flex items-center justify-between p-2 rounded-xl bg-studio-card border border-studio-border hover:border-studio-borderStrong cursor-pointer transition-all shadow-sm"
             >
               <div className="flex items-center gap-2.5 overflow-hidden">
                 <img
@@ -156,7 +156,7 @@ export default function Sidebar() {
               />
             </div>
 
-            {/* In-flow Collapsible Menu (Never overlaps) */}
+            {/* In-flow Collapsible Menu */}
             {isUserMenuOpen && (
               <div className="flex flex-col gap-1 p-1.5 rounded-xl bg-studio-card border border-studio-border animate-fade-in shadow-sm">
                 <button
@@ -164,7 +164,7 @@ export default function Sidebar() {
                     setActiveTab('profile');
                     setIsUserMenuOpen(false);
                   }}
-                  className="w-full flex items-center gap-2 px-3 py-2 text-xs font-medium rounded-lg text-studio-text hover:bg-studio-surface transition-colors"
+                  className="w-full flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg text-studio-text hover:bg-studio-sidebar transition-colors"
                 >
                   <User className="w-3.5 h-3.5 text-studio-muted" />
                   <span>View Profile</span>
@@ -174,7 +174,7 @@ export default function Sidebar() {
                     logout();
                     setIsUserMenuOpen(false);
                   }}
-                  className="w-full flex items-center gap-2 px-3 py-2 text-xs font-medium rounded-lg text-rose-500 hover:bg-rose-500/10 transition-colors"
+                  className="w-full flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg text-rose-500 hover:bg-rose-500/10 transition-colors"
                 >
                   <LogOut className="w-3.5 h-3.5" />
                   <span>Log Out</span>
@@ -185,7 +185,7 @@ export default function Sidebar() {
         ) : (
           <button
             onClick={() => openAuthModal('login')}
-            className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-studio-btn-bg text-studio-btn-text text-xs font-semibold hover:opacity-90 transition-opacity"
+            className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-studio-btn-bg text-studio-btn-text text-xs font-bold hover:opacity-90 transition-opacity"
           >
             <LogIn className="w-3.5 h-3.5" />
             <span>Sign In</span>
